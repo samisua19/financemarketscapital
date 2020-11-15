@@ -49,19 +49,19 @@
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button" id="btnUserCheck">Check</button>
                             </div>
-                            <div class="user"></div>
+                            <div class="user" style="height: 3px;"></div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control sponsor" placeholder="Patrocinador"
                                 aria-label="Patrocinador" aria-describedby="btnPatrocinadorCheck"
-                                id="inputPatrocinador">
+                                id="inputPatrocinador" required>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button"
                                     id="btnPatrocinadorCheck">Check</button>
                             </div>
-                            <div class="sponsor"></div>
+                            <div class="sponsor" style="height: 3px;"></div>
                         </div>
                     </div>
                 </div>
@@ -69,21 +69,22 @@
 
                 <div class="row">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Name" id="inputName">
+                        <input type="text" class="form-control" placeholder="Name" id="inputName" required>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Lastname" id="inputLastName">
+                        <input type="text" class="form-control" placeholder="Lastname" id="inputLastName" required>
                     </div>
                 </div>
+
 
                 <div class="row" style="margin-top: 15px;">
                     <div class="col">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupTDocumento">Tipo Documento</label>
+                                <label class="input-group-text" for="inputGroupTDocumento" >Tipo Documento</label>
                             </div>
-                            <select class="custom-select" id="inputGroupTDocumento">
-                                <option selected>Choose...</option>
+                            <select class="custom-select" id="inputGroupTDocumento" required >
+                                <option value="" >Choose...</option>
                                 <option value="Cedula">Cedula</option>
                                 <option value="Pasaporte">Pasaporte</option>
                             </select>
@@ -91,7 +92,7 @@
                     </div>
                     <div class="col">
                         <input type="number" placeholder="Numero de Documento" class="form-control"
-                            id="inputNumDocumento">
+                            id="inputNumDocumento" required>
                     </div>
                 </div>
 
@@ -102,7 +103,7 @@
                                 <span class="input-group-text" id="spanBirthday" style="height: 38px;">Birthday</span>
                             </div>
                             <input type="date" class="form-control" aria-label="Birthday"
-                                aria-describedby="spanBirthday" id="inputDateBirthday">
+                                aria-describedby="spanBirthday" id="inputDateBirthday" required>
                         </div>
                     </div>
                     <div class="col">
@@ -110,8 +111,8 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupGender">Gender</label>
                             </div>
-                            <select class="custom-select" id="inputGroupGender">
-                                <option selected>Choose...</option>
+                            <select class="custom-select" id="inputGroupGender" required>
+                                <option value="">Choose...</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Other">Other</option>
@@ -124,7 +125,7 @@
                     <div class="col">
                         <div class="input-group mb-3" id="app">
                             <input type="text" class="form-control" placeholder="Email" aria-label="Email"
-                                aria-describedby="btnSubmitEmail" id="inputEmail" v-model="from_email">
+                                aria-describedby="btnSubmitEmail" id="inputEmail" v-model="from_email" required>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button" id="btnSubmitEmail"
                                     @click="enviar">Submit</button>
@@ -135,7 +136,7 @@
                     <div class="col">
                         <div class="input-group mb-3">
                             <input type="number" class="form-control" placeholder="Verify Email"
-                                aria-label="Verify Email" aria-describedby="btnVerifyEmail" id="inputVerifyEmail">
+                                aria-label="Verify Email" aria-describedby="btnVerifyEmail" id="inputVerifyEmail" required>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button"
                                     id="btnVerifyEmail">Verify</button>
@@ -148,11 +149,11 @@
                 <div class="row">
                     <div class="col">
                         <input type="password" class="form-control" placeholder="Password" id="inputPassword"
-                            minlength="8">
+                            minlength="8" required>
                     </div>
                     <div class="col">
                         <input type="password" class="form-control" placeholder="Confirm Password"
-                            id="inputConfirmPassword" minlength="8">
+                            id="inputConfirmPassword" minlength="8" required>
                     </div>
                 </div>
 
@@ -162,43 +163,34 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupTCuenta">Tipo Cuenta</label>
                             </div>
-                            <select class="custom-select" id="inputGroupTCuenta">
-                                <option selected>Choose...</option>
+                            <select class="custom-select" id="inputGroupTCuenta" required>
+                                <option value="">Choose...</option>
                                 <option value="Ahorros">Ahorros</option>
                                 <option value="Corriente">Corriente</option>
                             </select>
                         </div>
                     </div>
                     <div class="col">
-                        <input type="number" placeholder="Numero de Cuenta" class="form-control" id="inputNumCuenta">
+                        <input type="number" placeholder="Numero de Cuenta" class="form-control" id="inputNumCuenta" required>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <input type="number" placeholder="Number" class="form-control" id="inputNumber">
+                        <input type="number" placeholder="Number" class="form-control" id="inputNumber" required>
                     </div>
                     <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupCountry">Country</label>
-                            </div>
-                            <select class="custom-select" id="inputGroupCountry">
-                                <option selected>Choose...</option>
-                                <option value="Colombia">Colombia</option>
-                                <option value="EE.UU">EE.UU</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
+                        <input type="text" placeholder="Direccion" class="form-control" id="inputDireccion" required>
                     </div>
                 </div>
+                <br>
 
                 <div class="row">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Departamento" id="inputState">
+                        <input type="text" class="form-control" placeholder="Departamento" id="inputState" required>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Ciudad" id="inputCity">
+                        <input type="text" class="form-control" placeholder="Ciudad" id="inputCity" required>
                     </div>
                 </div>
                 <br>
@@ -209,8 +201,8 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupPlazo">Plazo</label>
                             </div>
-                            <select class="custom-select" id="inputGroupPlazo">
-                                <option selected>Choose...</option>
+                            <select class="custom-select" id="inputGroupPlazo" required>
+                                <option value="">Choose...</option>
                                 <option value="Corto Plazo">Corto Plazo</option>
                                 <option value="Mediano Plazo">Mediano Plazo</option>
                                 <option value="Largo Plazo">Largo Plazo</option>
@@ -220,9 +212,9 @@
                     <div class="col">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupPlan">Plan</label>
+                                <label class="input-group-text" for="inputGroupPlan" >Plan</label>
                             </div>
-                            <select class="custom-select" id="inputGroupPlan">
+                            <select class="custom-select" id="inputGroupPlan" required>
                                 <option selected>Choose...</option>
                             </select>
                         </div>
