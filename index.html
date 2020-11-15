@@ -45,7 +45,7 @@
                     <div class="col">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control user " placeholder="User" aria-label="User"
-                                aria-describedby="btnUserCheck" id="inputUser">
+                                aria-describedby="btnUserCheck" id="inputUser" required>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button" id="btnUserCheck">Check</button>
                             </div>
@@ -134,8 +134,8 @@
                     </div>
                     <div class="col">
                         <div class="input-group mb-3">
-                            <input type="number" class="form-control" placeholder="Verify Email" aria-label="Verify Email"
-                                aria-describedby="btnVerifyEmail" id="inputVerifyEmail">
+                            <input type="number" class="form-control" placeholder="Verify Email"
+                                aria-label="Verify Email" aria-describedby="btnVerifyEmail" id="inputVerifyEmail">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button"
                                     id="btnVerifyEmail">Verify</button>
@@ -144,6 +144,18 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col">
+                        <input type="password" class="form-control" placeholder="Password" id="inputPassword"
+                            minlength="8">
+                    </div>
+                    <div class="col">
+                        <input type="password" class="form-control" placeholder="Confirm Password"
+                            id="inputConfirmPassword" minlength="8">
+                    </div>
+                </div>
+
                 <div class="row" style="margin-top: 15px;">
                     <div class="col">
                         <div class="input-group mb-3">
@@ -183,28 +195,35 @@
 
                 <div class="row">
                     <div class="col">
+                        <input type="text" class="form-control" placeholder="Departamento" id="inputState">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Ciudad" id="inputCity">
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupState">State</label>
+                                <label class="input-group-text" for="inputGroupPlazo">Plazo</label>
                             </div>
-                            <select class="custom-select" id="inputGroupState">
+                            <select class="custom-select" id="inputGroupPlazo">
                                 <option selected>Choose...</option>
-                                <option value="Santander">Santander</option>
-                                <option value="Cundinamarca">Cundinamarca</option>
-                                <option value="Other">Other</option>
+                                <option value="Corto Plazo">Corto Plazo</option>
+                                <option value="Mediano Plazo">Mediano Plazo</option>
+                                <option value="Largo Plazo">Largo Plazo</option>
                             </select>
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupCity">City</label>
+                                <label class="input-group-text" for="inputGroupPlan">Plan</label>
                             </div>
-                            <select class="custom-select" id="inputGroupCity">
+                            <select class="custom-select" id="inputGroupPlan">
                                 <option selected>Choose...</option>
-                                <option value="Bucaramanga">Bucaramanga</option>
-                                <option value="Bogota">Bogota</option>
-                                <option value="Other">Other</option>
                             </select>
                         </div>
                     </div>
@@ -249,20 +268,25 @@
     const btnUserCheck = document.getElementById('btnUserCheck');
     const btnPatrocinadorCheck = document.getElementById('btnPatrocinadorCheck');
     const btnVerifyEmail = document.getElementById('btnVerifyEmail');
+    const selectPlazo = document.getElementById('inputGroupPlazo');
+    const selectPlan = document.getElementById('inputGroupPlan');
     const divCheckUser = document.getElementsByClassName("user")[1];
     const inputUser = document.getElementsByClassName("user")[0];
     const divChecksponsor = document.getElementsByClassName("sponsor")[1];
     const inputsponsor = document.getElementsByClassName("sponsor")[0];
 
-    let key = '';
-    let data = '';
-    let exist = '';
-    let datos = '';
-    let numVerify;
+    let key = ''; //llave con la que se busca el registro
+    let data = ''; // dato con la que se busca el registro
+    let exist = ''; // determina si el registro existe
+    let datos = ''; //Almacena la respuesta de la busqueda
+    let numVerify; // numero de verificacion de email
+    let plazo; // plazo del plan
+    let filtro; // Filtro del plan
 
     const getUsers = () => db.collection('Users').get();
+    const planes = (callback) => db.collection('Planes').doc('5popKkRNj8G6bnFLxF7m').collection(plazo).orderBy(filtro, "asc").onSnapshot(callback);
 
-    const numRandom = () => Math.floor(Math.random() * (10000 - 1000)) + 1000;
+    const numRandom = () => Math.floor(Math.random() * (1000000 - 100000)) + 100000;
 
     function dataExist(key, data) {
         db.collection("Users").where(key, "==", data)
@@ -284,7 +308,6 @@
     }
 
     $(document).ready(function () {
-        numVerify = numRandom();
         registerFrom['inputVerifyEmail'].disabled = true;
         btnVerifyEmail.disabled = true;
     });
@@ -357,6 +380,22 @@
         }
     });
 
+    selectPlazo.addEventListener('change', async (e) => {
+        plazo = registerFrom['inputGroupPlazo'].value;
+        if (plazo == 'Largo Plazo') {
+            filtro = "meses";
+        } else {
+            filtro = "porcentaje";
+        }
+        selectPlan.innerHTML = '<option selected>Choose...</option>';
+        await planes((querySnapshot) => {
+            querySnapshot.forEach(doc => {
+                let plan = doc.data();
+                selectPlan.innerHTML += '<option value="' + plan['nombre'] + '">' + plan['nombre'] + '</option>'
+            });
+        });
+    });
+
 
     registerFrom.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -373,8 +412,8 @@
         numAccount = registerFrom['inputNumCuenta'].value;
         number = registerFrom['inputNumber'].value;
         country = registerFrom['inputGroupCountry'].value;
-        state = registerFrom['inputGroupState'].value;
-        city = registerFrom['inputGroupCity'].value;
+        state = registerFrom['inputState'].value;
+        city = registerFrom['inputCity'].value;
         //await saveDateUser(user,sponsor,name,lastname,tDocument,numDocument,birthday,gender,email,tAccount,numAccount,number, country,status,city);
     });
 
@@ -395,6 +434,8 @@
         },
         methods: {
             async enviar() {
+
+                numVerify = numRandom();
                 let data = {
                     from_name: registerFrom['inputName'].value + ' ' + registerFrom['inputLastName'].value,
                     from_email: registerFrom['inputEmail'].value,
