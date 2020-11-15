@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container p-4">
+        <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Seleccionar...
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <button id="btnfrase" class="dropdown-item ">Frases</button>
+                <button id="btnAccount" class="dropdown-item ">Cuentas</button>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="container">
+                    <div class="card card-body" id="card" style="display: none;">
+                        <div id="div-h5">
+                        </div>
+                        <form id="accounts-form" style="display: none;">
+
+                            <div class="form-group">
+                                <input type="text" name="account" id="account-input" placeholder="Text"
+                                    class="form-control" required>
+                            </div>
+                            <div>
+                                <button type="submit" name="submit" id="btn-account-form"
+                                    class="btn btn-primary form-control">
+                                    Save</button>
+                            </div>
+                        </form>
+                        <form id="frases-form" style="display: none;">
+                            <div class="form-group">
+                                <textarea type="text" name="frases" id="frases-input" placeholder="Text"
+                                    class="form-control" required rows="5"></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" name="submit" id="btn-frase-form"
+                                    class="btn btn-primary form-control">
+                                    Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 contentcontainer" id="content-container" style="display: none;">
+                <div class="container ">
+                    <input class="form-control col-md-4" id="myInput" type="text" placeholder="Search..">
+                    <br>
+                    <table id="table-content" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th id="th-title">Frase</th>
+                                <th>Editar</th>
+                                <th>Estado</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCiWelASxC-O1ZIKSC7T_GE7xrHqgmwBzE",
+            authDomain: "apptiendas1a.firebaseapp.com",
+            databaseURL: "https://apptiendas1a.firebaseio.com",
+            projectId: "apptiendas1a",
+            storageBucket: "apptiendas1a.appspot.com",
+            messagingSenderId: "298566258640",
+            appId: "1:298566258640:web:47de0bf0e0d1aa90f833d5"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        // conection DB
+        const db = firebase.firestore();
+
+        let table;
+        let status;
+        let color;
+        let id;
+
+        const accountForm = document.getElementById('accounts-form');
+        const fraseForm = document.getElementById('frases-form');
+        const btndropdown = document.getElementById('dropdownMenuLink');
+        const btnfrase = document.getElementById('btnfrase');
+        const thTitle = document.getElementById('th-title');
+        const btnAccount = document.getElementById('btnAccount');
+        const consultContainer = document.getElementById('myTable');
+        const card = document.getElementById('card');
+        const divH5 = document.getElementById('div-h5');
+        const tableContainer = document.getElementById('content-container');
+
+
+        const onGet = (callback) => db.collection(table).onSnapshot(callback);
+        const deleteContent = id => db.collection(table).doc(id).delete();
+        const updateContent = (id, updateContent) => db.collection(table).doc(id).update(updateContent); // actualizar tarea
+        const gCid = (id) => db.collection(table).doc(id).get();
+
+
+
+        let editStatus = false;
+
+        function getStatus(sta) {
+            if (sta) {
+                status = 'Habilitada';
+                color = 'success'
+            } else {
+                status = 'Deshabilitada';
+                color = 'warning'
+            }
+        }
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+
+        function getFrases() {
+            onGet((querySnapshot) => {
+                consultContainer.innerHTML = '';
+                querySnapshot.forEach(doc => {
+                    const consult = doc.data();
+                    getStatus(consult.status);
+                    consultContainer.innerHTML += '<tr> <td>' + consult.frase + '</td> <td><button class="btn btn-primary btn-edit" data-id="' + doc.id + '" >Editar</button></td> <td><button class="btn btn-' + color + ' btn-status" data-id="' + doc.id + '">' + status + '</button></td><td><button class="btn btn-danger btn-delete" data-id="' + doc.id + '">Delete</button></td></tr>';
+                    const btnDelete = document.querySelectorAll('.btn-delete');
+                    btnDelete.forEach(btn => {
+                        btn.addEventListener('click', async (e) => {
+                            await deleteContent(e.target.dataset.id);
+                        });
+                    });
+                    const btnStatus = document.querySelectorAll('.btn-status');
+                    btnStatus.forEach(btn => {
+                        btn.addEventListener('click', async (e) => {
+                            const doc = await gCid(e.target.dataset.id);
+                            const content = doc.data();
+                            content.status == true ? await updateContent(doc.id, { status: false }) : updateContent(doc.id, { status: true })
+                        });
+                    });
+                    const btnEdit = document.querySelectorAll('.btn-edit');
+                    btnEdit.forEach(btn => {
+                        btn.addEventListener('click', async (e) => {
+                            const doc = await gCid(e.target.dataset.id);
+                            fraseForm['frases-input'].value = doc.data().frase;
+                            editStatus = true;
+                            fraseForm['btn-frase-form'].innerText = 'Update';
+                            id = doc.id;
+                        });
+                    });
+                });
+            });
+        }
+        function getAccounts() {
+            onGet((querySnapshot) => {
+                consultContainer.innerHTML = '';
+                querySnapshot.forEach(doc => {
+                    const consult = doc.data();
+                    getStatus(consult.status);
+                    consultContainer.innerHTML += '<tr> <td>' + doc.id + '</td> <td><button class="btn btn-primary btn-edit" data-id="' + doc.id + '">Editar</button></td> <td><button class="btn btn-' + color + ' btn-status" data-id="' + doc.id + '">' + status + '</button></td><td><button class="btn btn-danger btn-delete" data-id="' + doc.id + '">Delete</button></td></tr>';
+                    const btnDelete = document.querySelectorAll('.btn-delete');
+                    btnDelete.forEach(btn => {
+                        btn.addEventListener('click', async (e) => {
+                            await deleteContent(e.target.dataset.id);
+                        });
+                    });
+                    const btnStatus = document.querySelectorAll('.btn-status');
+                    btnStatus.forEach(btn => {
+                        btn.addEventListener('click', async (e) => {
+                            const doc = await gCid(e.target.dataset.id);
+                            const content = doc.data();
+                            content.status == true ? await updateContent(doc.id, { status: false }) : updateContent(doc.id, { status: true })
+                        });
+                    });
+                    const btnEdit = document.querySelectorAll('.btn-edit');
+                    btnEdit.forEach(btn => {
+                        btn.addEventListener('click', async (e) => {
+                            const doc = await gCid(e.target.dataset.id);
+                            accountForm['account-input'].value = doc.id;
+                            editStatus = true;
+                            id = doc.id;
+                            accountForm['btn-account-form'].innerText = 'Update';
+                        });
+                    });
+                });
+            });
+        }
+
+
+        function saveDataFrase(data) {
+            db.collection('frases').doc().set({
+                frase: data,
+                status: true
+            });
+        }
+
+        function saveDataAccount(data) {
+            db.collection('accountsInsta').doc("@" + data).set({
+                status: true
+            });
+        }
+
+        accountForm.addEventListener('submit', async (e) => { // toma los eventos del objeto
+            e.preventDefault();
+            let account = accountForm['account-input'].value;
+            if (!editStatus) {
+                await saveDataAccount(account);
+            } else {
+                await deleteContent(id);
+                account = account.substr(1);
+                await saveDataAccount(account);
+                accountForm['btn-account-form'].innerText = 'Save';
+                id = '';
+                editStatus = false;
+            }
+            accountForm.reset();
+            // almacenar los datos en la db
+        });
+
+        fraseForm.addEventListener('submit', async (e) => { // toma los eventos del objeto
+            e.preventDefault();
+            const frase = fraseForm['frases-input'].value;
+            if (!editStatus) {
+                await saveDataFrase(frase);
+            } else {
+                await updateContent(id, { frase });
+                fraseForm['btn-frase-form'].innerText = 'Save';
+                id = '';
+                editStatus = false;
+            }
+            fraseForm.reset();
+            // almacenar los datos en la db
+        });
+
+        window.addEventListener('DOMContentLoaded', async (e) => { // Ejecutar cuando se cargue la pagina
+            btnfrase.addEventListener('click', (e) => {
+                table = 'frases';
+                btndropdown.innerText = 'Frases';
+                thTitle.innerText = 'Frase';
+                fraseForm.style.display = "block"
+                accountForm.style.display = "none"
+                card.style.display = "block";
+                divH5.innerHTML = '';
+                divH5.innerHTML += '<h5 class=" card-title">Frases </h5>';
+                getFrases();
+                tableContainer.style.display = "block";
+            });
+            btnAccount.addEventListener('click', (e) => {
+                table = 'accountsInsta';
+                btndropdown.innerText = 'Cuentas';
+                thTitle.innerText = 'Cuenta';
+                card.style.display = "block";
+                fraseForm.style.display = "none"
+                accountForm.style.display = "block"
+                tableContainer.style.display = "block";
+                divH5.innerHTML = '';
+                divH5.innerHTML += '<h5 class=" card-title">Cuentas </h5>';
+                getAccounts();
+            });
+            if (table == 'frases') {
+                getFrases();
+            } else if (table == 'accountsInsta') {
+                getAccounts();
+            }
+        });
+    </script>
+</body>
+
+</html>
