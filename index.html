@@ -54,8 +54,9 @@
                     </div>
                     <div class="col">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control sponsor" placeholder="Patrocinador" aria-label="Patrocinador"
-                                aria-describedby="btnPatrocinadorCheck" id="inputPatrocinador">
+                            <input type="text" class="form-control sponsor" placeholder="Patrocinador"
+                                aria-label="Patrocinador" aria-describedby="btnPatrocinadorCheck"
+                                id="inputPatrocinador">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button"
                                     id="btnPatrocinadorCheck">Check</button>
@@ -121,19 +122,19 @@
 
                 <div class="row">
                     <div class="col">
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3" id="app">
                             <input type="text" class="form-control" placeholder="Email" aria-label="Email"
-                                aria-describedby="btnSubmitEmail" id="inputEmail">
+                                aria-describedby="btnSubmitEmail" id="inputEmail" v-model="from_email">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button"
-                                    id="btnSubmitEmail">Submit</button>
+                                <button class="btn btn-outline-secondary" type="button" id="btnSubmitEmail"
+                                    @click="enviar">Submit</button>
                             </div>
                             <div></div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Verify Email" aria-label="Verify Email"
+                            <input type="number" class="form-control" placeholder="Verify Email" aria-label="Verify Email"
                                 aria-describedby="btnVerifyEmail" id="inputVerifyEmail">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button"
@@ -214,13 +215,17 @@
                 </div>
             </form>
             <input type="text" id="inputExistData" style="display: none;">
-            
+
         </div>
     </div>
 </body>
 <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js">
+</script>
+<script src="https://cdn.emailjs.com/dist/email.min.js" type="text/javascript">
+</script>
 
 <script>
     var firebaseConfig = {
@@ -243,6 +248,7 @@
     const existData = document.getElementById('inputExistData');
     const btnUserCheck = document.getElementById('btnUserCheck');
     const btnPatrocinadorCheck = document.getElementById('btnPatrocinadorCheck');
+    const btnVerifyEmail = document.getElementById('btnVerifyEmail');
     const divCheckUser = document.getElementsByClassName("user")[1];
     const inputUser = document.getElementsByClassName("user")[0];
     const divChecksponsor = document.getElementsByClassName("sponsor")[1];
@@ -252,8 +258,11 @@
     let data = '';
     let exist = '';
     let datos = '';
+    let numVerify;
 
     const getUsers = () => db.collection('Users').get();
+
+    const numRandom = () => Math.floor(Math.random() * (10000 - 1000)) + 1000;
 
     function dataExist(key, data) {
         db.collection("Users").where(key, "==", data)
@@ -267,15 +276,17 @@
             .catch(function (error) {
                 console.log("Error getting documents: ", error);
             });
-        setTimeout(waitDatos,1000);
+        setTimeout(waitDatos, 1000);
     }
 
-    function waitDatos(){
+    function waitDatos() {
         existData.value == '' ? exist = false : exist = true;
     }
 
     $(document).ready(function () {
-
+        numVerify = numRandom();
+        registerFrom['inputVerifyEmail'].disabled = true;
+        btnVerifyEmail.disabled = true;
     });
 
     function saveDateUser(user, sponsor, name, lastname, tDocument, numDocument, birthday, gender, email, tAccount, numAccount, number, country, status, city) {
@@ -284,7 +295,7 @@
         });
     }
 
-    function waitUser(){
+    function waitUser() {
         if (exist) {
             inputUser.className = '';
             divCheckUser.className = '';
@@ -301,14 +312,14 @@
             divCheckUser.innerHTML += '<p>Este usuario esta disponible</p>';
         }
     }
-    function waitSponsor(){
+    function waitSponsor() {
         if (exist) {
             inputsponsor.className = '';
             divChecksponsor.className = '';
             divChecksponsor.innerHTML = '';
             inputsponsor.className += 'form-control is-valid sponsor';
             divChecksponsor.className += 'sponsor valid-feedback';
-            divChecksponsor.innerHTML += '<p>'+ datos['name'] +' '+ datos['lastname'] +'</p>';
+            divChecksponsor.innerHTML += '<p>' + datos['name'] + ' ' + datos['lastname'] + '</p>';
         } else {
             inputsponsor.className = '';
             divChecksponsor.className = '';
@@ -319,23 +330,32 @@
         }
     }
 
+
     btnUserCheck.addEventListener('click', async (e) => {
         await dataExist("user", registerFrom['inputUser'].value);
-        setTimeout(waitUser,2000);
-        existData.value = '';
-        exist = '';
-        datos = '';
-    });
-    
-    btnPatrocinadorCheck.addEventListener('click', async (e) => {
-        await dataExist("user", registerFrom['inputPatrocinador'].value);
-        
-        setTimeout(waitSponsor,2000);
+        setTimeout(waitUser, 2000);
         existData.value = '';
         exist = '';
         datos = '';
     });
 
+    btnPatrocinadorCheck.addEventListener('click', async (e) => {
+        await dataExist("user", registerFrom['inputPatrocinador'].value);
+        setTimeout(waitSponsor, 2000);
+        existData.value = '';
+        exist = '';
+        datos = '';
+    });
+
+    btnVerifyEmail.addEventListener('click', (e) => {
+        if (numVerify == registerFrom['inputVerifyEmail'].value) {
+            alert('los numeros coinciden');
+            registerFrom['inputVerifyEmail'].disabled = true;
+            btnVerifyEmail.disabled = true;
+        } else {
+            alert('los numeros no coinciden')
+        }
+    });
 
 
     registerFrom.addEventListener('submit', async (e) => {
@@ -358,6 +378,54 @@
         //await saveDateUser(user,sponsor,name,lastname,tDocument,numDocument,birthday,gender,email,tAccount,numAccount,number, country,status,city);
     });
 
+</script>
+<script>
+    (function () {
+        emailjs.init("user_USX4M3dWIjUrxE8B3FICN");
+    })();
+    const vue = new Vue({
+        el: '#app',
+        data() {
+            return {
+                from_name: '',
+                from_email: '',
+                message: '',
+                subject: '',
+            }
+        },
+        methods: {
+            async enviar() {
+                let data = {
+                    from_name: registerFrom['inputName'].value + ' ' + registerFrom['inputLastName'].value,
+                    from_email: registerFrom['inputEmail'].value,
+                    message: numVerify,
+                    subject: "Verificacion de correo",
+                };
+
+                await dataExist("email", registerFrom['inputEmail'].value);
+                setTimeout(function () {
+                    if (exist) {
+                        alert('El correo ingresado ya ha sido Registrado');
+                    } else {
+                        registerFrom['inputVerifyEmail'].disabled = false;
+                        btnVerifyEmail.disabled = false;
+                        emailjs.send("service_rzi8owg", "template_ezx2066", data)
+                            .then(function (response) {
+                                if (response.text === 'OK') {
+                                    alert('El correo se ha enviado de forma exitosa');
+                                }
+                                console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+                            }, function (err) {
+                                alert('Ocurrió un problema al enviar el correo');
+                                console.log("FAILED. error=", err);
+                            });
+                    }
+                }, 4000);
+
+
+            }
+        }
+    });
 </script>
 
 </html>
