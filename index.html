@@ -23,7 +23,9 @@
             height: 34px;
             font-size: 15px;
         }
-        input.form-control,select.custom-select{
+
+        input.form-control,
+        select.custom-select {
             font-size: 18px;
             width: 500px;
             height: 40px;
@@ -32,7 +34,8 @@
         label.input-group-text,
         span.input-group-text,
         .btn {
-            height: 40px;;
+            height: 40px;
+            ;
             font-size: 18px;
         }
     </style>
@@ -53,7 +56,8 @@
                             <input type="text" class="form-control user " placeholder="User" aria-label="User"
                                 aria-describedby="btnUserCheck" id="inputUser" required>
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button" id="btnUserCheck" style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Check</button>
+                                <button class="btn btn-outline-secondary" type="button" id="btnUserCheck"
+                                    style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Check</button>
                             </div>
                             <div class="user" style="height: 3px;"></div>
                         </div>
@@ -64,8 +68,8 @@
                                 aria-label="Patrocinador" aria-describedby="btnPatrocinadorCheck" id="inputPatrocinador"
                                 required>
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button"
-                                    id="btnPatrocinadorCheck" style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Check</button>
+                                <button class="btn btn-outline-secondary" type="button" id="btnPatrocinadorCheck"
+                                    style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Check</button>
                             </div>
                             <div class="sponsor" style="height: 3px;"></div>
                         </div>
@@ -104,7 +108,7 @@
                     <div class="col">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="spanBirthday" >Birthday</span>
+                                <span class="input-group-text" id="spanBirthday">Birthday</span>
                             </div>
                             <input type="date" class="form-control" aria-label="Birthday"
                                 aria-describedby="spanBirthday" id="inputDateBirthday" required>
@@ -132,7 +136,8 @@
                                 aria-describedby="btnSubmitEmail" id="inputEmail" v-model="from_email" required>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button" id="btnSubmitEmail"
-                                    @click="enviar" style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Submit</button>
+                                    @click="enviar"
+                                    style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Submit</button>
                             </div>
                             <div></div>
                         </div>
@@ -143,8 +148,8 @@
                                 aria-label="Verify Email" aria-describedby="btnVerifyEmail" id="inputVerifyEmail"
                                 required>
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button"
-                                    id="btnVerifyEmail" style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;" >Verify</button>
+                                <button class="btn btn-outline-secondary" type="button" id="btnVerifyEmail"
+                                    style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verify</button>
                             </div>
                             <div></div>
                         </div>
@@ -204,13 +209,13 @@
                 <div class="row">
                     <div class="col">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="imageCedula" lang="es">
+                            <input type="file" class="custom-file-input" id="imageCedula" lang="es" required>
                             <label class="custom-file-label" for="imageCedula">Foto de la cedula (Frontal)</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="imageRespaldoCedula" lang="es">
+                            <input type="file" class="custom-file-input" id="imageRespaldoCedula" lang="es" required>
                             <label class="custom-file-label" for="imageRespaldoCedula">Foto de la cedula
                                 (Respaldo)</label>
                         </div>
@@ -218,22 +223,22 @@
 
                 </div>
                 <br>
+
                 <div class="row">
                     <div class="col">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="imageSelfiDocumento" lang="es">
+                            <input type="file" class="custom-file-input" id="imageSelfiDocumento" lang="es" required>
                             <label class="custom-file-label" for="imageSelfiDocumento">Selfi con la cedula</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="imageRecibo" lang="es">
+                            <input type="file" class="custom-file-input" id="imageRecibo" lang="es" required>
                             <label class="custom-file-label" for="imageRecibo">Foto de recibo donde vive</label>
                         </div>
                     </div>
                 </div>
                 <br>
-
 
                 <div class="row">
                     <div class="col">
@@ -261,17 +266,40 @@
                     </div>
                 </div>
 
-                <div class="row justify-content-center btn-lg" id="btnPago" > 
-                    
+                <div  id="btnPago">
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheckTYC" required>
+                            <label class="custom-control-label" for="customCheckTYC">Terminos y Condiciones</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheckAuthData" required>
+                            <label class="custom-control-label" for="customCheckAuthData">Autorizacion de datos</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" required>
+                            <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+                        </div>
+                    </div>
                 </div>
                 <br>
+
                 <div class="row justify-content-center">
                     <button class="btn btn-primary btn-lg" id="btnSubmit" type="submit">Submit</button>
                 </div>
 
-
             </form>
             <input type="text" id="inputExistData" style="display: none;">
+            <div class="row justify-content-center">
+                <button class="btn btn-primary btn-lg" id="btnSubmit2" type="button">Submit</button>
+            </div>
         </div>
     </div>
 </body>
@@ -283,7 +311,7 @@
 
 
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js">
 </script>
 
@@ -316,6 +344,7 @@
     const selectPlazo = document.getElementById('inputGroupPlazo');
     const selectPlan = document.getElementById('inputGroupPlan');
     const divBtnPago = document.getElementById('btnPago');
+    const btnSubmit = document.getElementById('btnSubmit2');
     const divCheckUser = document.getElementsByClassName("user")[1];
     const inputUser = document.getElementsByClassName("user")[0];
     const divChecksponsor = document.getElementsByClassName("sponsor")[1];
@@ -329,10 +358,13 @@
     let plazo; // plazo del plan
     let plan;
     let filtro; // Filtro del plan
+    let existUser = false;
+    let existSponsor = false;
+    let correoVerificado = false;
+
 
     const getUsers = () => db.collection('Users').get();
     const planes = (callback) => db.collection('Planes').doc('5popKkRNj8G6bnFLxF7m').collection(plazo).orderBy(filtro, "asc").onSnapshot(callback);
-
     const numRandom = () => Math.floor(Math.random() * (1000000 - 100000)) + 100000;
 
     function dataExist(key, data) {
@@ -357,7 +389,7 @@
     $(document).ready(function () {
         registerFrom['inputVerifyEmail'].disabled = true;
         btnVerifyEmail.disabled = true;
-        
+
     });
 
     function saveDateUser(user, sponsor, name, lastname, tDocument, numDocument, birthday, gender, email, tAccount, numAccount, number, country, status, city) {
@@ -367,7 +399,11 @@
     }
 
     function waitUser() {
-        if (exist) {
+        existUser = exist;
+        existData.value = '';
+        exist = '';
+        datos = '';
+        if (existUser) {
             inputUser.className = '';
             divCheckUser.className = '';
             divCheckUser.innerHTML = '';
@@ -385,13 +421,15 @@
     }
 
     function waitSponsor() {
-        if (exist) {
+        existSponsor = exist;
+        if (existSponsor) {
             inputsponsor.className = '';
             divChecksponsor.className = '';
             divChecksponsor.innerHTML = '';
             inputsponsor.className += 'form-control is-valid sponsor';
             divChecksponsor.className += 'sponsor valid-feedback';
             divChecksponsor.innerHTML += '<p>' + datos['name'] + ' ' + datos['lastname'] + '</p>';
+            
         } else {
             inputsponsor.className = '';
             divChecksponsor.className = '';
@@ -400,15 +438,27 @@
             divChecksponsor.className += 'sponsor invalid-feedback';
             divChecksponsor.innerHTML += '<p>El patrocinador no existe</p>';
         }
+        existData.value = '';
+        exist = '';
+        datos = '';
     }
 
+    function confirPassword(){
+        if(registerFrom['inputPassword'].value == registerFrom['inputConfirmPassword'].value){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function hashPassword(){
+            let passwordHash = CryptoJS.MD5(registerFrom['inputPassword'].value);
+            return passwordHash;
+    }
 
     btnUserCheck.addEventListener('click', async (e) => {
         await dataExist("user", registerFrom['inputUser'].value);
         setTimeout(waitUser, 2000);
-        existData.value = '';
-        exist = '';
-        datos = '';
     });
 
     btnPatrocinadorCheck.addEventListener('click', async (e) => {
@@ -425,9 +475,19 @@
             registerFrom['inputVerifyEmail'].disabled = true;
             btnVerifyEmail.disabled = true;
         } else {
-            alert('los numeros no coinciden')
+            alert('los numeros no coinciden');
         }
     });
+
+    btnSubmit.addEventListener('click', (e)=>{
+        console.log(existSponsor,existUser,correoVerificado);
+        if( !existUser&&existSponsor&&correoVerificado){
+            return true;
+         }else{
+            return false;
+         }
+         
+    })
 
     selectPlazo.addEventListener('change', async (e) => {
         plazo = registerFrom['inputGroupPlazo'].value;
@@ -445,15 +505,21 @@
         });
     });
 
-    
-    selectPlan.addEventListener('change', (e) =>{
+    selectPlan.addEventListener('change', (e) => {
         let dat;
         db.collection('Planes').doc('5popKkRNj8G6bnFLxF7m').collection(plazo).where("nombre", "==", selectPlan.value)
             .get()
             .then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
                     dat = doc.data();
-                    divBtnPago.innerHTML='<a href="'+ dat['linkPago'] +'" class="btn btn-warning" style="width: 400px; height: 40px;" target="_blank"> Pagar '+ dat['nombre'] + ' a ' + plazo + ' </a>';
+                    divBtnPago.innerHTML = '';
+                    divBtnPago.innerHTML += '<div class="row justify-content-center"><div class="col">'+
+                                            '<div class="alert alert-success" role="alert" >'+
+                                            '<h4 class="alert-heading">Plan a '+  plazo  +'</h4>'+
+                                            '<p>Estas a punto de adquirir un '+ dat['nombre'] +' a '+ plazo +', el porcentaje de ganacia es '+  dat['porcentaje']  +'% al mes y una permanencia de '+ dat['retiro'] +'</p>'
+                                            ' <hr>'+
+                                            '<p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p></div></div><br>';
+                    divBtnPago.innerHTML += '<div class="row justify-content-center"><a href="' + dat['linkPago'] + '" class="btn btn-warning" style="width: 400px; height: 40px;" target="_blank"> Pagar  </a></div><br>';
                 });
             })
             .catch(function (error) {
@@ -478,6 +544,7 @@
         country = registerFrom['inputGroupCountry'].value;
         state = registerFrom['inputState'].value;
         city = registerFrom['inputCity'].value;
+
         //await saveDateUser(user,sponsor,name,lastname,tDocument,numDocument,birthday,gender,email,tAccount,numAccount,number, country,status,city);
     });
 
@@ -507,11 +574,12 @@
                     message: numVerify,
                     subject: "Verificacion de correo",
                 };
-
                 await dataExist("email", registerFrom['inputEmail'].value);
                 setTimeout(function () {
                     if (exist) {
                         alert('El correo ingresado ya ha sido Registrado');
+                        correoVerificado = false;
+                        exist = '';
                     } else {
                         registerFrom['inputVerifyEmail'].disabled = false;
                         btnVerifyEmail.disabled = false;
@@ -519,6 +587,8 @@
                             .then(function (response) {
                                 if (response.text === 'OK') {
                                     alert('El correo se ha enviado de forma exitosa');
+                                    correoVerificado = true;
+                                    exist = '';
                                 }
                                 console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
                             }, function (err) {
