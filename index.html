@@ -23,11 +23,17 @@
             height: 34px;
             font-size: 15px;
         }
+        input.form-control,select.custom-select{
+            font-size: 18px;
+            width: 500px;
+            height: 40px;
+        }
 
         label.input-group-text,
         span.input-group-text,
         .btn {
-            font-size: 15px;
+            height: 40px;;
+            font-size: 18px;
         }
     </style>
 </head>
@@ -38,7 +44,7 @@
             <form id="registerForm">
                 <div class="row " style="justify-content: center;">
                     <div class="col">
-                        <h3> Formulario de Registro</h3>
+                        <h1> Formulario de Registro</h3>
                     </div>
                 </div>
                 <div class="row">
@@ -47,7 +53,7 @@
                             <input type="text" class="form-control user " placeholder="User" aria-label="User"
                                 aria-describedby="btnUserCheck" id="inputUser" required>
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button" id="btnUserCheck">Check</button>
+                                <button class="btn btn-outline-secondary" type="button" id="btnUserCheck" style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Check</button>
                             </div>
                             <div class="user" style="height: 3px;"></div>
                         </div>
@@ -55,17 +61,16 @@
                     <div class="col">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control sponsor" placeholder="Patrocinador"
-                                aria-label="Patrocinador" aria-describedby="btnPatrocinadorCheck"
-                                id="inputPatrocinador" required>
+                                aria-label="Patrocinador" aria-describedby="btnPatrocinadorCheck" id="inputPatrocinador"
+                                required>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button"
-                                    id="btnPatrocinadorCheck">Check</button>
+                                    id="btnPatrocinadorCheck" style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Check</button>
                             </div>
                             <div class="sponsor" style="height: 3px;"></div>
                         </div>
                     </div>
                 </div>
-
 
                 <div class="row">
                     <div class="col">
@@ -76,15 +81,14 @@
                     </div>
                 </div>
 
-
                 <div class="row" style="margin-top: 15px;">
                     <div class="col">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupTDocumento" >Tipo Documento</label>
+                                <label class="input-group-text" for="inputGroupTDocumento">Tipo Documento</label>
                             </div>
-                            <select class="custom-select" id="inputGroupTDocumento" required >
-                                <option value="" >Choose...</option>
+                            <select class="custom-select" id="inputGroupTDocumento" required>
+                                <option value="">Choose...</option>
                                 <option value="Cedula">Cedula</option>
                                 <option value="Pasaporte">Pasaporte</option>
                             </select>
@@ -100,7 +104,7 @@
                     <div class="col">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="spanBirthday" style="height: 38px;">Birthday</span>
+                                <span class="input-group-text" id="spanBirthday" >Birthday</span>
                             </div>
                             <input type="date" class="form-control" aria-label="Birthday"
                                 aria-describedby="spanBirthday" id="inputDateBirthday" required>
@@ -128,7 +132,7 @@
                                 aria-describedby="btnSubmitEmail" id="inputEmail" v-model="from_email" required>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button" id="btnSubmitEmail"
-                                    @click="enviar">Submit</button>
+                                    @click="enviar" style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Submit</button>
                             </div>
                             <div></div>
                         </div>
@@ -136,10 +140,11 @@
                     <div class="col">
                         <div class="input-group mb-3">
                             <input type="number" class="form-control" placeholder="Verify Email"
-                                aria-label="Verify Email" aria-describedby="btnVerifyEmail" id="inputVerifyEmail" required>
+                                aria-label="Verify Email" aria-describedby="btnVerifyEmail" id="inputVerifyEmail"
+                                required>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button"
-                                    id="btnVerifyEmail">Verify</button>
+                                    id="btnVerifyEmail" style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;" >Verify</button>
                             </div>
                             <div></div>
                         </div>
@@ -171,7 +176,8 @@
                         </div>
                     </div>
                     <div class="col">
-                        <input type="number" placeholder="Numero de Cuenta" class="form-control" id="inputNumCuenta" required>
+                        <input type="number" placeholder="Numero de Cuenta" class="form-control" id="inputNumCuenta"
+                            required>
                     </div>
                 </div>
 
@@ -197,6 +203,40 @@
 
                 <div class="row">
                     <div class="col">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="imageCedula" lang="es">
+                            <label class="custom-file-label" for="imageCedula">Foto de la cedula (Frontal)</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="imageRespaldoCedula" lang="es">
+                            <label class="custom-file-label" for="imageRespaldoCedula">Foto de la cedula
+                                (Respaldo)</label>
+                        </div>
+                    </div>
+
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="imageSelfiDocumento" lang="es">
+                            <label class="custom-file-label" for="imageSelfiDocumento">Selfi con la cedula</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="imageRecibo" lang="es">
+                            <label class="custom-file-label" for="imageRecibo">Foto de recibo donde vive</label>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+
+                <div class="row">
+                    <div class="col">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupPlazo">Plazo</label>
@@ -212,7 +252,7 @@
                     <div class="col">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupPlan" >Plan</label>
+                                <label class="input-group-text" for="inputGroupPlan">Plan</label>
                             </div>
                             <select class="custom-select" id="inputGroupPlan" required>
                                 <option selected>Choose...</option>
@@ -221,20 +261,32 @@
                     </div>
                 </div>
 
+                <div class="row justify-content-center btn-lg" id="btnPago" > 
+                    
+                </div>
+                <br>
                 <div class="row justify-content-center">
                     <button class="btn btn-primary btn-lg" id="btnSubmit" type="submit">Submit</button>
                 </div>
+
+
             </form>
             <input type="text" id="inputExistData" style="display: none;">
-
         </div>
     </div>
 </body>
 <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+
+
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js">
 </script>
+
 <script src="https://cdn.emailjs.com/dist/email.min.js" type="text/javascript">
 </script>
 
@@ -244,7 +296,7 @@
         authDomain: "appfinancemarketscapital.firebaseapp.com",
         databaseURL: "https://appfinancemarketscapital.firebaseio.com",
         projectId: "appfinancemarketscapital",
-        storageBucket: "appfinancemarketscapital.appspot.com",
+        storageBucket: "gs://appfinancemarketscapital.appspot.com",
         messagingSenderId: "327823603780",
         appId: "1:327823603780:web:506199709abac99322a411",
         measurementId: "G-3V5TM2M89C"
@@ -254,6 +306,7 @@
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
     const db = firebase.firestore();
+    const dbStorage = firebase.storage().ref();
 
     const registerFrom = document.getElementById('registerForm');
     const existData = document.getElementById('inputExistData');
@@ -262,6 +315,7 @@
     const btnVerifyEmail = document.getElementById('btnVerifyEmail');
     const selectPlazo = document.getElementById('inputGroupPlazo');
     const selectPlan = document.getElementById('inputGroupPlan');
+    const divBtnPago = document.getElementById('btnPago');
     const divCheckUser = document.getElementsByClassName("user")[1];
     const inputUser = document.getElementsByClassName("user")[0];
     const divChecksponsor = document.getElementsByClassName("sponsor")[1];
@@ -273,6 +327,7 @@
     let datos = ''; //Almacena la respuesta de la busqueda
     let numVerify; // numero de verificacion de email
     let plazo; // plazo del plan
+    let plan;
     let filtro; // Filtro del plan
 
     const getUsers = () => db.collection('Users').get();
@@ -302,6 +357,7 @@
     $(document).ready(function () {
         registerFrom['inputVerifyEmail'].disabled = true;
         btnVerifyEmail.disabled = true;
+        
     });
 
     function saveDateUser(user, sponsor, name, lastname, tDocument, numDocument, birthday, gender, email, tAccount, numAccount, number, country, status, city) {
@@ -327,6 +383,7 @@
             divCheckUser.innerHTML += '<p>Este usuario esta disponible</p>';
         }
     }
+
     function waitSponsor() {
         if (exist) {
             inputsponsor.className = '';
@@ -382,12 +439,27 @@
         selectPlan.innerHTML = '<option selected>Choose...</option>';
         await planes((querySnapshot) => {
             querySnapshot.forEach(doc => {
-                let plan = doc.data();
+                plan = doc.data();
                 selectPlan.innerHTML += '<option value="' + plan['nombre'] + '">' + plan['nombre'] + '</option>'
             });
         });
     });
 
+    
+    selectPlan.addEventListener('change', (e) =>{
+        let dat;
+        db.collection('Planes').doc('5popKkRNj8G6bnFLxF7m').collection(plazo).where("nombre", "==", selectPlan.value)
+            .get()
+            .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    dat = doc.data();
+                    divBtnPago.innerHTML='<a href="'+ dat['linkPago'] +'" class="btn btn-warning" style="width: 400px; height: 40px;" target="_blank"> Pagar '+ dat['nombre'] + ' a ' + plazo + ' </a>';
+                });
+            })
+            .catch(function (error) {
+                console.log("Error getting documents: ", error);
+            });
+    });
 
     registerFrom.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -410,6 +482,7 @@
     });
 
 </script>
+
 <script>
     (function () {
         emailjs.init("user_USX4M3dWIjUrxE8B3FICN");
@@ -459,6 +532,44 @@
             }
         }
     });
+</script>
+
+<script>
+ //const inputFile = document.getElementById('inputFile');
+
+// const imag = document.getElementById('images');
+// let fileList;
+// inputFile.addEventListener('change', loadImage, false);
+// function loadImage() {
+////  fileList = this.files[0];
+////  let loadImages = dbStorage.child('cedulas/' + "imagendewhatsapp").put(fileList);
+////  loadImages.on('state_changed', function (snapshot) {
+////////// Observe state change events such as progress, pause, and resume
+////////// Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+////////var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+////////console.log('Upload is ' + progress + '% done');
+////////switch (snapshot.state) {
+////////// case firebase.storage.TaskState.PAUSED: // or 'paused'
+////////////  console.log('Upload is paused');
+////////////  break;
+////////// case firebase.storage.TaskState.RUNNING: // or 'running'
+////////////  console.log('Upload is running');
+////////////  break;
+////////}
+////  }, function (error) {
+////////// Handle unsuccessful uploads
+////  }, function () {
+////////// Handle successful uploads on complete
+////////// For instance, get the download URL: https://firebasestorage.googleapis.com/...
+////////loadImages.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+////////// console.log('File available at', downloadURL);
+////////// imag.innerHTML = '<img src="' + downloadURL + '">';
+
+////////});
+////  });
+ //   }
+
+
 </script>
 
 </html>
