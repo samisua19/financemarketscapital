@@ -50,17 +50,17 @@
                     <div class="col">
                         <h1> Formulario de Registro</h3>
                     </div>
-                    
+
                 </div>
                 <div class="row">
                     <div class="col">
-                        <div class="row justify-content-center" id="errors" > 
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert" >
+                        <div class="row justify-content-center" id="errors">
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <div class="" id="error"></div>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
+                                    <span aria-hidden="true">&times;</span>
                                 </button>
-                              </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                         <input type="number" name="inputDay" id="inputDay" style="width: 80px; margin-left: 20px;"
                             class="form-control" placeholder="DD" min="1" max="31" maxlength="2">
                         <input type="number" name="inputMes" id="inputMes" style="width: 80px; margin-left: 5px;"
-                            class="form-control" placeholder="MM" min="1" max="12" maxlength="2">/
+                            class="form-control" placeholder="MM" min="1" max="12" maxlength="2">
                         <input type="number" name="inputYear" id="inputYear" style="width: 100px; margin-left: 5px;"
                             class="form-control" placeholder="AAAA" maxlength="4">
                     </div>
@@ -337,10 +337,12 @@
                 <br>
 
                 <div class="row justify-content-center">
-                    <button class="btn btn-primary btn-lg" id="btnSubmit" type="submit">Submit</button>
+                    <button class="btn btn-primary btn-lg" id="btnSubmit" type="submit">Enviar</button>
                 </div>
 
             </form>
+
+            <button class="btn btn-primary btn-lg" id="btnPrueba" type="button" style="display:none">Prueba</button>
             <input type="text" id="inputExistData" style="display: none;">
             <div class="row justify-content-center">
 
@@ -443,10 +445,8 @@
         divErrors.style.display = "none";
     });
 
-    function saveDateUser(user, sponsor, name, lastname, tDocument, numDocument, birthday, gender, email, tAccount, numAccount, number, country, status, city) {
-        db.collection('Users').doc().set({
-            user, sponsor, name, lastname, tDocument, birthday, gender, email, tAccount, numAccount, number, country, state, city, numDocument
-        });
+    function saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado) {
+        db.collection('Users').doc().set({ usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado });
     }
 
     function waitUser() {
@@ -503,8 +503,8 @@
     }
 
     function hashPassword() {
-        let passwordHash = CryptoJS.MD5(registerFrom['inputPassword'].value);
-        return passwordHash;
+        let passwordHash = CryptoJS.SHA256("samuelsuarez");
+        return passwordHash.toString(CryptoJS.enc.Base64);
     }
 
     function verifyErrors() {
@@ -539,10 +539,10 @@
     }
 
     function writeErrors() {
-            errs.forEach(err => {
-                divError.innerHTML += '<p>'+ err +'</p>';
-                divErrors.style.display = "block";
-            });
+        errs.forEach(err => {
+            divError.innerHTML += '<p>' + err + '</p>';
+            divErrors.style.display = "block";
+        });
 
     }
 
@@ -613,10 +613,36 @@
         let enviar = verifyErrors();
         divError.innerHTML = '';
         divErrors.style.display = "none";
+        let usuario = registerFrom['inputUser'].value;
+        let patrocinador = registerFrom['inputPatrocinador'].value;
+        let nombre = registerFrom['inputName'].value;
+        let apellido = registerFrom['inputLastName'].value;
+        let tipodocumento = registerFrom['inputGroupTDocumento'].value;
+        let numerodocumento = registerFrom['inputNumDocumento'].value;
+        let fecha_nac = registerFrom['inputDay'].value + '/' + registerFrom['inputMes'].value + '/' + registerFrom['inputYear'].value;
+        let genero = registerFrom['inputGroupGender'].value;
+        let correo = registerFrom['inputEmail'].value;
+        let password = hashPassword();
+        let pais = "Colombia";
+        let departamento = registerFrom['inputGroupTCuenta'].value;
+        let ciudad = registerFrom['inputUser'].value;
+        let direccion = registerFrom['inputDireccion'].value;
+        let numero = "+57 " + registerFrom['inputNumber'].value;
+        let entidadFinanciera = registerFrom['inputNomEntidad'].value;
+        let tipocuenta = registerFrom['inputGroupTCuenta'].value;
+        let numCuenta = registerFrom['inputGroupTCuenta'].value;
+        let termino = registerFrom['inputGroupPlazo'].value;
+        let plan = registerFrom['inputGroupPlan'].value;
+        let estado = true;
+
         if (!enviar) {
             writeErrors();
         } else {
-            alert('todo okis!!');
+            let urlCedula = loadImage('imagenes/', 'cedula' + numerodocumento, 'imageCedula');
+            let urlRespaldoCedula = loadImage('imagenes/', 'Respaldocedula' + numerodocumento, 'imageRespaldoCedula');
+            let urlSelfi = loadImage('imagenes/', 'selfi' + numerodocumento, 'imageSelfiDocumento');
+            let urlRecibo = loadImage('imagenes/', 'recibo' + numerodocumento, 'imageRecibo');
+            await saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado);
         }
         //await saveDateUser(user,sponsor,name,lastname,tDocument,numDocument,birthday,gender,email,tAccount,numAccount,number, country,status,city);
     });
@@ -682,39 +708,42 @@
 </script>
 
 <script>
- //const inputFile = document.getElementById('inputFile');
 
-// const imag = document.getElementById('images');
-// let fileList;
-// inputFile.addEventListener('change', loadImage, false);
-// function loadImage() {
-////  fileList = this.files[0];
-////  let loadImages = dbStorage.child('cedulas/' + "imagendewhatsapp").put(fileList);
-////  loadImages.on('state_changed', function (snapshot) {
-////////// Observe state change events such as progress, pause, and resume
-////////// Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-////////var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-////////console.log('Upload is ' + progress + '% done');
-////////switch (snapshot.state) {
-////////// case firebase.storage.TaskState.PAUSED: // or 'paused'
-////////////  console.log('Upload is paused');
-////////////  break;
-////////// case firebase.storage.TaskState.RUNNING: // or 'running'
-////////////  console.log('Upload is running');
-////////////  break;
-////////}
-////  }, function (error) {
-////////// Handle unsuccessful uploads
-////  }, function () {
-////////// Handle successful uploads on complete
-////////// For instance, get the download URL: https://firebasestorage.googleapis.com/...
-////////loadImages.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-////////// console.log('File available at', downloadURL);
-////////// imag.innerHTML = '<img src="' + downloadURL + '">';
+    let inputFile = document.getElementById('btnPrueba');
+    let url;
+    let fileList;
+    let loadImages;
+    inputFile.addEventListener('click', (e) => {
 
-////////});
-////  });
- //   }
+        //let urlCedula = loadImage('imagenes/', 'cedula', 'imageCedula');
+        //let urlRespaldoCedula = loadImage('imagenes/', 'Respaldocedula', 'imageRespaldoCedula');
+        //let urlSelfi = loadImage('imagenes/', 'selfi', 'imageSelfiDocumento');
+        //let urlRecibo = loadImage('imagenes/', 'recibo', 'imageRecibo');
+        //console.log(urlCedula,urlRecibo,urlSelfi,urlRespaldoCedula);
+        hashPassword();
+    });
+    function loadImage(ubicacion, name, inputImage) {
+        let inputFile = document.getElementById(inputImage);
+        fileList = inputFile.files[0];
+        loadImages = dbStorage.child(ubicacion + name).put(fileList);
+        loadImages.on('state_changed', function (snapshot) {
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+            switch (snapshot.state) {
+                case firebase.storage.TaskState.PAUSED: // or 'paused'
+                    console.log('Upload is paused');
+                    break;
+                case firebase.storage.TaskState.RUNNING: // or 'running'
+                    console.log('Upload is running');
+                    break;
+            }
+        }, function (error) {
+        }, function () {
+            loadImages.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                //console.log(downloadURL);
+            });
+        });
+    }
 
 
 </script>
