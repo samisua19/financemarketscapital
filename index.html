@@ -73,7 +73,7 @@
                                 <button class="btn btn-outline-secondary" type="button" id="btnUserCheck"
                                     style=" border-bottom-right-radius: 10px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
                             </div>
-                            <div class="user" style="height: 3px;"></div>
+                            <div class="user" style="height: 10px;"></div>
                         </div>
                     </div>
                     <div class="col">
@@ -85,7 +85,7 @@
                                 <button class="btn btn-outline-secondary" type="button" id="btnPatrocinadorCheck"
                                     style=" border-bottom-right-radius: 10px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
                             </div>
-                            <div class="sponsor" style="height: 3px;"></div>
+                            <div class="sponsor" style="height: 10px;"></div>
                         </div>
                     </div>
                 </div>
@@ -479,7 +479,7 @@
             divChecksponsor.innerHTML = '';
             inputsponsor.className += 'form-control is-valid sponsor';
             divChecksponsor.className += 'sponsor valid-feedback';
-            divChecksponsor.innerHTML += '<p>' + datos['name'] + ' ' + datos['lastname'] + '</p>';
+            divChecksponsor.innerHTML += '<p>' + datos['nombre'] + ' ' + datos['apellido'] + '</p>';
 
         } else {
             inputsponsor.className = '';
@@ -547,12 +547,12 @@
     }
 
     btnUserCheck.addEventListener('click', async (e) => {
-        await dataExist("user", registerFrom['inputUser'].value);
+        await dataExist("usuario", registerFrom['inputUser'].value);
         setTimeout(waitUser, 2000);
     });
 
     btnPatrocinadorCheck.addEventListener('click', async (e) => {
-        await dataExist("user", registerFrom['inputPatrocinador'].value);
+        await dataExist("usuario", registerFrom['inputPatrocinador'].value);
         setTimeout(waitSponsor, 2000);
         existData.value = '';
         exist = '';
@@ -638,13 +638,23 @@
         if (!enviar) {
             writeErrors();
         } else {
+
+            let existUser = false;
+            let existSponsor = false;
+            let correoVerificado = false;
+            let verifyToken = false;
+            let errs = [];
+            let registrar = false;
+            waitUser();
+            waitSponsor();
             let urlCedula = loadImage('imagenes/', 'cedula' + numerodocumento, 'imageCedula');
             let urlRespaldoCedula = loadImage('imagenes/', 'Respaldocedula' + numerodocumento, 'imageRespaldoCedula');
             let urlSelfi = loadImage('imagenes/', 'selfi' + numerodocumento, 'imageSelfiDocumento');
             let urlRecibo = loadImage('imagenes/', 'recibo' + numerodocumento, 'imageRecibo');
             await saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado);
+            alert('Se ha registrado correctamente');
+            registerFrom.reset();
         }
-        //await saveDateUser(user,sponsor,name,lastname,tDocument,numDocument,birthday,gender,email,tAccount,numAccount,number, country,status,city);
     });
 
 </script>
@@ -673,7 +683,7 @@
                     message: numVerify,
                     subject: "Verificacion de correo",
                 };
-                await dataExist("email", registerFrom['inputEmail'].value);
+                await dataExist("correo", registerFrom['inputEmail'].value);
                 setTimeout(function () {
                     correoVerificado = exist;
                     if (correoVerificado) {
