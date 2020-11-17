@@ -80,7 +80,7 @@
                         <div class="input-group mb-3">
                             <input type="text" class="form-control sponsor" placeholder="Usuario quién te referenció"
                                 aria-label="Patrocinador" aria-describedby="btnPatrocinadorCheck" id="inputPatrocinador"
-                                required>
+                                >
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button" id="btnPatrocinadorCheck"
                                     style=" border-bottom-right-radius: 10px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
@@ -449,6 +449,11 @@
         db.collection('Users').doc().set({ usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado });
     }
 
+    function savePagoUser(cedula, termino, plan) {
+        db.collection('PlanesUsuarios').doc().set({cedula, termino, plan});
+    }
+
+
     function waitUser() {
         existUser = !exist;
         if (existUser) {
@@ -552,11 +557,20 @@
     });
 
     btnPatrocinadorCheck.addEventListener('click', async (e) => {
+        if(registerFrom['inputPatrocinador'].value == ''){
+            
+        await dataExist("usuario", 'principal');
+        setTimeout(waitSponsor, 2000);
+        existData.value = '';
+        exist = '';
+        datos = '';
+        }else{
         await dataExist("usuario", registerFrom['inputPatrocinador'].value);
         setTimeout(waitSponsor, 2000);
         existData.value = '';
         exist = '';
         datos = '';
+        }
     });
 
     btnVerifyEmail.addEventListener('click', (e) => {
@@ -600,7 +614,6 @@
                         '<h4 class="alert-heading">Plan a ' + plazo + '</h4>' +
                         '<p>Estas a punto de adquirir un ' + dat['nombre'] + ' a ' + plazo + ', el porcentaje de ganacia es ' + dat['porcentaje'] + '% al mes y una permanencia de ' + dat['retiro'] + '</p></div></div></div>'
                     ' <hr>';
-                    divBtnPago.innerHTML += '<div class="row justify-content-center"><a href="' + dat['linkPago'] + '" class="btn btn-danger" style="width: 400px; height: 40px; color: white; font-size:20px" target="_blank">  <strong>Proceder con el Pago</strong>  </a></div><br>';
                 });
             })
             .catch(function (error) {
@@ -638,7 +651,6 @@
         if (!enviar) {
             writeErrors();
         } else {
-
             let existUser = false;
             let existSponsor = false;
             let correoVerificado = false;
