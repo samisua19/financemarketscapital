@@ -71,7 +71,7 @@
                                 aria-describedby="btnUserCheck" id="inputUser" required>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button" id="btnUserCheck"
-                                    style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
+                                    style=" border-bottom-right-radius: 10px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
                             </div>
                             <div class="user" style="height: 3px;"></div>
                         </div>
@@ -83,7 +83,7 @@
                                 required>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button" id="btnPatrocinadorCheck"
-                                    style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
+                                    style=" border-bottom-right-radius: 10px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
                             </div>
                             <div class="sponsor" style="height: 3px;"></div>
                         </div>
@@ -144,9 +144,9 @@
                             </div>
                             <select class="custom-select" id="inputGroupGender" required>
                                 <option value="">Escoger...</option>
-                                <option value="Male">Hombre</option>
-                                <option value="Female">Mujer</option>
-                                <option value="Other">Otro</option>
+                                <option value="Hombre">Hombre</option>
+                                <option value="Mujer">Mujer</option>
+                                <option value="Otro">Otro</option>
                             </select>
                         </div>
                     </div>
@@ -624,13 +624,13 @@
         let correo = registerFrom['inputEmail'].value;
         let password = hashPassword();
         let pais = "Colombia";
-        let departamento = registerFrom['inputGroupTCuenta'].value;
-        let ciudad = registerFrom['inputUser'].value;
+        let departamento = registerFrom['inputState'].value;
+        let ciudad = registerFrom['inputCity'].value;
         let direccion = registerFrom['inputDireccion'].value;
         let numero = "+57 " + registerFrom['inputNumber'].value;
         let entidadFinanciera = registerFrom['inputNomEntidad'].value;
         let tipocuenta = registerFrom['inputGroupTCuenta'].value;
-        let numCuenta = registerFrom['inputGroupTCuenta'].value;
+        let numCuenta = registerFrom['inputNumCuenta'].value;
         let termino = registerFrom['inputGroupPlazo'].value;
         let plan = registerFrom['inputGroupPlan'].value;
         let estado = true;
