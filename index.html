@@ -13,12 +13,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <style>
-        select.custom-select {
-            height: 34px;
-            font-size: 15px;
-        }
-
         div.input-group-prepend {
             height: 34px;
             font-size: 15px;
@@ -45,13 +41,22 @@
         <div class="row justify-content-center">
             <div class="row">
             </div>
-            <form id="registerForm">
-                <div class="row " style="justify-content: center;">
-                    <div class="col">
-                        <h1> Formulario de Registro</h3>
-                    </div>
-
+            <div class="row ">
+                <div class="col" style="text-align: center; margin: 10px;">
+                    <h1>Bienvenido a Finance Markets Capital</h1>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col" style="text-align: center; margin: 10px;">
+                    <p>Su tranquilidad es nuestra prioridad. <br>
+                        Contamos con la autorización de la principales autoridades reguladoras en Colombia. <br>
+                        Valoramos y respetamos su privacidad. <br>
+                        Sus fondos están seguros en bancos que cuentan con una gran reputación. <br>
+                        <strong>Por favor llene todos los campos que aparecen a continuación:</strong> </p>
+                </div>
+            </div>
+            <form id="registerForm">
+
                 <div class="row">
                     <div class="col">
                         <div class="row justify-content-center" id="errors">
@@ -64,6 +69,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col">
                         <div class="input-group mb-3">
@@ -73,6 +79,9 @@
                                 <button class="btn btn-outline-secondary" type="button" id="btnUserCheck"
                                     style=" border-bottom-right-radius: 10px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
                             </div>
+                            <!--
+                            <small class="form-text text-muted">Debe tener al menos 10 caracteres, de los cuales al menos uno debe ser un número.</small>
+                            -->
                             <div class="user" style="height: 10px;"></div>
                         </div>
                     </div>
@@ -80,7 +89,7 @@
                         <div class="input-group mb-3">
                             <input type="text" class="form-control sponsor" placeholder="Usuario quién te referenció"
                                 aria-label="Patrocinador" aria-describedby="btnPatrocinadorCheck" id="inputPatrocinador"
-                                >
+                                title="Escriba la palabra “Nadie” si no lo hay">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button" id="btnPatrocinadorCheck"
                                     style=" border-bottom-right-radius: 10px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
@@ -98,8 +107,9 @@
                         <input type="text" class="form-control" placeholder="Apellidos" id="inputLastName" required>
                     </div>
                 </div>
+                <br>
 
-                <div class="row" style="margin-top: 15px;">
+                <div class="row">
                     <div class="col">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -122,22 +132,76 @@
                         </div>
                     </div>
                     <div class="col">
-                        <input type="number" placeholder="Numero de Documento" class="form-control"
-                            id="inputNumDocumento" required>
+                        <input type="text" placeholder="Numero de Documento" class="form-control" id="inputNumDocumento"
+                            required>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col form-row" style="margin: auto;">
-                        <label for=""> Fecha de nacimiento: </label>
-                        <input type="number" name="inputDay" id="inputDay" style="width: 80px; margin-left: 20px;"
-                            class="form-control" placeholder="DD" min="1" max="31" maxlength="2">
-                        <input type="number" name="inputMes" id="inputMes" style="width: 80px; margin-left: 5px;"
-                            class="form-control" placeholder="MM" min="1" max="12" maxlength="2">
-                        <input type="number" name="inputYear" id="inputYear" style="width: 100px; margin-left: 5px;"
-                            class="form-control" placeholder="AAAA" maxlength="4">
+                <div class="row ">
+                    <div class="col col-md-6">
+                        <div class="form-inline col-md-12">
+                            <h4>Fecha de Nacimiento: </h4>
+                            <div class="input-group ">
+                                <select class="custom-select" id="inputDay" required
+                                    style="margin-left: 20px; width: 80px;">
+                                    <option value="">Dia</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                </select>
+                                <div class="input-group ">
+                                    <select class="custom-select" id="inputMes" required
+                                        style="margin-left: 5px; width: 80px;">
+                                        <option value="">Mes</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                </div>
+                                <input type="text" name="inputYear" id="inputYear"
+                                    style="width: 100px; margin-left: 5px;" class="form-control" placeholder="AAAA"
+                                    maxlength="4">
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="col">
+                    <div class="col col-md-6">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupGender">Genero</label>
@@ -155,7 +219,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="input-group mb-3" id="app">
-                            <input type="text" class="form-control" placeholder="Correo Electrónico" aria-label="Email"
+                            <input type="email" class="form-control" placeholder="Correo Electrónico" aria-label="Email"
                                 aria-describedby="btnSubmitEmail" id="inputEmail" v-model="from_email" required>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button" id="btnSubmitEmail"
@@ -185,6 +249,8 @@
                     <div class="col">
                         <input type="password" class="form-control" placeholder="Escriba una Contraseña fuerte
                         " id="inputPassword" minlength="8" required>
+                        <small class="form-text text-muted">Su contraseña debe ser de 8 caracteres o más, contener
+                            mayúsculas y números.</small>
                     </div>
                     <div class="col">
                         <input type="password" class="form-control" placeholder="Confirme su Contraseña"
@@ -192,21 +258,62 @@
                     </div>
                 </div>
                 <br>
+
                 <div class="row">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Departamento" id="inputState" required>
+                        <div class="input-group mb-3">
+                            <select class="custom-select" id="inputState" required>
+                                <option value="">Departamento</option>
+                                <option value="Amazonas">Amazonas</option>
+                                <option value="Antioquia">Antioquía</option>
+                                <option value="Arauca">Arauca</option>
+                                <option value="Atlántico">Atlántico</option>
+                                <option value="Bolívar">Bolívar</option>
+                                <option value="Boyacá">Boyacá</option>
+                                <option value="Caldas">Caldas</option>
+                                <option value="Caquetá">Caquetá</option>
+                                <option value="Casanare">Casanare</option>
+                                <option value="Cauca">Cauca</option>
+                                <option value="Cesar">Cesar</option>
+                                <option value="Chocó">Chocó</option>
+                                <option value="Córdoba">Córdoba</option>
+                                <option value="Cundinamarca">Cundinamarca</option>
+                                <option value="Guainía">Guainía</option>
+                                <option value="Huila">Huila</option>
+                                <option value="La Guajira">La Guajira</option>
+                                <option value="Magdalena">Magdalena</option>
+                                <option value="Meta">Meta</option>
+                                <option value="Nariño">Nariño</option>
+                                <option value="Norte de Santander">Norte de Santander</option>
+                                <option value="Putumayo">Putumayo</option>
+                                <option value="Quindío">Quindío</option>
+                                <option value="Risaralda">Risaralda</option>
+                                <option value="San Andres y Providencia">San Andrés y Providencia</option>
+                                <option value="Santander">Santander</option>
+                                <option value="Sucre">Sucre</option>
+                                <option value="Tolima">Tolima</option>
+                                <option value="Valle del Cauca">Valle del Cauca</option>
+                                <option value="Vaupés">Vaupés</option>
+                                <option value="Vichada">Vichada</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Ciudad" id="inputCity" required>
+                        <div class="input-group mb-3">
+                            <select class="custom-select" id="inputCity" required>
+                                <option value="">Ciudad</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <br>
+
                 <div class="row">
                     <div class="col">
                         <input type="text" placeholder="Dirección" class="form-control" id="inputDireccion" required>
                     </div>
                     <div class="col">
-                        <input type="number" placeholder="Número con Whatsapp" class="form-control" id="inputNumber"
+                        <input type="text" placeholder="Número con Whatsapp" class="form-control" id="inputNumber"
                             required>
                     </div>
                 </div>
@@ -216,13 +323,13 @@
                     <div class="col">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="imageCedula" lang="es" required>
-                            <label class="custom-file-label" for="imageCedula">Imagen Indentificación (Frontal)</label>
+                            <label class="custom-file-label" for="imageCedula">Imagen Identificación (Frontal)</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="imageRespaldoCedula" lang="es" required>
-                            <label class="custom-file-label" for="imageRespaldoCedula">Imagen Indentificación
+                            <label class="custom-file-label" for="imageRespaldoCedula">Imagen Identificación
                                 (Respaldo)</label>
                         </div>
                     </div>
@@ -234,7 +341,7 @@
                     <div class="col">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="imageSelfiDocumento" lang="es" required>
-                            <label class="custom-file-label" for="imageSelfiDocumento">Selfi con Documento de
+                            <label class="custom-file-label" for="imageSelfiDocumento">Selfie con Documento de
                                 Identificación</label>
                         </div>
                     </div>
@@ -249,15 +356,14 @@
 
                 <div class="row">
                     <div class="col">
-                        <label for="" class="">Entidad financiera donde desea recibir sus pagos:
-                        </label>
+                        <h4 for="" class="">Entidad financiera donde desea recibir sus pagos:
+                        </h4>
                     </div>
                     <div class="col">
                         <input type="text" placeholder="Nombre de la entidad" class="form-control" id="inputNomEntidad"
                             required>
                     </div>
                 </div>
-
                 <br>
 
                 <div class="row">
@@ -274,7 +380,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <input type="number" placeholder="Numero de Cuenta" class="form-control" id="inputNumCuenta"
+                        <input type="text" placeholder="Numero de Cuenta" class="form-control" id="inputNumCuenta"
                             required>
                     </div>
                 </div>
@@ -283,7 +389,7 @@
                     <div class="col">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupPlazo">Termino</label>
+                                <label class="input-group-text" for="inputGroupPlazo">Plazo</label>
                             </div>
                             <select class="custom-select" id="inputGroupPlazo" required>
                                 <option value="">Escoger...</option>
@@ -342,7 +448,7 @@
 
             </form>
 
-            <button class="btn btn-primary btn-lg" id="btnPrueba" type="button" style="display:none">Prueba</button>
+            <button class="btn btn-primary btn-lg" id="btnPrueba" type="button" style="display: none;">Prueba</button>
             <input type="text" id="inputExistData" style="display: none;">
             <div class="row justify-content-center">
 
@@ -350,15 +456,17 @@
         </div>
     </div>
 </body>
+
 <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
 
-
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js">
 </script>
 
@@ -394,6 +502,8 @@
     const btnSubmit = document.getElementById('btnSubmit2');
     const divErrors = document.getElementById('errors');
     const divError = document.getElementById('error');
+    const selectDepartamento = document.getElementById('inputState');
+    const selectCiudad = document.getElementById('inputCity');
     const divCheckUser = document.getElementsByClassName("user")[1];
     const inputUser = document.getElementsByClassName("user")[0];
     const divChecksponsor = document.getElementsByClassName("sponsor")[1];
@@ -420,6 +530,12 @@
     const planes = (callback) => db.collection('Planes').doc('5popKkRNj8G6bnFLxF7m').collection(plazo).orderBy(filtro, "asc").onSnapshot(callback);
     const numRandom = () => Math.floor(Math.random() * (1000000 - 100000)) + 100000;
 
+    $(document).ready(function () {
+        registerFrom['inputVerifyEmail'].disabled = true;
+        btnVerifyEmail.disabled = true;
+        divErrors.style.display = "none";
+    });
+
     function dataExist(key, data) {
         db.collection("Users").where(key, "==", data)
             .get()
@@ -439,20 +555,13 @@
         existData.value == '' ? exist = false : exist = true;
     }
 
-    $(document).ready(function () {
-        registerFrom['inputVerifyEmail'].disabled = true;
-        btnVerifyEmail.disabled = true;
-        divErrors.style.display = "none";
-    });
-
     function saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado) {
         db.collection('Users').doc().set({ usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado });
     }
 
     function savePagoUser(cedula, termino, plan) {
-        db.collection('PlanesUsuarios').doc().set({cedula, termino, plan});
+        db.collection('PlanesUsuarios').doc().set({ cedula, termino, plan });
     }
-
 
     function waitUser() {
         existUser = !exist;
@@ -508,7 +617,7 @@
     }
 
     function hashPassword() {
-        let passwordHash = CryptoJS.SHA256("samuelsuarez");
+        let passwordHash = CryptoJS.SHA256(registerFrom['inputPassword'].value);
         return passwordHash.toString(CryptoJS.enc.Base64);
     }
 
@@ -539,6 +648,18 @@
         if (!confirPassword()) {
             errs.push('Las contraseñas no coinciden');
         }
+        if (!/[a-z]/.test(registerFrom['inputPassword'].value)) {
+            errs.push(' La contraseña no contiene minúsculas');
+        }
+        if (!/[A-Z]/.test(registerFrom['inputPassword'].value)) {
+            errs.push('La contraseña no contiene mayúsculas');
+        }
+        if (!/[0-9]/.test(registerFrom['inputPassword'].value)) {
+            errs.push('La contraseña no contiene dígitos');
+        }
+        if (registerFrom['inputPassword'].value.length < 8) {
+            errs.push('La contraseña tiene menos de 8 caracteres');
+        }
         errs.length == 0 ? registrar = true : registrar = false;
         return registrar
     }
@@ -557,19 +678,19 @@
     });
 
     btnPatrocinadorCheck.addEventListener('click', async (e) => {
-        if(registerFrom['inputPatrocinador'].value == ''){
-            
-        await dataExist("usuario", 'principal');
-        setTimeout(waitSponsor, 2000);
-        existData.value = '';
-        exist = '';
-        datos = '';
-        }else{
-        await dataExist("usuario", registerFrom['inputPatrocinador'].value);
-        setTimeout(waitSponsor, 2000);
-        existData.value = '';
-        exist = '';
-        datos = '';
+        if (registerFrom['inputPatrocinador'].value == '') {
+
+            await dataExist("usuario", 'principal');
+            setTimeout(waitSponsor, 2000);
+            existData.value = '';
+            exist = '';
+            datos = '';
+        } else {
+            await dataExist("usuario", registerFrom['inputPatrocinador'].value);
+            setTimeout(waitSponsor, 2000);
+            existData.value = '';
+            exist = '';
+            datos = '';
         }
     });
 
@@ -621,32 +742,38 @@
             });
     });
 
+    selectDepartamento.addEventListener('change', async (e) => {
+        let state = registerFrom['inputState'].value;
+
+        if (state == 'San Andres y Providencia') {
+            selectCiudad.innerHTML = '<option selected>Ciudad</option>';
+            selectCiudad.innerHTML += '<option value="Providencia y Santa Catalina Islas">Providencia y Santa Catalina Islas</option>';
+            selectCiudad.innerHTML += '<option value="San Andrés">San Andrés</option>';
+
+        } else {
+
+            $.ajax({
+                url: "https://www.datos.gov.co/resource/xdk5-pm3f.json?departamento=" + state,
+                type: "GET",
+                data: {
+                    "$limit": 5000,
+                    "$$app_token": "GMXI98X0wZcYynTBC1aLXdoPO"
+                }
+            }).done(function (data) {
+                selectCiudad.innerHTML = '<option selected>Ciudad</option>';
+                data.forEach(doc => {
+                    selectCiudad.innerHTML += '<option value="' + doc['municipio'] + '">' + doc['municipio'] + '</option>';
+                })
+            });
+        }
+    });
+
+
     registerFrom.addEventListener('submit', async (e) => {
         e.preventDefault();
         let enviar = verifyErrors();
         divError.innerHTML = '';
         divErrors.style.display = "none";
-        let usuario = registerFrom['inputUser'].value;
-        let patrocinador = registerFrom['inputPatrocinador'].value;
-        let nombre = registerFrom['inputName'].value;
-        let apellido = registerFrom['inputLastName'].value;
-        let tipodocumento = registerFrom['inputGroupTDocumento'].value;
-        let numerodocumento = registerFrom['inputNumDocumento'].value;
-        let fecha_nac = registerFrom['inputDay'].value + '/' + registerFrom['inputMes'].value + '/' + registerFrom['inputYear'].value;
-        let genero = registerFrom['inputGroupGender'].value;
-        let correo = registerFrom['inputEmail'].value;
-        let password = hashPassword();
-        let pais = "Colombia";
-        let departamento = registerFrom['inputState'].value;
-        let ciudad = registerFrom['inputCity'].value;
-        let direccion = registerFrom['inputDireccion'].value;
-        let numero = "+57 " + registerFrom['inputNumber'].value;
-        let entidadFinanciera = registerFrom['inputNomEntidad'].value;
-        let tipocuenta = registerFrom['inputGroupTCuenta'].value;
-        let numCuenta = registerFrom['inputNumCuenta'].value;
-        let termino = registerFrom['inputGroupPlazo'].value;
-        let plan = registerFrom['inputGroupPlan'].value;
-        let estado = true;
 
         if (!enviar) {
             writeErrors();
@@ -659,6 +786,27 @@
             let registrar = false;
             waitUser();
             waitSponsor();
+            let usuario = registerFrom['inputUser'].value;
+            let patrocinador = registerFrom['inputPatrocinador'].value;
+            let nombre = registerFrom['inputName'].value;
+            let apellido = registerFrom['inputLastName'].value;
+            let tipodocumento = registerFrom['inputGroupTDocumento'].value;
+            let numerodocumento = registerFrom['inputNumDocumento'].value;
+            let fecha_nac = registerFrom['inputDay'].value + '/' + registerFrom['inputMes'].value + '/' + registerFrom['inputYear'].value;
+            let genero = registerFrom['inputGroupGender'].value;
+            let correo = registerFrom['inputEmail'].value;
+            let password = hashPassword();
+            let pais = "Colombia";
+            let departamento = registerFrom['inputState'].value;
+            let ciudad = registerFrom['inputCity'].value;
+            let direccion = registerFrom['inputDireccion'].value;
+            let numero = "+57 " + registerFrom['inputNumber'].value;
+            let entidadFinanciera = registerFrom['inputNomEntidad'].value;
+            let tipocuenta = registerFrom['inputGroupTCuenta'].value;
+            let numCuenta = registerFrom['inputNumCuenta'].value;
+            let termino = registerFrom['inputGroupPlazo'].value;
+            let plan = registerFrom['inputGroupPlan'].value;
+            let estado = true;
             let urlCedula = loadImage('imagenes/', 'cedula' + numerodocumento, 'imageCedula');
             let urlRespaldoCedula = loadImage('imagenes/', 'Respaldocedula' + numerodocumento, 'imageRespaldoCedula');
             let urlSelfi = loadImage('imagenes/', 'selfi' + numerodocumento, 'imageSelfiDocumento');
@@ -742,8 +890,9 @@
         //let urlSelfi = loadImage('imagenes/', 'selfi', 'imageSelfiDocumento');
         //let urlRecibo = loadImage('imagenes/', 'recibo', 'imageRecibo');
         //console.log(urlCedula,urlRecibo,urlSelfi,urlRespaldoCedula);
-        hashPassword();
     });
+
+
     function loadImage(ubicacion, name, inputImage) {
         let inputFile = document.getElementById(inputImage);
         fileList = inputFile.files[0];
