@@ -39,7 +39,7 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row justify-content-center ">
             <div class="row">
                 <div class="col" style="text-align: center; margin: 10px;">
@@ -56,8 +56,8 @@
                 </div>
             </div>
 
-            <form id="registerForm" class="col-md-8">
-
+            <form id="registerForm" class="col-md-12">
+                <!--Banner de errores-->
                 <div class="row">
                     <div class="col col-md-12 col-12 col-sm-12">
                         <div class="row justify-content-center" id="errors">
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!--Usuario y patrocinador-->
                 <div class="row ">
                     <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
@@ -99,7 +99,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!--Nombres y Apellidos-->
                 <div class="row">
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
@@ -113,7 +113,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!--Tipo y numero de documento-->
                 <div class="row">
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
@@ -143,69 +143,66 @@
                         </div>
                     </div>
                 </div>
-
+                <!--Fecha de nacimiento y genero-->
                 <div class="row ">
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
-                            <div class="form-inline col-md-12">
-                                <label><strong>Fecha de Nacimiento:</strong> </label>
-                                <div class="input-group ">
-                                    <select class="custom-select" id="inputDay" required
-                                        style="margin-left: 20px; width: 80px;">
-                                        <option value="">Dia</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="25">25</option>
-                                        <option value="26">26</option>
-                                        <option value="27">27</option>
-                                        <option value="28">28</option>
-                                        <option value="29">29</option>
-                                        <option value="30">30</option>
-                                        <option value="31">31</option>
-                                    </select>
-                                    <div class="input-group ">
-                                        <select class="custom-select" id="inputMes" required
-                                            style="margin-left: 5px; width: 80px;">
-                                            <option value="">Mes</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                        </select>
-                                    </div>
-                                    <input type="text" name="inputYear" id="inputYear"
-                                        style="width: 100px; margin-left: 5px;" class="form-control" placeholder="AAAA"
-                                        maxlength="4">
-                                </div>
+                            <label><strong>Fecha de Nacimiento:</strong> </label>
+                            <div class="col-lg-2" style="margin-bottom: 10px;" style="margin-bottom: 10px;">
+                                <select class="custom-select" id="inputDay" required>
+                                    <option value="">Dia</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-2"  style="margin-bottom: 10px;">
+                                <select class="custom-select" id="inputMes" required>
+                                    <option value="">Mes</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                            <div class=" col-lg-3"  style="margin-bottom: 10px;">
+                                <input type="text" name="inputYear" id="inputYear" class="form-control"
+                                    placeholder="AAAA" maxlength="4">
                             </div>
                         </div>
                     </div>
@@ -223,7 +220,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!--Correo electronico y token-->
                 <div class="row">
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3" id="app">
@@ -252,7 +249,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!--Contraseña y confirmar contraseña-->
                 <div class="row">
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
@@ -269,7 +266,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!--Departamento y ciudad-->
                 <div class="row">
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
@@ -317,7 +314,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!--Direccion y numero celular-->
                 <div class="row">
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
@@ -333,10 +330,10 @@
                         </div>
                     </div>
                 </div>
-
+                <!--imagen frontal y respaldo de cedula-->
                 <div class="row">
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3"  style="margin-bottom: 10px;">
 
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="imageCedula" lang="es" required>
@@ -346,7 +343,7 @@
                         </div>
                     </div>
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3"  style="margin-bottom: 10px;">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="imageRespaldoCedula" lang="es"
                                     required>
@@ -357,10 +354,10 @@
                     </div>
 
                 </div>
-
+                <!--selfie y foto del recibo donde vive-->
                 <div class="row">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6" >
+                        <div class="input-group mb-3"  style="margin-bottom: 10px;">
                             <div class="custom-file" lang="es">
                                 <input type="file" class="custom-file-input" id="imageSelfiDocumento" required>
                                 <label class="custom-file-label" for="imageSelfiDocumento">Selfie con Documento de
@@ -370,7 +367,7 @@
                         </div>
                     </div>
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3"  style="margin-bottom: 10px;">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="imageRecibo" lang="es" required>
                                 <label class="custom-file-label" for="imageRecibo">Foto de recibo donde vive</label>
@@ -379,12 +376,12 @@
                         </div>
                     </div>
                 </div>
-
+                <!--Entidad financiera-->
                 <div class="row">
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
-                            <h4 for="" class="">Entidad financiera donde desea recibir sus pagos:
-                            </h4>
+                            <label for="" class=""><strong>Entidad financiera donde desea recibir sus pagos:</strong>
+                            </label>
 
                         </div>
                     </div>
@@ -396,7 +393,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!--Tippo y numero de cuenta-->
                 <div class="row">
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
@@ -418,7 +415,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!--Plazo y plan adquirido-->
                 <div class="row">
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
@@ -444,10 +441,10 @@
                         </div>
                     </div>
                 </div>
-
+                <!--Aqui se genera el banner y el boton de pago-->
                 <div id="btnPago">
                 </div>
-
+                <!--Checkbox-->
                 <div class="row">
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-4">
                         <div class="custom-control custom-checkbox">
@@ -475,12 +472,12 @@
                     </div>
                 </div>
                 <br>
-
+                <!--Boton-->
                 <div class="row justify-content-center">
                     <button class="btn btn-primary btn-lg" id="btnSubmit" type="submit">Enviar</button>
                 </div>
-
             </form>
+            
             <button class="btn btn-primary btn-lg" id="btnPrueba" type="button" style="display: none;">Prueba</button>
             <input type="text" id="inputExistData" style="display: none;">
             <div class="row justify-content-center">
