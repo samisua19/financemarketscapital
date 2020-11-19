@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -33,20 +33,20 @@
             ;
             font-size: 18px;
         }
+
+        @media (min-width: 576px) {}
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="row justify-content-center">
+    <div class="container-fluid">
+        <div class="row justify-content-center ">
             <div class="row">
-            </div>
-            <div class="row ">
                 <div class="col" style="text-align: center; margin: 10px;">
                     <h1>Bienvenido a Finance Markets Capital</h1>
                 </div>
             </div>
-            <div class="row">
+            <div class="row col-md-12">
                 <div class="col" style="text-align: center; margin: 10px;">
                     <p>Su tranquilidad es nuestra prioridad. <br>
                         Contamos con la autorización de la principales autoridades reguladoras en Colombia. <br>
@@ -55,13 +55,14 @@
                         <strong>Por favor llene todos los campos que aparecen a continuación:</strong> </p>
                 </div>
             </div>
-            <form id="registerForm">
+
+            <form id="registerForm" class="col-md-8">
 
                 <div class="row">
-                    <div class="col">
+                    <div class="col col-md-12 col-12 col-sm-12">
                         <div class="row justify-content-center" id="errors">
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                <div class="" id="error"></div>
+                                <div id="error"></div>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -70,8 +71,8 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col">
+                <div class="row ">
+                    <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control user " placeholder="Usuario" aria-label="User"
                                 aria-describedby="btnUserCheck" id="inputUser" required>
@@ -85,7 +86,7 @@
                             <div class="user" style="height: 10px;"></div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control sponsor" placeholder="Usuario quién te referenció"
                                 aria-label="Patrocinador" aria-describedby="btnPatrocinadorCheck" id="inputPatrocinador"
@@ -100,17 +101,21 @@
                 </div>
 
                 <div class="row">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Nombres" id="inputName" required>
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Nombres" id="inputName" required>
+                        </div>
+
                     </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Apellidos" id="inputLastName" required>
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Apellidos" id="inputLastName" required>
+                        </div>
                     </div>
                 </div>
-                <br>
 
                 <div class="row">
-                    <div class="col">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupTDocumento">Tipo Documento</label>
@@ -131,55 +136,23 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col">
-                        <input type="text" placeholder="Numero de Documento" class="form-control" id="inputNumDocumento"
-                            required>
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="input-group mb-3">
+                            <input type="text" placeholder="Numero de Documento" class="form-control"
+                                id="inputNumDocumento" required>
+                        </div>
                     </div>
                 </div>
 
                 <div class="row ">
-                    <div class="col col-md-6">
-                        <div class="form-inline col-md-12">
-                            <h4>Fecha de Nacimiento: </h4>
-                            <div class="input-group ">
-                                <select class="custom-select" id="inputDay" required
-                                    style="margin-left: 20px; width: 80px;">
-                                    <option value="">Dia</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="19">19</option>
-                                    <option value="20">20</option>
-                                    <option value="21">21</option>
-                                    <option value="23">23</option>
-                                    <option value="24">24</option>
-                                    <option value="25">25</option>
-                                    <option value="26">26</option>
-                                    <option value="27">27</option>
-                                    <option value="28">28</option>
-                                    <option value="29">29</option>
-                                    <option value="30">30</option>
-                                    <option value="31">31</option>
-                                </select>
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="input-group mb-3">
+                            <div class="form-inline col-md-12">
+                                <label><strong>Fecha de Nacimiento:</strong> </label>
                                 <div class="input-group ">
-                                    <select class="custom-select" id="inputMes" required
-                                        style="margin-left: 5px; width: 80px;">
-                                        <option value="">Mes</option>
+                                    <select class="custom-select" id="inputDay" required
+                                        style="margin-left: 20px; width: 80px;">
+                                        <option value="">Dia</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -192,16 +165,51 @@
                                         <option value="10">10</option>
                                         <option value="11">11</option>
                                         <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                        <option value="31">31</option>
                                     </select>
+                                    <div class="input-group ">
+                                        <select class="custom-select" id="inputMes" required
+                                            style="margin-left: 5px; width: 80px;">
+                                            <option value="">Mes</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>
+                                    </div>
+                                    <input type="text" name="inputYear" id="inputYear"
+                                        style="width: 100px; margin-left: 5px;" class="form-control" placeholder="AAAA"
+                                        maxlength="4">
                                 </div>
-                                <input type="text" name="inputYear" id="inputYear"
-                                    style="width: 100px; margin-left: 5px;" class="form-control" placeholder="AAAA"
-                                    maxlength="4">
                             </div>
-
                         </div>
                     </div>
-                    <div class="col col-md-6">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupGender">Genero</label>
@@ -217,7 +225,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3" id="app">
                             <input type="email" class="form-control" placeholder="Correo Electrónico" aria-label="Email"
                                 aria-describedby="btnSubmitEmail" id="inputEmail" v-model="from_email" required>
@@ -230,7 +238,7 @@
                             <div></div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
                             <input type="number" class="form-control"
                                 placeholder="Escriba el TOKEN recibido en el correo                            "
@@ -246,21 +254,24 @@
                 </div>
 
                 <div class="row">
-                    <div class="col">
-                        <input type="password" class="form-control" placeholder="Escriba una Contraseña fuerte
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" placeholder="Escriba una Contraseña fuerte
                         " id="inputPassword" minlength="8" required>
+                        </div>
                         <small class="form-text text-muted">Su contraseña debe ser de 8 caracteres o más, contener
                             mayúsculas y números.</small>
                     </div>
-                    <div class="col">
-                        <input type="password" class="form-control" placeholder="Confirme su Contraseña"
-                            id="inputConfirmPassword" minlength="8" required>
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" placeholder="Confirme su Contraseña"
+                                id="inputConfirmPassword" minlength="8" required>
+                        </div>
                     </div>
                 </div>
-                <br>
 
                 <div class="row">
-                    <div class="col">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
                             <select class="custom-select" id="inputState" required>
                                 <option value="">Departamento</option>
@@ -298,7 +309,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
                             <select class="custom-select" id="inputCity" required>
                                 <option value="">Ciudad</option>
@@ -306,68 +317,88 @@
                         </div>
                     </div>
                 </div>
-                <br>
 
                 <div class="row">
-                    <div class="col">
-                        <input type="text" placeholder="Dirección" class="form-control" id="inputDireccion" required>
-                    </div>
-                    <div class="col">
-                        <input type="text" placeholder="Número con Whatsapp" class="form-control" id="inputNumber"
-                            required>
-                    </div>
-                </div>
-                <br>
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="input-group mb-3">
+                            <input type="text" placeholder="Dirección" class="form-control" id="inputDireccion"
+                                required>
 
-                <div class="row">
-                    <div class="col">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="imageCedula" lang="es" required>
-                            <label class="custom-file-label" for="imageCedula">Imagen Identificación (Frontal)</label>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="imageRespaldoCedula" lang="es" required>
-                            <label class="custom-file-label" for="imageRespaldoCedula">Imagen Identificación
-                                (Respaldo)</label>
-                        </div>
-                    </div>
-
-                </div>
-                <br>
-
-                <div class="row">
-                    <div class="col">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="imageSelfiDocumento" lang="es" required>
-                            <label class="custom-file-label" for="imageSelfiDocumento">Selfie con Documento de
-                                Identificación</label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="imageRecibo" lang="es" required>
-                            <label class="custom-file-label" for="imageRecibo">Foto de recibo donde vive</label>
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="input-group mb-3">
+                            <input type="text" placeholder="Número con Whatsapp" class="form-control" id="inputNumber"
+                                required>
                         </div>
                     </div>
                 </div>
-                <br>
 
                 <div class="row">
-                    <div class="col">
-                        <h4 for="" class="">Entidad financiera donde desea recibir sus pagos:
-                        </h4>
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="input-group mb-3">
+
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="imageCedula" lang="es" required>
+                                <label class="custom-file-label" for="imageCedula">Imagen Identificación
+                                    (Frontal)</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col">
-                        <input type="text" placeholder="Nombre de la entidad" class="form-control" id="inputNomEntidad"
-                            required>
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="imageRespaldoCedula" lang="es"
+                                    required>
+                                <label class="custom-file-label" for="imageRespaldoCedula">Imagen Identificación
+                                    (Respaldo)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="input-group mb-3">
+                            <div class="custom-file" lang="es">
+                                <input type="file" class="custom-file-input" id="imageSelfiDocumento" required>
+                                <label class="custom-file-label" for="imageSelfiDocumento">Selfie con Documento de
+                                    Identificación</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="imageRecibo" lang="es" required>
+                                <label class="custom-file-label" for="imageRecibo">Foto de recibo donde vive</label>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-                <br>
 
                 <div class="row">
-                    <div class="col">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="input-group mb-3">
+                            <h4 for="" class="">Entidad financiera donde desea recibir sus pagos:
+                            </h4>
+
+                        </div>
+                    </div>
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="input-group mb-3">
+                            <input type="text" placeholder="Nombre de la entidad" class="form-control"
+                                id="inputNomEntidad" required>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupTCuenta">Tipo Cuenta</label>
@@ -379,14 +410,17 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col">
-                        <input type="text" placeholder="Numero de Cuenta" class="form-control" id="inputNumCuenta"
-                            required>
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="input-group mb-3">
+                            <input type="text" placeholder="Numero de Cuenta" class="form-control" id="inputNumCuenta"
+                                required>
+
+                        </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupPlazo">Plazo</label>
@@ -399,7 +433,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupPlan">Plan</label>
@@ -415,7 +449,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-4">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="customCheckTYC" required>
                             <label class="custom-control-label" for="customCheckTYC">Confirmo que acepto los Términos y
@@ -423,7 +457,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-4">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="customCheckAuthData" required>
                             <label class="custom-control-label" for="customCheckAuthData">Autorizo el uso y tratamiento
@@ -431,7 +465,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-4">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="customCheckPP" required>
                             <label class="custom-control-label" for="customCheckPP">Confirmo que acepto la política de
@@ -447,7 +481,6 @@
                 </div>
 
             </form>
-
             <button class="btn btn-primary btn-lg" id="btnPrueba" type="button" style="display: none;">Prueba</button>
             <input type="text" id="inputExistData" style="display: none;">
             <div class="row justify-content-center">
@@ -529,6 +562,7 @@
     const getUsers = () => db.collection('Users').get();
     const planes = (callback) => db.collection('Planes').doc('5popKkRNj8G6bnFLxF7m').collection(plazo).orderBy(filtro, "asc").onSnapshot(callback);
     const numRandom = () => Math.floor(Math.random() * (1000000 - 100000)) + 100000;
+
 
     $(document).ready(function () {
         registerFrom['inputVerifyEmail'].disabled = true;
