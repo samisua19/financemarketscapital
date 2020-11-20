@@ -135,8 +135,6 @@
                                 <button class="btn btn-outline-secondary" type="button" id="btnPatrocinadorCheck"
                                     style=" border-bottom-right-radius: 10px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
                             </div>
-                            <small class="form-text text-muted">Por favor escribir la palabra “Nadie” si no lo hay,
-                                tener en cuenta la primera letra en mayúscula.</small>
                             <div class="sponsor" style="height: 10px;"></div>
                         </div>
                     </div>
@@ -373,11 +371,11 @@
                     </div>
                 </div>
                 <!--imagen frontal y respaldo de cedula-->
-                <div class="row ">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6 ">
-                        <div class="input-group mb-3" style="margin-bottom: 10px;">
+                <div class="row " >
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6 " style="margin-top: 5px; margin-bottom: 5px;">
+                        <div class="input-group mb-3" >
                             <div class="custom-file">
-                                <div class="invoiceBox">
+                                <div class="invoiceBox" >
                                     <label for="imageCedula">
                                         <div class="boxFile cedula" data-text="Seleccionar archivo"
                                             style="width: 400px;">
@@ -390,7 +388,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6" style="margin-top: 5px; margin-bottom: 5px;">
                         <div class="input-group mb-3" style="margin-bottom: 10px;">
                             <div class="custom-file">
                                 <div class="invoiceBox">
@@ -410,7 +408,7 @@
                 </div>
                 <!--selfie y foto del recibo donde vive-->
                 <div class="row">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6" style="margin-top: 5px; margin-bottom: 5px;">
                         <div class="input-group mb-3" style="margin-bottom: 10px;">
                             <div class="custom-file" lang="es">
                                 <div class="invoiceBox">
@@ -427,7 +425,7 @@
 
                         </div>
                     </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6" style="margin-top: 5px; margin-bottom: 5px;">
                         <div class="input-group mb-3" style="margin-bottom: 10px;">
                             <div class="custom-file">
                                 <div class="invoiceBox">
@@ -622,7 +620,7 @@
     let errs = [];
     let registrar = false;
     let dat;
-   
+
     const getUsers = () => db.collection('Users').get();
     const planes = (callback) => db.collection('Planes').doc('5popKkRNj8G6bnFLxF7m').collection(plazo).orderBy(filtro, "asc").onSnapshot(callback);
     const numRandom = () => Math.floor(Math.random() * (1000000 - 100000)) + 100000;
@@ -632,8 +630,8 @@
         registerFrom['inputVerifyEmail'].disabled = true;
         btnVerifyEmail.disabled = true;
         divErrors.style.display = "none";
- 
-        
+
+
     });
 
     function dataExist(key, data) {
@@ -772,30 +770,30 @@
 
     }
 
-    function getUrlImage(nameImage){
-        
+    function getUrlImage(nameImage) {
+
         //loadImage('imagenes/', nameImage, 'imageCedula');
-        
-        setTimeout(function(){
+
+        setTimeout(function () {
             $.ajax({
-                url: "https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/imagenes%2F"+nameImage,
+                url: "https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/imagenes%2F" + nameImage,
                 type: "GET"
             }).done(function (data) {
                 token = data.downloadTokens;
             });
-            urli = "https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/imagenes%2F"+ nameImage +"?alt=media&token"+token;
+            urli = "https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/imagenes%2F" + nameImage + "?alt=media&token" + token;
             console.log(urli);
-        },3000);
+        }, 3000);
     }
 
-    function getDate(){
-        var currentdate = new Date(); 
+    function getDate() {
+        var currentdate = new Date();
         var datetime = currentdate.getDate() + "/"
-                   + (currentdate.getMonth()+1)  + "/" 
-                   + currentdate.getFullYear() + " @ "  
-                   + currentdate.getHours() + ":"  
-                   + currentdate.getMinutes() + ":" 
-                   + currentdate.getSeconds();
+            + (currentdate.getMonth() + 1) + "/"
+            + currentdate.getFullYear() + " @ "
+            + currentdate.getHours() + ":"
+            + currentdate.getMinutes() + ":"
+            + currentdate.getSeconds();
         return datetime;
     }
 
@@ -1008,7 +1006,7 @@
             loadImage('imagenes/', 'selfi' + numerodocumento, 'imageSelfiDocumento');
             loadImage('imagenes/', 'recibo' + numerodocumento, 'imageRecibo');
             await saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod);
-            await savePagoUser(numerodocumento,plazo, dat['nombre']);
+            await savePagoUser(numerodocumento, plazo, dat['nombre']);
             alert('Se ha registrado correctamente');
             registerFrom.reset();
         }
