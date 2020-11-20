@@ -34,7 +34,47 @@
             font-size: 18px;
         }
 
-        @media (min-width: 576px) {}
+        .invoiceBox>input {
+            display: none;
+        }
+
+        .invoiceBox label {
+            display: block;
+        }
+
+        .boxFile {
+            display: inline-block;
+            width: 100%;
+            border: 1px solid grey;
+            background: #fff;
+            color: grey;
+            padding: 10px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 14px;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .boxFile:hover {
+            cursor: pointer;
+            background: grey;
+            color: #fff;
+        }
+
+        .boxFile i {
+            display: block;
+            font-size: 26px;
+            margin-bottom: 5px;
+        }
+
+        .attached,
+        .attached:hover,
+        .attached:focus {
+            background: green;
+            color: #fff;
+            border: 1px solid green;
+        }
     </style>
 </head>
 
@@ -90,11 +130,13 @@
                         <div class="input-group mb-3">
                             <input type="text" class="form-control sponsor" placeholder="Usuario quién te referenció"
                                 aria-label="Patrocinador" aria-describedby="btnPatrocinadorCheck" id="inputPatrocinador"
-                                title="Escriba la palabra “Nadie” si no lo hay">
+                                title="Escriba la palabra “Nadie” si no lo hay" autocapitalize="">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button" id="btnPatrocinadorCheck"
                                     style=" border-bottom-right-radius: 10px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
                             </div>
+                            <small class="form-text text-muted">Por favor escribir la palabra “Nadie” si no lo hay,
+                                tener en cuenta la primera letra en mayúscula.</small>
                             <div class="sponsor" style="height: 10px;"></div>
                         </div>
                     </div>
@@ -183,7 +225,7 @@
                                     <option value="31">31</option>
                                 </select>
                             </div>
-                            <div class="col-lg-2"  style="margin-bottom: 10px;">
+                            <div class="col-lg-2" style="margin-bottom: 10px;">
                                 <select class="custom-select" id="inputMes" required>
                                     <option value="">Mes</option>
                                     <option value="1">1</option>
@@ -200,7 +242,7 @@
                                     <option value="12">12</option>
                                 </select>
                             </div>
-                            <div class=" col-lg-3"  style="margin-bottom: 10px;">
+                            <div class=" col-lg-3" style="margin-bottom: 10px;">
                                 <input type="text" name="inputYear" id="inputYear" class="form-control"
                                     placeholder="AAAA" maxlength="4">
                             </div>
@@ -331,24 +373,36 @@
                     </div>
                 </div>
                 <!--imagen frontal y respaldo de cedula-->
-                <div class="row">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3"  style="margin-bottom: 10px;">
-
+                <div class="row ">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6 ">
+                        <div class="input-group mb-3" style="margin-bottom: 10px;">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="imageCedula" lang="es" required>
-                                <label class="custom-file-label" for="imageCedula">Imagen Identificación
-                                    (Frontal)</label>
+                                <div class="invoiceBox">
+                                    <label for="imageCedula">
+                                        <div class="boxFile cedula" data-text="Seleccionar archivo"
+                                            style="width: 400px;">
+                                            Seleccionar la imagen de la Cédula.
+                                        </div>
+                                    </label>
+                                    <input id="imageCedula" multiple="" name="invoice[]" size="6000" type="file"
+                                        accept="application/pdf,image/x-png,image/gif,image/jpeg,image/jpg,image/tiff">
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3"  style="margin-bottom: 10px;">
+                        <div class="input-group mb-3" style="margin-bottom: 10px;">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="imageRespaldoCedula" lang="es"
-                                    required>
-                                <label class="custom-file-label" for="imageRespaldoCedula">Imagen Identificación
-                                    (Respaldo)</label>
+                                <div class="invoiceBox">
+                                    <label for="imageRespaldoCedula">
+                                        <div class="boxFile RCedula" data-text="Seleccionar archivo"
+                                            style="width: 400px;">
+                                            Seleccionar la imagen del respaldo de la Cédula
+                                        </div>
+                                    </label>
+                                    <input id="imageRespaldoCedula" multiple="" name="invoice[]" size="6000" type="file"
+                                        accept="application/pdf,image/x-png,image/gif,image/jpeg,image/jpg,image/tiff">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -356,23 +410,37 @@
                 </div>
                 <!--selfie y foto del recibo donde vive-->
                 <div class="row">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6" >
-                        <div class="input-group mb-3"  style="margin-bottom: 10px;">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="input-group mb-3" style="margin-bottom: 10px;">
                             <div class="custom-file" lang="es">
-                                <input type="file" class="custom-file-input" id="imageSelfiDocumento" required>
-                                <label class="custom-file-label" for="imageSelfiDocumento">Selfie con Documento de
-                                    Identificación</label>
+                                <div class="invoiceBox">
+                                    <label for="imageSelfiDocumento">
+                                        <div class="boxFile selfie" data-text="Seleccionar archivo"
+                                            style="width: 400px;">
+                                            Seleccionar la imagen de selfie con su Documento
+                                        </div>
+                                    </label>
+                                    <input id="imageSelfiDocumento" multiple="" name="invoice[]" size="6000" type="file"
+                                        accept="application/pdf,image/x-png,image/gif,image/jpeg,image/jpg,image/tiff">
+                                </div>
                             </div>
 
                         </div>
                     </div>
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3"  style="margin-bottom: 10px;">
+                        <div class="input-group mb-3" style="margin-bottom: 10px;">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="imageRecibo" lang="es" required>
-                                <label class="custom-file-label" for="imageRecibo">Foto de recibo donde vive</label>
+                                <div class="invoiceBox">
+                                    <label for="imageRecibo">
+                                        <div class="boxFile recibo" data-text="Seleccionar archivo"
+                                            style="width: 400px;">
+                                            Seleccionar la imagen del recibo donde vive
+                                        </div>
+                                    </label>
+                                    <input id="imageRecibo" multiple="" name="invoice[]" size="6000" type="file"
+                                        accept="image/jpeg,image/jpg">
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -393,7 +461,7 @@
                         </div>
                     </div>
                 </div>
-                <!--Tippo y numero de cuenta-->
+                <!--Tipo y numero de cuenta-->
                 <div class="row">
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
@@ -477,9 +545,9 @@
                     <button class="btn btn-primary btn-lg" id="btnSubmit" type="submit">Enviar</button>
                 </div>
             </form>
-            
+
             <button class="btn btn-primary btn-lg" id="btnPrueba" type="button" style="display: none;">Prueba</button>
-            <input type="text" id="inputExistData" style="display: none;">
+            <input type="text" id="inputExistData" style="display: none;" disabled>
             <div class="row justify-content-center">
 
             </div>
@@ -553,18 +621,19 @@
     let verifyToken = false;
     let errs = [];
     let registrar = false;
-
-
-
+    let dat;
+   
     const getUsers = () => db.collection('Users').get();
     const planes = (callback) => db.collection('Planes').doc('5popKkRNj8G6bnFLxF7m').collection(plazo).orderBy(filtro, "asc").onSnapshot(callback);
     const numRandom = () => Math.floor(Math.random() * (1000000 - 100000)) + 100000;
 
-
     $(document).ready(function () {
+        let token;
         registerFrom['inputVerifyEmail'].disabled = true;
         btnVerifyEmail.disabled = true;
         divErrors.style.display = "none";
+ 
+        
     });
 
     function dataExist(key, data) {
@@ -586,8 +655,8 @@
         existData.value == '' ? exist = false : exist = true;
     }
 
-    function saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado) {
-        db.collection('Users').doc().set({ usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado });
+    function saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod) {
+        db.collection('Users').doc().set({ usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod });
     }
 
     function savePagoUser(cedula, termino, plan) {
@@ -703,6 +772,101 @@
 
     }
 
+    function getUrlImage(nameImage){
+        
+        //loadImage('imagenes/', nameImage, 'imageCedula');
+        
+        setTimeout(function(){
+            $.ajax({
+                url: "https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/imagenes%2F"+nameImage,
+                type: "GET"
+            }).done(function (data) {
+                token = data.downloadTokens;
+            });
+            urli = "https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/imagenes%2F"+ nameImage +"?alt=media&token"+token;
+            console.log(urli);
+        },3000);
+    }
+
+    function getDate(){
+        var currentdate = new Date(); 
+        var datetime = currentdate.getDate() + "/"
+                   + (currentdate.getMonth()+1)  + "/" 
+                   + currentdate.getFullYear() + " @ "  
+                   + currentdate.getHours() + ":"  
+                   + currentdate.getMinutes() + ":" 
+                   + currentdate.getSeconds();
+        return datetime;
+    }
+
+    document.querySelector('#imageCedula').addEventListener('change', function (e) {
+        var boxFile = document.querySelector('.cedula');
+        boxFile.classList.remove('attached');
+        boxFile.innerHTML = boxFile.getAttribute("data-text");
+        if (this.value != '') {
+            var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+            if (allowedExtensions.exec(this.value)) {
+                boxFile.innerHTML = e.target.files[0].name;
+                boxFile.classList.add('attached');
+            } else {
+                this.value = '';
+                alert('El archivo que intentas subir a Cédula no está permitido.\nLos archivos permitidos son .jpg, .jpeg, .png');
+                boxFile.classList.remove('attached');
+            }
+        }
+    });
+
+    document.querySelector('#imageRespaldoCedula').addEventListener('change', function (e) {
+        var boxFile = document.querySelector('.RCedula');
+        boxFile.classList.remove('attached');
+        boxFile.innerHTML = boxFile.getAttribute("data-text");
+        if (this.value != '') {
+            var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+            if (allowedExtensions.exec(this.value)) {
+                boxFile.innerHTML = e.target.files[0].name;
+                boxFile.classList.add('attached');
+            } else {
+                this.value = '';
+                alert('El archivo que intentas subir a Respaldo de Cédula no está permitido.\nLos archivos permitidos son .jpg, .jpeg, .png');
+                boxFile.classList.remove('attached');
+            }
+        }
+    });
+
+    document.querySelector('#imageSelfiDocumento').addEventListener('change', function (e) {
+        var boxFile = document.querySelector('.selfie');
+        boxFile.classList.remove('attached');
+        boxFile.innerHTML = boxFile.getAttribute("data-text");
+        if (this.value != '') {
+            var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+            if (allowedExtensions.exec(this.value)) {
+                boxFile.innerHTML = e.target.files[0].name;
+                boxFile.classList.add('attached');
+            } else {
+                this.value = '';
+                alert('El archivo que intentas subir a Selfie con Documento no está permitido.\nLos archivos permitidos son .jpg, .jpeg, .png');
+                boxFile.classList.remove('attached');
+            }
+        }
+    });
+
+    document.querySelector('#imageRecibo').addEventListener('change', function (e) {
+        var boxFile = document.querySelector('.recibo');
+        boxFile.classList.remove('attached');
+        boxFile.innerHTML = boxFile.getAttribute("data-text");
+        if (this.value != '') {
+            var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+            if (allowedExtensions.exec(this.value)) {
+                boxFile.innerHTML = e.target.files[0].name;
+                boxFile.classList.add('attached');
+            } else {
+                this.value = '';
+                alert('El archivo que intentas subir a Recibo no está permitido.\nLos archivos permitidos son .jpg, .jpeg, .png');
+                boxFile.classList.remove('attached');
+            }
+        }
+    });
+
     btnUserCheck.addEventListener('click', async (e) => {
         await dataExist("usuario", registerFrom['inputUser'].value);
         setTimeout(waitUser, 2000);
@@ -754,7 +918,6 @@
     });
 
     selectPlan.addEventListener('change', (e) => {
-        let dat;
         db.collection('Planes').doc('5popKkRNj8G6bnFLxF7m').collection(plazo).where("nombre", "==", selectPlan.value)
             .get()
             .then(function (querySnapshot) {
@@ -764,7 +927,7 @@
                     divBtnPago.innerHTML += '<div class="row justify-content-center"><div class="col">' +
                         '<div class="alert alert-success" role="alert" >' +
                         '<h4 class="alert-heading">Plan a ' + plazo + '</h4>' +
-                        '<p>Estas a punto de adquirir un ' + dat['nombre'] + ' a ' + plazo + ', el porcentaje de ganacia es ' + dat['porcentaje'] + '% al mes y una permanencia de ' + dat['retiro'] + '</p></div></div></div>'
+                        '<p>Estas a punto de adquirir un ' + dat['nombre'] + ' a ' + plazo + ', el porcentaje de ganacia es ' + dat['porcentaje'] + '% al mes y una permanencia de ' + dat['retiro'] + '. Una vez envíe su documentación realizaremos un diagnóstico financiero y de riesgo y  en un plazo de 72 horas hábiles se le enviará un correo electrónico con las indicaciones para continuar con el proceso.</p></div></div></div>'
                     ' <hr>';
                 });
             })
@@ -838,11 +1001,14 @@
             let termino = registerFrom['inputGroupPlazo'].value;
             let plan = registerFrom['inputGroupPlan'].value;
             let estado = true;
-            let urlCedula = loadImage('imagenes/', 'cedula' + numerodocumento, 'imageCedula');
-            let urlRespaldoCedula = loadImage('imagenes/', 'Respaldocedula' + numerodocumento, 'imageRespaldoCedula');
-            let urlSelfi = loadImage('imagenes/', 'selfi' + numerodocumento, 'imageSelfiDocumento');
-            let urlRecibo = loadImage('imagenes/', 'recibo' + numerodocumento, 'imageRecibo');
-            await saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado);
+            let fechaRegistro = getDate();
+            let fechaMod = getDate();
+            loadImage('imagenes/', 'cedula' + numerodocumento, 'imageCedula');
+            loadImage('imagenes/', 'Respaldocedula' + numerodocumento, 'imageRespaldoCedula');
+            loadImage('imagenes/', 'selfi' + numerodocumento, 'imageSelfiDocumento');
+            loadImage('imagenes/', 'recibo' + numerodocumento, 'imageRecibo');
+            await saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod);
+            await savePagoUser(numerodocumento,plazo, dat['nombre']);
             alert('Se ha registrado correctamente');
             registerFrom.reset();
         }
@@ -852,7 +1018,7 @@
 
 <script>
     (function () {
-        emailjs.init("user_USX4M3dWIjUrxE8B3FICN");
+        emailjs.init("user_xGyquRr2kixs3CI4cNxlE");
     })();
     const vue = new Vue({
         el: '#app',
@@ -884,7 +1050,7 @@
                     } else {
                         registerFrom['inputVerifyEmail'].disabled = false;
                         btnVerifyEmail.disabled = false;
-                        emailjs.send("service_rzi8owg", "template_ezx2066", data)
+                        emailjs.send("service_lfuv4wl", "template_r4f0yt6", data)
                             .then(function (response) {
                                 if (response.text === 'OK') {
                                     alert('El correo se ha enviado de forma exitosa');
@@ -914,6 +1080,8 @@
     let url;
     let fileList;
     let loadImages;
+
+
     inputFile.addEventListener('click', (e) => {
 
         //let urlCedula = loadImage('imagenes/', 'cedula', 'imageCedula');
@@ -933,10 +1101,10 @@
             console.log('Upload is ' + progress + '% done');
             switch (snapshot.state) {
                 case firebase.storage.TaskState.PAUSED: // or 'paused'
-                    console.log('Upload is paused');
+                    //console.log('Upload is paused');
                     break;
                 case firebase.storage.TaskState.RUNNING: // or 'running'
-                    console.log('Upload is running');
+                    //console.log('Upload is running');
                     break;
             }
         }, function (error) {
