@@ -100,11 +100,9 @@
                 <!--Banner de errores-->
                 <div class="row">
                     <div class="col col-md-12 col-12 col-sm-12">
-                        <div class="row justify-content-center" id="errors">
+                        <div class="row justify-content-center" id="errors" style="display: none;">
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <div id="error"></div>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                         </div>
@@ -849,6 +847,7 @@
     let errs = []; // array de errores
     let registrar = false;
     let dat;
+    let numDoc = false;
     const getUsers = () => db.collection('Users').get();
     const planes = (callback) => db.collection('Planes').doc('5popKkRNj8G6bnFLxF7m').collection(plazo).orderBy(filtro, "asc").onSnapshot(callback);
     const updatePagoPlan = (id, updatePago) => db.collection('PlanesUsuarios').doc(id).update(updatePago);
@@ -896,7 +895,7 @@
                     .then(function (querySnapshot) {
                         querySnapshot.forEach(function (doc) {
                             datos = doc.data();
-                            updatePagoPlan(doc.id,{
+                            updatePagoPlan(doc.id, {
                                 fechaPago: response.data.x_transaction_date,
                                 recibo: response.data.x_transaction_id,
                                 referencia: response.data.x_id_invoice
@@ -983,6 +982,25 @@
         existData.value = '';
         exist = '';
         datos = '';
+    }
+
+    function exitsNumDoc() {
+        db.collection("Users").where("numerodocumento", "==", registerFrom['inputNumDocumento'].value)
+            .get()
+            .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    numDoc = true; // los datos se guardan en un input para verificar que existan
+                });
+            })
+            .catch(function (error) {
+                console.log("Error getting documents: ", error);
+            });
+        setTimeout(function () {
+            if (numDoc) {
+                errs.push("El numero de documento ya fue ingresado");
+            }
+            numDoc = false;
+        }, 2000);
     }
 
     function confirPassword() {
@@ -1252,58 +1270,61 @@
 
     registerFrom.addEventListener('submit', async (e) => {
         e.preventDefault();
+        exitsNumDoc();
         let enviar = verifyErrors(); //retorna verdadero si existen errores
         divError.innerHTML = '';
         divErrors.style.display = "none";
+        setTimeout(function () {
+            if (!enviar) {
+                writeErrors();
+            } else {
+                let existUser = false;
+                let existSponsor = false;
+                let correoVerificado = false;
+                let verifyToken = false;
+                let errs = [];
+                let registrar = false;
+                waitUser();
+                waitSponsor();
+                let usuario = registerFrom['inputUser'].value;
+                let patrocinador = registerFrom['inputPatrocinador'].value;
+                let nombre = registerFrom['inputName'].value;
+                let apellido = registerFrom['inputLastName'].value;
+                let tipodocumento = registerFrom['inputGroupTDocumento'].value;
+                let numerodocumento = registerFrom['inputNumDocumento'].value;
+                let fecha_nac = registerFrom['inputDay'].value + '/' + registerFrom['inputMes'].value + '/' + registerFrom['inputYear'].value;
+                let genero = registerFrom['inputGroupGender'].value;
+                let correo = registerFrom['inputEmail'].value;
+                let password = hashPassword();
+                let pais = "Colombia";
+                let departamento = registerFrom['inputState'].value;
+                let ciudad = registerFrom['inputCity'].value;
+                let direccion = registerFrom['inputDireccion'].value;
+                let numero = "+57 " + registerFrom['inputNumber'].value;
+                let entidadFinanciera = registerFrom['inputNomEntidad'].value;
+                let tipocuenta = registerFrom['inputGroupTCuenta'].value;
+                let numCuenta = registerFrom['inputNumCuenta'].value;
+                let termino = registerFrom['inputGroupPlazo'].value;
+                let plan = registerFrom['inputGroupPlan'].value;
+                let estado = true;
+                let fechaRegistro = getDate();
+                let fechaMod = getDate();
+                sessionStorage.setItem("NumDoc", numerodocumento);
+                loadImage('imagenes/', 'cedula' + numerodocumento, 'imageCedula');
+                loadImage('imagenes/', 'Respaldocedula' + numerodocumento, 'imageRespaldoCedula');
+                loadImage('imagenes/', 'selfi' + numerodocumento, 'imageSelfiDocumento');
+                loadImage('imagenes/', 'recibo' + numerodocumento, 'imageRecibo');
+                saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod);
+                savePagoUser(numerodocumento, plazo, dat['nombre'], "pendiente", "NT", "NT", "NT");
+                alert('Se ha registrado correctamente');
+                registerFrom.reset();
+                registerFrom.style.display = "none";
+                let numbtn = dat['btnmun'] - 1;
+                let btnPagoForm = document.getElementsByClassName('btnPago')[numbtn];
+                btnPagoForm.style.display = "block";
+            }
+        }, 3000)
 
-        if (!enviar) {
-            writeErrors();
-        } else {
-            let existUser = false;
-            let existSponsor = false;
-            let correoVerificado = false;
-            let verifyToken = false;
-            let errs = [];
-            let registrar = false;
-            waitUser();
-            waitSponsor();
-            let usuario = registerFrom['inputUser'].value;
-            let patrocinador = registerFrom['inputPatrocinador'].value;
-            let nombre = registerFrom['inputName'].value;
-            let apellido = registerFrom['inputLastName'].value;
-            let tipodocumento = registerFrom['inputGroupTDocumento'].value;
-            let numerodocumento = registerFrom['inputNumDocumento'].value;
-            let fecha_nac = registerFrom['inputDay'].value + '/' + registerFrom['inputMes'].value + '/' + registerFrom['inputYear'].value;
-            let genero = registerFrom['inputGroupGender'].value;
-            let correo = registerFrom['inputEmail'].value;
-            let password = hashPassword();
-            let pais = "Colombia";
-            let departamento = registerFrom['inputState'].value;
-            let ciudad = registerFrom['inputCity'].value;
-            let direccion = registerFrom['inputDireccion'].value;
-            let numero = "+57 " + registerFrom['inputNumber'].value;
-            let entidadFinanciera = registerFrom['inputNomEntidad'].value;
-            let tipocuenta = registerFrom['inputGroupTCuenta'].value;
-            let numCuenta = registerFrom['inputNumCuenta'].value;
-            let termino = registerFrom['inputGroupPlazo'].value;
-            let plan = registerFrom['inputGroupPlan'].value;
-            let estado = true;
-            let fechaRegistro = getDate();
-            let fechaMod = getDate();
-            sessionStorage.setItem("NumDoc", numerodocumento);
-            loadImage('imagenes/', 'cedula' + numerodocumento, 'imageCedula');
-            loadImage('imagenes/', 'Respaldocedula' + numerodocumento, 'imageRespaldoCedula');
-            loadImage('imagenes/', 'selfi' + numerodocumento, 'imageSelfiDocumento');
-            loadImage('imagenes/', 'recibo' + numerodocumento, 'imageRecibo');
-            await saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod);
-            await savePagoUser(numerodocumento, plazo, dat['nombre'], "pendiente", "NT", "NT", "NT");
-            alert('Se ha registrado correctamente');
-            registerFrom.reset();
-            registerFrom.style.display = "none";
-            let numbtn = dat['btnmun'] - 1;
-            let btnPagoForm = document.getElementsByClassName('btnPago')[numbtn];
-            btnPagoForm.style.display = "block";
-        }
     });
 
 </script>
@@ -1375,12 +1396,6 @@
 
 
     inputFile.addEventListener('click', (e) => {
-
-        //let urlCedula = loadImage('imagenes/', 'cedula', 'imageCedula');
-        //let urlRespaldoCedula = loadImage('imagenes/', 'Respaldocedula', 'imageRespaldoCedula');
-        //let urlSelfi = loadImage('imagenes/', 'selfi', 'imageSelfiDocumento');
-        //let urlRecibo = loadImage('imagenes/', 'recibo', 'imageRecibo');
-        //console.log(urlCedula,urlRecibo,urlSelfi,urlRespaldoCedula);
     });
 
     //funcion para cargar imagenes a la BD
