@@ -128,7 +128,7 @@
                     </div>
                     <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control sponsor" placeholder="Usuario quién te referenció"
+                            <input type="text" class="form-control sponsor" placeholder="Usuario quién lo referenció"
                                 aria-label="Patrocinador" aria-describedby="btnPatrocinadorCheck" id="inputPatrocinador"
                                 title="Escriba la palabra “Nadie” si no lo hay" autocapitalize="">
                             <div class="input-group-append">
@@ -371,11 +371,12 @@
                     </div>
                 </div>
                 <!--imagen frontal y respaldo de cedula-->
-                <div class="row " >
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6 " style="margin-top: 5px; margin-bottom: 5px;">
-                        <div class="input-group mb-3" >
+                <div class="row ">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6 "
+                        style="margin-top: 5px; margin-bottom: 5px;">
+                        <div class="input-group mb-3">
                             <div class="custom-file justify-content-center">
-                                <div class="invoiceBox" >
+                                <div class="invoiceBox">
                                     <label for="imageCedula">
                                         <div class="boxFile cedula" data-text="Seleccionar archivo"
                                             style="width: 350px;">
@@ -388,7 +389,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6" style="margin-top: 5px; margin-bottom: 5px;">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6"
+                        style="margin-top: 5px; margin-bottom: 5px;">
                         <div class="input-group mb-3" style="margin-bottom: 10px;">
                             <div class="custom-file justify-content-center">
                                 <div class="invoiceBox">
@@ -408,7 +410,8 @@
                 </div>
                 <!--selfie y foto del recibo donde vive-->
                 <div class="row">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6 " style="margin-top: 5px; margin-bottom: 5px;">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6 "
+                        style="margin-top: 5px; margin-bottom: 5px;">
                         <div class="input-group mb-3 " style="margin-bottom: 10px;">
                             <div class="custom-file justify-content-center" lang="es">
                                 <div class="invoiceBox ">
@@ -425,7 +428,8 @@
 
                         </div>
                     </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6" style="margin-top: 5px; margin-bottom: 5px;">
+                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6"
+                        style="margin-top: 5px; margin-bottom: 5px;">
                         <div class="input-group mb-3" style="margin-bottom: 10px;">
                             <div class="custom-file justify-content-center">
                                 <div class="invoiceBox ">
@@ -445,7 +449,7 @@
                 <!--Entidad financiera-->
                 <div class="row">
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3 justify-content-center">
                             <label for="" class=""><strong>Entidad financiera donde desea recibir sus pagos:</strong>
                             </label>
 
@@ -542,13 +546,238 @@
                 <div class="row justify-content-center">
                     <button class="btn btn-primary btn-lg" id="btnSubmit" type="submit">Enviar</button>
                 </div>
+
+
+                <button class="btn btn-primary btn-lg" id="btnPrueba" type="button"
+                    style="display: none;">Prueba</button>
+                <input type="text" id="inputExistData" style="display: none;" disabled>
+                <div class="row justify-content-center">
+
+                </div>
             </form>
 
-            <button class="btn btn-primary btn-lg" id="btnPrueba" type="button" style="display: none;">Prueba</button>
-            <input type="text" id="inputExistData" style="display: none;" disabled>
-            <div class="row justify-content-center">
-
+            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                <form>
+                    <div class="alert alert-primary" role="alert">
+                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                    </div>
+                    <script src='https://checkout.epayco.co/checkout.js'
+                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                        data-epayco-external='false'
+                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                        </script>
+                </form> <!-- ================================================================== -->
             </div>
+            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                <form>
+                    <div class="alert alert-primary" role="alert">
+                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                    </div>
+                    <script src='https://checkout.epayco.co/checkout.js'
+                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                        data-epayco-external='false'
+                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                        </script>
+                </form> <!-- ================================================================== -->
+            </div>
+            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                <form>
+                    <div class="alert alert-primary" role="alert">
+                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                    </div>
+                    <script src='https://checkout.epayco.co/checkout.js'
+                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                        data-epayco-external='false'
+                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                        </script>
+                </form> <!-- ================================================================== -->
+            </div>
+            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                <form>
+                    <div class="alert alert-primary" role="alert">
+                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                    </div>
+                    <script src='https://checkout.epayco.co/checkout.js'
+                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                        data-epayco-external='false'
+                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                        </script>
+                </form> <!-- ================================================================== -->
+            </div>
+            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                <form>
+                    <div class="alert alert-primary" role="alert">
+                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                    </div>
+                    <script src='https://checkout.epayco.co/checkout.js'
+                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                        data-epayco-external='false'
+                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                        </script>
+                </form> <!-- ================================================================== -->
+            </div>
+            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                <form>
+                    <div class="alert alert-primary" role="alert">
+                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                    </div>
+                    <script src='https://checkout.epayco.co/checkout.js'
+                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                        data-epayco-external='false'
+                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                        </script>
+                </form> <!-- ================================================================== -->
+            </div>
+            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                <form>
+                    <div class="alert alert-primary" role="alert">
+                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                    </div>
+                    <script src='https://checkout.epayco.co/checkout.js'
+                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                        data-epayco-external='false'
+                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                        </script>
+                </form> <!-- ================================================================== -->
+            </div>
+            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                <form>
+                    <div class="alert alert-primary" role="alert">
+                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                    </div>
+                    <script src='https://checkout.epayco.co/checkout.js'
+                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                        data-epayco-external='false'
+                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                        </script>
+                </form> <!-- ================================================================== -->
+            </div>
+            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                <form>
+                    <div class="alert alert-primary" role="alert">
+                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                    </div>
+                    <script src='https://checkout.epayco.co/checkout.js'
+                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                        data-epayco-external='false'
+                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                        </script>
+                </form> <!-- ================================================================== -->
+            </div>
+            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                <form>
+                    <div class="alert alert-primary" role="alert">
+                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                    </div>
+                    <script src='https://checkout.epayco.co/checkout.js'
+                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                        data-epayco-external='false'
+                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                        </script>
+                </form> <!-- ================================================================== -->
+            </div>
+            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                <form>
+                    <div class="alert alert-primary" role="alert">
+                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                    </div>
+                    <script src='https://checkout.epayco.co/checkout.js'
+                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                        data-epayco-external='false'
+                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                        </script>
+                </form> <!-- ================================================================== -->
+            </div>
+            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                <form>
+                    <div class="alert alert-primary" role="alert">
+                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                    </div>
+                    <script src='https://checkout.epayco.co/checkout.js'
+                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                        data-epayco-external='false'
+                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                        </script>
+                </form> <!-- ================================================================== -->
+            </div>
+            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                <form>
+                    <div class="alert alert-primary" role="alert">
+                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                    </div>
+                    <script src='https://checkout.epayco.co/checkout.js'
+                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                        data-epayco-external='false'
+                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                        </script>
+                </form> <!-- ================================================================== -->
+            </div>
+
         </div>
     </div>
 </body>
@@ -617,30 +846,80 @@
     let existSponsor = false;
     let correoVerificado = false;
     let verifyToken = false;
-    let errs = [];
+    let errs = []; // array de errores
     let registrar = false;
     let dat;
-
     const getUsers = () => db.collection('Users').get();
     const planes = (callback) => db.collection('Planes').doc('5popKkRNj8G6bnFLxF7m').collection(plazo).orderBy(filtro, "asc").onSnapshot(callback);
+    const updatePagoPlan = (id, updatePago) => db.collection('PlanesUsuarios').doc(id).update(updatePago);
     const numRandom = () => Math.floor(Math.random() * (1000000 - 100000)) + 100000;
 
     $(document).ready(function () {
-        let token;
         registerFrom['inputVerifyEmail'].disabled = true;
         btnVerifyEmail.disabled = true;
         divErrors.style.display = "none";
+        //btnPagoForm.style.display = "none";
+        //llave publica del comercio
+        //Referencia de payco que viene por url
+        var ref_payco = getQueryParam('ref_payco');
+        //Url Rest Metodo get, se pasa la llave y la ref_payco como paremetro
+        var urlapp = 'https://secure.epayco.co/validation/v1/reference/' + ref_payco;
+        $.get(urlapp, function (response) {
+            if (response.success) {
+                if (response.data.x_cod_response == 1) {
+                    //Codigo personalizado
+                    alert('Transaccion Aprobada');
+                    console.log('transacción aceptada');
+                } //Transaccion Rechazada
+                if (response.data.x_cod_response == 2) {
+                    console.log('transacción rechazada');
+                }
+                //Transaccion Pendiente
+                if (response.data.x_cod_response == 3) {
+                    console.log('transacción pendiente');
+                }
+                //Transaccion Fallida
+                if (response.data.x_cod_response == 4) {
+                    console.log('transacción fallida');
+                }
+                //$('#fecha').html(response.data.x_transaction_date);
+                //$('#respuesta').html(response.data.x_response);
+                //$('#referencia').text(response.data.x_id_invoice);
+                //$('#motivo').text(response.data.x_response_reason_text);
+                //$('#recibo').text(response.data.x_transaction_id);
+                //$('#banco').text(response.data.x_bank_name);
+                //$('#autorizacion').text(response.data.x_approval_code);
+                //$('#total').text(response.data.x_amount + ' ' + response.data.x_currency_code);
+                //console.log(response.data);
+                db.collection("PlanesUsuarios").where('cedula', "==", sessionStorage.getItem('NumDoc'))
+                    .get()
+                    .then(function (querySnapshot) {
+                        querySnapshot.forEach(function (doc) {
+                            datos = doc.data();
+                            updatePagoPlan(doc.id,{
+                                fechaPago: response.data.x_transaction_date,
+                                recibo: response.data.x_transaction_id,
+                                referencia: response.data.x_id_invoice
 
-
+                            });
+                        });
+                    })
+                    .catch(function (error) {
+                        console.log("Error getting documents: ", error);
+                    });
+            } else {
+                //alert('Error consultando la información');
+            }
+        });
     });
-
+    // Funcion para comprobar que los datos existan en la BD
     function dataExist(key, data) {
         db.collection("Users").where(key, "==", data)
             .get()
             .then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
                     datos = doc.data();
-                    existData.value = datos[key];
+                    existData.value = datos[key]; // los datos se guardan en un input para verificar que existan
                 });
             })
             .catch(function (error) {
@@ -648,19 +927,19 @@
             });
         setTimeout(waitDatos, 1000);
     }
-
+    // Esperar que la busqueda de datos termine
     function waitDatos() {
         existData.value == '' ? exist = false : exist = true;
     }
-
+    // guardar usuarios
     function saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod) {
         db.collection('Users').doc().set({ usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod });
     }
-
-    function savePagoUser(cedula, termino, plan) {
-        db.collection('PlanesUsuarios').doc().set({ cedula, termino, plan });
+    // guardar informacion del pago
+    function savePagoUser(cedula, termino, plan, estado, referencia, fechaPago, recibo) {
+        db.collection('PlanesUsuarios').doc().set({ cedula, termino, plan, referencia, fechaPago, recibo });
     }
-
+    // esperar a que exista la confirmacion de si existe el usuario
     function waitUser() {
         existUser = !exist;
         if (existUser) {
@@ -682,7 +961,7 @@
         exist = '';
         datos = '';
     }
-
+    // esperar a que exista la confirmacion de si existe el patrocinado
     function waitSponsor() {
         existSponsor = exist;
         if (existSponsor) {
@@ -786,6 +1065,15 @@
         }, 3000);
     }
 
+    function getQueryParam(param) {
+        location.search.substr(1)
+            .split('&')
+            .some(function (item) { // returns first occurence and stops
+                return item.split('=')[0] == param && (param = item.split('=')[1])
+            })
+        return param
+    }
+
     function getDate() {
         var currentdate = new Date();
         var datetime = currentdate.getDate() + "/"
@@ -796,7 +1084,7 @@
             + currentdate.getSeconds();
         return datetime;
     }
-
+    //Botenes con estilo para subir archivos
     document.querySelector('#imageCedula').addEventListener('change', function (e) {
         var boxFile = document.querySelector('.cedula');
         boxFile.classList.remove('attached');
@@ -864,12 +1152,12 @@
             }
         }
     });
-
+    //confirmar si el usuario existe
     btnUserCheck.addEventListener('click', async (e) => {
         await dataExist("usuario", registerFrom['inputUser'].value);
         setTimeout(waitUser, 2000);
     });
-
+    //confrimar si el patrocinador existe
     btnPatrocinadorCheck.addEventListener('click', async (e) => {
         if (registerFrom['inputPatrocinador'].value == '') {
 
@@ -886,7 +1174,7 @@
             datos = '';
         }
     });
-
+    //verificar el email
     btnVerifyEmail.addEventListener('click', (e) => {
         if (numVerify == registerFrom['inputVerifyEmail'].value) {
             alert('los numeros coinciden');
@@ -898,7 +1186,7 @@
             verifyToken = false;
         }
     });
-
+    //seleccionar el plan de acuerdo al plazo que hay
     selectPlazo.addEventListener('change', async (e) => {
         plazo = registerFrom['inputGroupPlazo'].value;
         if (plazo == 'Largo Plazo') {
@@ -932,8 +1220,9 @@
             .catch(function (error) {
                 console.log("Error getting documents: ", error);
             });
-    });
 
+    });
+    //seleccionar la ciudad de acuerdo al departamento escogido
     selectDepartamento.addEventListener('change', async (e) => {
         let state = registerFrom['inputState'].value;
 
@@ -963,7 +1252,7 @@
 
     registerFrom.addEventListener('submit', async (e) => {
         e.preventDefault();
-        let enviar = verifyErrors();
+        let enviar = verifyErrors(); //retorna verdadero si existen errores
         divError.innerHTML = '';
         divErrors.style.display = "none";
 
@@ -1001,14 +1290,19 @@
             let estado = true;
             let fechaRegistro = getDate();
             let fechaMod = getDate();
+            sessionStorage.setItem("NumDoc", numerodocumento);
             loadImage('imagenes/', 'cedula' + numerodocumento, 'imageCedula');
             loadImage('imagenes/', 'Respaldocedula' + numerodocumento, 'imageRespaldoCedula');
             loadImage('imagenes/', 'selfi' + numerodocumento, 'imageSelfiDocumento');
             loadImage('imagenes/', 'recibo' + numerodocumento, 'imageRecibo');
             await saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod);
-            await savePagoUser(numerodocumento, plazo, dat['nombre']);
+            await savePagoUser(numerodocumento, plazo, dat['nombre'], "pendiente", "NT", "NT", "NT");
             alert('Se ha registrado correctamente');
             registerFrom.reset();
+            registerFrom.style.display = "none";
+            let numbtn = dat['btnmun'] - 1;
+            let btnPagoForm = document.getElementsByClassName('btnPago')[numbtn];
+            btnPagoForm.style.display = "block";
         }
     });
 
@@ -1048,7 +1342,7 @@
                     } else {
                         registerFrom['inputVerifyEmail'].disabled = false;
                         btnVerifyEmail.disabled = false;
-                        emailjs.send("service_lfuv4wl", "template_r4f0yt6", data)
+                        emailjs.send("service_lfuv4wl", "template_r4f0yt6", data)//datos de el servidor de correo
                             .then(function (response) {
                                 if (response.text === 'OK') {
                                     alert('El correo se ha enviado de forma exitosa');
@@ -1089,7 +1383,7 @@
         //console.log(urlCedula,urlRecibo,urlSelfi,urlRespaldoCedula);
     });
 
-
+    //funcion para cargar imagenes a la BD
     function loadImage(ubicacion, name, inputImage) {
         let inputFile = document.getElementById(inputImage);
         fileList = inputFile.files[0];
