@@ -275,7 +275,7 @@
                     </div>
                     <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                         <div class="input-group mb-3">
-                            <input type="number" class="form-control"
+                            <input type="text" class="form-control"
                                 placeholder="Escriba el TOKEN recibido en el correo                            "
                                 aria-label="Verify Email" aria-describedby="btnVerifyEmail" id="inputVerifyEmail"
                                 required>
@@ -314,6 +314,7 @@
                                 <option value="Antioquia">Antioquía</option>
                                 <option value="Arauca">Arauca</option>
                                 <option value="Atlántico">Atlántico</option>
+                                <option value="Bogotá D.C.">Bogotá D.C.</option>
                                 <option value="Bolívar">Bolívar</option>
                                 <option value="Boyacá">Boyacá</option>
                                 <option value="Caldas">Caldas</option>
@@ -868,18 +869,23 @@
                 if (response.data.x_cod_response == 1) {
                     //Codigo personalizado
                     alert('Transaccion Aprobada');
-                    console.log('transacción aceptada');
+                    location.href ="https://financemarketscapital.com/register/";
+                    //console.log('transacción aceptada');
+
                 } //Transaccion Rechazada
                 if (response.data.x_cod_response == 2) {
-                    console.log('transacción rechazada');
+                    ///console.log('transacción rechazada');
+                    location.href ="https://financemarketscapital.com/register/";
                 }
                 //Transaccion Pendiente
                 if (response.data.x_cod_response == 3) {
-                    console.log('transacción pendiente');
+                    location.href ="https://financemarketscapital.com/register/";
+                    //console.log('transacción pendiente');
                 }
                 //Transaccion Fallida
                 if (response.data.x_cod_response == 4) {
-                    console.log('transacción fallida');
+                    location.href ="https://financemarketscapital.com/register/";
+                    //console.log('transacción fallida');
                 }
                 //$('#fecha').html(response.data.x_transaction_date);
                 //$('#respuesta').html(response.data.x_response);
@@ -898,7 +904,8 @@
                             updatePagoPlan(doc.id, {
                                 fechaPago: response.data.x_transaction_date,
                                 recibo: response.data.x_transaction_id,
-                                referencia: response.data.x_id_invoice
+                                referencia: response.data.x_id_invoice,
+                                estadoPago: response.data.x_response
 
                             });
                         });
@@ -935,8 +942,8 @@
         db.collection('Users').doc().set({ usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod });
     }
     // guardar informacion del pago
-    function savePagoUser(cedula, termino, plan, estado, referencia, fechaPago, recibo) {
-        db.collection('PlanesUsuarios').doc().set({ cedula, termino, plan, referencia, fechaPago, recibo });
+    function savePagoUser(cedula, termino, plan, estado, referencia, fechaPago, recibo, estadoPago) {
+        db.collection('PlanesUsuarios').doc().set({ cedula, termino, plan, referencia, fechaPago, recibo, estadoPago });
     }
     // esperar a que exista la confirmacion de si existe el usuario
     function waitUser() {
@@ -1249,7 +1256,12 @@
             selectCiudad.innerHTML += '<option value="Providencia y Santa Catalina Islas">Providencia y Santa Catalina Islas</option>';
             selectCiudad.innerHTML += '<option value="San Andrés">San Andrés</option>';
 
-        } else {
+        } else if (state == 'Bogotá D.C.'){
+            selectCiudad.innerHTML = '<option selected>Ciudad</option>';
+            selectCiudad.innerHTML += '<option value="Bogotá">Bogotá</option>';
+        }
+        
+        else {
 
             $.ajax({
                 url: "https://www.datos.gov.co/resource/xdk5-pm3f.json?departamento=" + state,
@@ -1315,7 +1327,7 @@
                 loadImage('imagenes/', 'selfi' + numerodocumento, 'imageSelfiDocumento');
                 loadImage('imagenes/', 'recibo' + numerodocumento, 'imageRecibo');
                 saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod);
-                savePagoUser(numerodocumento, plazo, dat['nombre'], "pendiente", "NT", "NT", "NT");
+                savePagoUser(numerodocumento, plazo, dat['nombre'], "pendiente", "Pendiente", "Pendiente", "Pendiente","Pendiente");
                 alert('Se ha registrado correctamente');
                 registerFrom.reset();
                 registerFrom.style.display = "none";
