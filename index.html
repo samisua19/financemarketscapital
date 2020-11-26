@@ -80,705 +80,756 @@
 
 <body>
     <div class="container">
-        <div class="row justify-content-center ">
-            <div class="row">
-                <div class="col" style="text-align: center; margin: 10px;">
-                    <h1>Bienvenido a Finance Markets Capital</h1>
-                </div>
-            </div>
-            <div class="row col-md-12">
-                <div class="col" style="text-align: center; margin: 10px;">
-                    <p>Su tranquilidad es nuestra prioridad. <br>
-                        Contamos con la autorización de la principales autoridades reguladoras en Colombia. <br>
-                        Valoramos y respetamos su privacidad. <br>
-                        Sus fondos están seguros en bancos que cuentan con una gran reputación. <br>
-                        <strong>Por favor llene todos los campos que aparecen a continuación:</strong> </p>
-                </div>
-            </div>
-
-            <form id="registerForm" class="col-md-12">
-                <!--Banner de errores-->
-                <div class="row">
-                    <div class="col col-md-12 col-12 col-sm-12">
-                        <div class="row justify-content-center" id="errors" style="display: none;">
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                <div id="error"></div>
-                                </button>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="formRegister-tab" data-toggle="tab" href="#formRegister" role="tab"
+                    aria-controls="formRegister" aria-selected="true">Formulario de Registro</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="uploadfileLink-tab" data-toggle="tab" href="#uploadfileLink" role="tab"
+                    aria-controls="uploadfileLink" aria-selected="false">Subir Archivo</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                    aria-controls="contact" aria-selected="false">Contactanos</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="formRegister" role="tabpanel" aria-labelledby="formRegister-tab">
+                <div class="container">
+                    <div class="row justify-content-center ">
+                        <div class="row">
+                            <div class="col" style="text-align: center; margin: 10px;">
+                                <h1>Bienvenido a Finance Markets Capital</h1>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!--Usuario y patrocinador-->
-                <div class="row ">
-                    <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control user " placeholder="Usuario" aria-label="User"
-                                aria-describedby="btnUserCheck" id="inputUser" required>
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button" id="btnUserCheck"
-                                    style=" border-bottom-right-radius: 10px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
+                        <div class="row col-md-12">
+                            <div class="col" style="text-align: center; margin: 10px;">
+                                <p>Su tranquilidad es nuestra prioridad. <br>
+                                    Contamos con la autorización de la principales autoridades reguladoras en Colombia. <br>
+                                    Valoramos y respetamos su privacidad. <br>
+                                    Sus fondos están seguros en bancos que cuentan con una gran reputación. <br>
+                                    <strong>Por favor llene todos los campos que aparecen a continuación:</strong> </p>
                             </div>
-                            <!--
-                            <small class="form-text text-muted">Debe tener al menos 10 caracteres, de los cuales al menos uno debe ser un número.</small>
-                            -->
-                            <div class="user" style="height: 10px;"></div>
-                        </div>
-                    </div>
-                    <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control sponsor" placeholder="Usuario quién lo referenció"
-                                aria-label="Patrocinador" aria-describedby="btnPatrocinadorCheck" id="inputPatrocinador"
-                                title="Escriba la palabra “Nadie” si no lo hay" autocapitalize="">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button" id="btnPatrocinadorCheck"
-                                    style=" border-bottom-right-radius: 10px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
-                            </div>
-                            <div class="sponsor" style="height: 10px;"></div>
-                        </div>
-                    </div>
-                </div>
-                <!--Nombres y Apellidos-->
-                <div class="row">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Nombres" id="inputName" required>
-                        </div>
-
-                    </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Apellidos" id="inputLastName" required>
-                        </div>
-                    </div>
-                </div>
-                <!--Tipo y numero de documento-->
-                <div class="row">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupTDocumento">Tipo Documento</label>
-                            </div>
-                            <select class="custom-select" id="inputGroupTDocumento" required>
-                                <option value="">Escoger...</option>
-                                <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
-                                <option value="Cédula de Extranjería">Cédula de Extranjería</option>
-                                <option value="NIT">NIT</option>
-                                <option value="Pasaporte">Pasaporte</option>
-                                <option value="Tarjeta de seguro social extranjero">Tarjeta de seguro social extranjero
-                                </option>
-                                <option value="Sociedad Extrangera sin nit en Colombia">Sociedad Extrangera sin nit en
-                                    Colombia</option>
-                                <option value="Fideicomiso">Fideicomiso</option>
-                                <option value="RIF Venezuela">RIF Venezuela</option>
-                                <option value="NIT Extranjería">NIT Extranjería</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <input type="text" placeholder="Numero de Documento" class="form-control"
-                                id="inputNumDocumento" required>
-                        </div>
-                    </div>
-                </div>
-                <!--Fecha de nacimiento y genero-->
-                <div class="row ">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <label><strong>Fecha de Nacimiento:</strong> </label>
-                            <div class="col-lg-2" style="margin-bottom: 10px;" style="margin-bottom: 10px;">
-                                <select class="custom-select" id="inputDay" required>
-                                    <option value="">Dia</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="19">19</option>
-                                    <option value="20">20</option>
-                                    <option value="21">21</option>
-                                    <option value="23">23</option>
-                                    <option value="24">24</option>
-                                    <option value="25">25</option>
-                                    <option value="26">26</option>
-                                    <option value="27">27</option>
-                                    <option value="28">28</option>
-                                    <option value="29">29</option>
-                                    <option value="30">30</option>
-                                    <option value="31">31</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-2" style="margin-bottom: 10px;">
-                                <select class="custom-select" id="inputMes" required>
-                                    <option value="">Mes</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                </select>
-                            </div>
-                            <div class=" col-lg-3" style="margin-bottom: 10px;">
-                                <input type="text" name="inputYear" id="inputYear" class="form-control"
-                                    placeholder="AAAA" maxlength="4">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupGender">Genero</label>
-                            </div>
-                            <select class="custom-select" id="inputGroupGender" required>
-                                <option value="">Escoger...</option>
-                                <option value="Hombre">Hombre</option>
-                                <option value="Mujer">Mujer</option>
-                                <option value="Otro">Otro</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <!--Correo electronico y token-->
-                <div class="row">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3" id="app">
-                            <input type="email" class="form-control" placeholder="Correo Electrónico" aria-label="Email"
-                                aria-describedby="btnSubmitEmail" id="inputEmail" v-model="from_email" required>
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button" id="btnSubmitEmail"
-                                    @click="enviar"
-                                    style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Pedir
-                                    Token</button>
-                            </div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control"
-                                placeholder="Escriba el TOKEN recibido en el correo                            "
-                                aria-label="Verify Email" aria-describedby="btnVerifyEmail" id="inputVerifyEmail"
-                                required>
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button" id="btnVerifyEmail"
-                                    style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
-                            </div>
-                            <div></div>
-                        </div>
-                    </div>
-                </div>
-                <!--Contraseña y confirmar contraseña-->
-                <div class="row">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <input type="password" class="form-control" placeholder="Escriba una Contraseña fuerte
-                        " id="inputPassword" minlength="8" required>
-                        </div>
-                        <small class="form-text text-muted">Su contraseña debe ser de 8 caracteres o más, contener
-                            mayúsculas y números.</small>
-                    </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <input type="password" class="form-control" placeholder="Confirme su Contraseña"
-                                id="inputConfirmPassword" minlength="8" required>
-                        </div>
-                    </div>
-                </div>
-                <!--Departamento y ciudad-->
-                <div class="row">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <select class="custom-select" id="inputState" required>
-                                <option value="">Departamento</option>
-                                <option value="Amazonas">Amazonas</option>
-                                <option value="Antioquia">Antioquía</option>
-                                <option value="Arauca">Arauca</option>
-                                <option value="Atlántico">Atlántico</option>
-                                <option value="Bogotá D.C.">Bogotá D.C.</option>
-                                <option value="Bolívar">Bolívar</option>
-                                <option value="Boyacá">Boyacá</option>
-                                <option value="Caldas">Caldas</option>
-                                <option value="Caquetá">Caquetá</option>
-                                <option value="Casanare">Casanare</option>
-                                <option value="Cauca">Cauca</option>
-                                <option value="Cesar">Cesar</option>
-                                <option value="Chocó">Chocó</option>
-                                <option value="Córdoba">Córdoba</option>
-                                <option value="Cundinamarca">Cundinamarca</option>
-                                <option value="Guainía">Guainía</option>
-                                <option value="Huila">Huila</option>
-                                <option value="La Guajira">La Guajira</option>
-                                <option value="Magdalena">Magdalena</option>
-                                <option value="Meta">Meta</option>
-                                <option value="Nariño">Nariño</option>
-                                <option value="Norte de Santander">Norte de Santander</option>
-                                <option value="Putumayo">Putumayo</option>
-                                <option value="Quindío">Quindío</option>
-                                <option value="Risaralda">Risaralda</option>
-                                <option value="San Andres y Providencia">San Andrés y Providencia</option>
-                                <option value="Santander">Santander</option>
-                                <option value="Sucre">Sucre</option>
-                                <option value="Tolima">Tolima</option>
-                                <option value="Valle del Cauca">Valle del Cauca</option>
-                                <option value="Vaupés">Vaupés</option>
-                                <option value="Vichada">Vichada</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <select class="custom-select" id="inputCity" required>
-                                <option value="">Ciudad</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <!--Direccion y numero celular-->
-                <div class="row">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <input type="text" placeholder="Dirección" class="form-control" id="inputDireccion"
-                                required>
-
-                        </div>
-                    </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <input type="text" placeholder="Número con Whatsapp" class="form-control" id="inputNumber"
-                                required>
-                        </div>
-                    </div>
-                </div>
-                <!--imagen frontal y respaldo de cedula-->
-                <div class="row ">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6 "
-                        style="margin-top: 5px; margin-bottom: 5px;">
-                        <div class="input-group mb-3">
-                            <div class="custom-file justify-content-center">
-                                <div class="invoiceBox">
-                                    <label for="imageCedula">
-                                        <div class="boxFile cedula" data-text="Seleccionar archivo"
-                                            style="width: 350px;">
-                                            Seleccionar la imagen de la Cédula.
+                        </div>          
+                        <form id="registerForm" class="col-md-12">
+                            <!--Banner de errores-->
+                            <div class="row">
+                                <div class="col col-md-12 col-12 col-sm-12">
+                                    <div class="row justify-content-center" id="errors" style="display: none;">
+                                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                            <div id="error"></div>
+                                            </button>
                                         </div>
-                                    </label>
-                                    <input id="imageCedula" multiple="" name="invoice[]" size="6000" type="file"
-                                        accept="application/pdf,image/x-png,image/gif,image/jpeg,image/jpg,image/tiff">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Usuario y patrocinador-->
+                            <div class="row ">
+                                <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control user " placeholder="Usuario" aria-label="User"
+                                            aria-describedby="btnUserCheck" id="inputUser" required>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button" id="btnUserCheck"
+                                                style=" border-bottom-right-radius: 10px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
+                                        </div>
+                                        <!--
+                                        <small class="form-text text-muted">Debe tener al menos 10 caracteres, de los cuales al menos uno debe ser un número.</small>
+                                        -->
+                                        <div class="user" style="height: 10px;"></div>
+                                    </div>
+                                </div>
+                                <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <select class="custom-select" id="selectRepresentante" required>
+                                            <option value="">Representante</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Nombres y Apellidos-->
+                            <div class="row">
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Nombres" id="inputName" required>
+                                    </div>
+            
+                                </div>
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Apellidos" id="inputLastName" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Tipo y numero de documento-->
+                            <div class="row">
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupTDocumento">Tipo Documento</label>
+                                        </div>
+                                        <select class="custom-select" id="inputGroupTDocumento" required>
+                                            <option value="">Escoger...</option>
+                                            <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
+                                            <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+                                            <option value="NIT">NIT</option>
+                                            <option value="Pasaporte">Pasaporte</option>
+                                            <option value="Tarjeta de seguro social extranjero">Tarjeta de seguro social extranjero
+                                            </option>
+                                            <option value="Sociedad Extrangera sin nit en Colombia">Sociedad Extrangera sin nit en
+                                                Colombia</option>
+                                            <option value="Fideicomiso">Fideicomiso</option>
+                                            <option value="RIF Venezuela">RIF Venezuela</option>
+                                            <option value="NIT Extranjería">NIT Extranjería</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" placeholder="Numero de Documento" class="form-control"
+                                            id="inputNumDocumento" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Fecha de nacimiento y genero-->
+                            <div class="row ">
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <label><strong>Fecha de Nacimiento:</strong> </label>
+                                        <div class="col-lg-2" style="margin-bottom: 10px;" style="margin-bottom: 10px;">
+                                            <select class="custom-select" id="inputDay" required>
+                                                <option value="">Dia</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                                <option value="25">25</option>
+                                                <option value="26">26</option>
+                                                <option value="27">27</option>
+                                                <option value="28">28</option>
+                                                <option value="29">29</option>
+                                                <option value="30">30</option>
+                                                <option value="31">31</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-2" style="margin-bottom: 10px;">
+                                            <select class="custom-select" id="inputMes" required>
+                                                <option value="">Mes</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                            </select>
+                                        </div>
+                                        <div class=" col-lg-3" style="margin-bottom: 10px;">
+                                            <input type="text" name="inputYear" id="inputYear" class="form-control"
+                                                placeholder="AAAA" maxlength="4">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupGender">Genero</label>
+                                        </div>
+                                        <select class="custom-select" id="inputGroupGender" required>
+                                            <option value="">Escoger...</option>
+                                            <option value="Hombre">Hombre</option>
+                                            <option value="Mujer">Mujer</option>
+                                            <option value="Otro">Otro</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Correo electronico y token-->
+                            <div class="row">
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3" id="app">
+                                        <input type="email" class="form-control" placeholder="Correo Electrónico" aria-label="Email"
+                                            aria-describedby="btnSubmitEmail" id="inputEmail" v-model="from_email" required>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button" id="btnSubmitEmail"
+                                                @click="enviar"
+                                                style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Pedir
+                                                Token</button>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control"
+                                            placeholder="Escriba el TOKEN recibido en el correo                            "
+                                            aria-label="Verify Email" aria-describedby="btnVerifyEmail" id="inputVerifyEmail"
+                                            required>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button" id="btnVerifyEmail"
+                                                style=" border-bottom-right-radius: 3px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Contraseña y confirmar contraseña-->
+                            <div class="row">
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <input type="password" class="form-control" placeholder="Escriba una Contraseña fuerte
+                                    " id="inputPassword" minlength="8" required>
+                                    </div>
+                                    <small class="form-text text-muted">Su contraseña debe ser de 8 caracteres o más, contener
+                                        mayúsculas y números.</small>
+                                </div>
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <input type="password" class="form-control" placeholder="Confirme su Contraseña"
+                                            id="inputConfirmPassword" minlength="8" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Departamento y ciudad-->
+                            <div class="row">
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <select class="custom-select" id="inputState" required>
+                                            <option value="">Departamento</option>
+                                            <option value="Amazonas">Amazonas</option>
+                                            <option value="Antioquia">Antioquía</option>
+                                            <option value="Arauca">Arauca</option>
+                                            <option value="Atlántico">Atlántico</option>
+                                            <option value="Bogotá D.C.">Bogotá D.C.</option>
+                                            <option value="Bolívar">Bolívar</option>
+                                            <option value="Boyacá">Boyacá</option>
+                                            <option value="Caldas">Caldas</option>
+                                            <option value="Caquetá">Caquetá</option>
+                                            <option value="Casanare">Casanare</option>
+                                            <option value="Cauca">Cauca</option>
+                                            <option value="Cesar">Cesar</option>
+                                            <option value="Chocó">Chocó</option>
+                                            <option value="Córdoba">Córdoba</option>
+                                            <option value="Cundinamarca">Cundinamarca</option>
+                                            <option value="Guainía">Guainía</option>
+                                            <option value="Huila">Huila</option>
+                                            <option value="La Guajira">La Guajira</option>
+                                            <option value="Magdalena">Magdalena</option>
+                                            <option value="Meta">Meta</option>
+                                            <option value="Nariño">Nariño</option>
+                                            <option value="Norte de Santander">Norte de Santander</option>
+                                            <option value="Putumayo">Putumayo</option>
+                                            <option value="Quindío">Quindío</option>
+                                            <option value="Risaralda">Risaralda</option>
+                                            <option value="San Andres y Providencia">San Andrés y Providencia</option>
+                                            <option value="Santander">Santander</option>
+                                            <option value="Sucre">Sucre</option>
+                                            <option value="Tolima">Tolima</option>
+                                            <option value="Valle del Cauca">Valle del Cauca</option>
+                                            <option value="Vaupés">Vaupés</option>
+                                            <option value="Vichada">Vichada</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <select class="custom-select" id="inputCity" required>
+                                            <option value="">Ciudad</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Direccion y numero celular-->
+                            <div class="row">
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" placeholder="Dirección" class="form-control" id="inputDireccion"
+                                            required>
+            
+                                    </div>
+                                </div>
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" placeholder="Número con Whatsapp" class="form-control" id="inputNumber"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--imagen frontal y respaldo de cedula-->
+                            <div class="row ">
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6 "
+                                    style="margin-top: 5px; margin-bottom: 5px;">
+                                    <div class="input-group mb-3">
+                                        <div class="custom-file justify-content-center">
+                                            <div class="invoiceBox">
+                                                <label for="imageCedula">
+                                                    <div class="boxFile cedula" data-text="Seleccionar archivo"
+                                                        style="width: 350px;">
+                                                        Seleccionar la imagen de la Cédula.
+                                                    </div>
+                                                </label>
+                                                <input id="imageCedula" multiple="" name="invoice[]" size="6000" type="file"
+                                                    accept="application/pdf,image/x-png,image/gif,image/jpeg,image/jpg,image/tiff">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6"
+                                    style="margin-top: 5px; margin-bottom: 5px;">
+                                    <div class="input-group mb-3" style="margin-bottom: 10px;">
+                                        <div class="custom-file justify-content-center">
+                                            <div class="invoiceBox">
+                                                <label for="imageRespaldoCedula">
+                                                    <div class="boxFile RCedula" data-text="Seleccionar archivo"
+                                                        style="width: 350px;">
+                                                        Seleccionar la imagen del respaldo de la Cédula
+                                                    </div>
+                                                </label>
+                                                <input id="imageRespaldoCedula" multiple="" name="invoice[]" size="6000" type="file"
+                                                    accept="application/pdf,image/x-png,image/gif,image/jpeg,image/jpg,image/tiff">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                            </div>
+                            <!--selfie y foto del recibo donde vive-->
+                            <div class="row">
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6 "
+                                    style="margin-top: 5px; margin-bottom: 5px;">
+                                    <div class="input-group mb-3 " style="margin-bottom: 10px;">
+                                        <div class="custom-file justify-content-center" lang="es">
+                                            <div class="invoiceBox ">
+                                                <label for="imageSelfiDocumento">
+                                                    <div class="boxFile selfie" data-text="Seleccionar archivo"
+                                                        style="width: 350px;">
+                                                        Seleccionar la imagen de selfie con su Documento
+                                                    </div>
+                                                </label>
+                                                <input id="imageSelfiDocumento" multiple="" name="invoice[]" size="6000" type="file"
+                                                    accept="application/pdf,image/x-png,image/gif,image/jpeg,image/jpg,image/tiff">
+                                            </div>
+                                        </div>
+            
+                                    </div>
+                                </div>
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6"
+                                    style="margin-top: 5px; margin-bottom: 5px;">
+                                    <div class="input-group mb-3" style="margin-bottom: 10px;">
+                                        <div class="custom-file justify-content-center">
+                                            <div class="invoiceBox ">
+                                                <label for="imageRecibo">
+                                                    <div class="boxFile recibo" data-text="Seleccionar archivo"
+                                                        style="width: 350px;">
+                                                        Seleccionar la imagen del recibo donde vive
+                                                    </div>
+                                                </label>
+                                                <input id="imageRecibo" multiple="" name="invoice[]" size="6000" type="file"
+                                                    accept="image/jpeg,image/jpg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Entidad financiera-->
+                            <div class="row">
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3 justify-content-center">
+                                        <label for="" class=""><strong>Entidad financiera donde desea recibir sus pagos:</strong>
+                                        </label>
+            
+                                    </div>
+                                </div>
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" placeholder="Nombre de la entidad" class="form-control"
+                                            id="inputNomEntidad" required>
+            
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Tipo y numero de cuenta-->
+                            <div class="row">
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupTCuenta">Tipo Cuenta</label>
+                                        </div>
+                                        <select class="custom-select" id="inputGroupTCuenta" required>
+                                            <option value="">Escoger...</option>
+                                            <option value="Ahorros">Ahorros</option>
+                                            <option value="Corriente">Corriente</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <input type="text" placeholder="Numero de Cuenta" class="form-control" id="inputNumCuenta"
+                                            required>
+            
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Plazo y plan adquirido-->
+                            <div class="row">
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupPlazo">Plazo</label>
+                                        </div>
+                                        <select class="custom-select" id="inputGroupPlazo" required>
+                                            <option value="">Escoger...</option>
+                                            <option value="Corto Plazo">Corto Plazo</option>
+                                            <option value="Mediano Plazo">Mediano Plazo</option>
+                                            <option value="Largo Plazo">Largo Plazo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupPlan">Plan</label>
+                                        </div>
+                                        <select class="custom-select" id="inputGroupPlan" required>
+                                            <option selected>Escoger...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Aqui se genera el banner y el boton de pago-->
+                            <div id="btnPago">
+                            </div>
+                            <!--Checkbox-->
+                            <div class="row">
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-4">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheckTYC" required>
+                                        <label class="custom-control-label" for="customCheckTYC">Confirmo que acepto los Términos y
+                                            Condiciones del contrato
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-4">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheckAuthData" required>
+                                        <label class="custom-control-label" for="customCheckAuthData">Autorizo el uso y tratamiento
+                                            de mis datos personales
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-4">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheckPP" required>
+                                        <label class="custom-control-label" for="customCheckPP">Confirmo que acepto la política de
+                                            privacidad
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <!--Boton-->
+                            <div class="row justify-content-center">
+                                <button class="btn btn-primary btn-lg" id="btnSubmit" type="submit">Enviar</button>
+                            </div>
+                  
+                            <button class="btn btn-primary btn-lg" id="btnPrueba" type="button"
+                                style="display: none;">Prueba</button>
+                            <input type="text" id="inputExistData" style="display: none;" disabled>
+                            <div class="row justify-content-center">
+            
+                            </div>
+                        </form>
+            
+                        <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                            <form>
+                                <div class="alert alert-primary" role="alert">
+                                    Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                                </div>
+                                <script src='https://checkout.epayco.co/checkout.js'
+                                    data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                                    data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                                    data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                                    data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                                    data-epayco-external='false'
+                                    data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                                    </script>
+                            </form> <!-- ================================================================== -->
+                        </div>
+                        <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                            <form>
+                                <div class="alert alert-primary" role="alert">
+                                    Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                                </div>
+                                <script src='https://checkout.epayco.co/checkout.js'
+                                    data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                                    data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                                    data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                                    data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                                    data-epayco-external='false'
+                                    data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                                    </script>
+                            </form> <!-- ================================================================== -->
+                        </div>
+                        <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                            <form>
+                                <div class="alert alert-primary" role="alert">
+                                    Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                                </div>
+                                <script src='https://checkout.epayco.co/checkout.js'
+                                    data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                                    data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                                    data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                                    data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                                    data-epayco-external='false'
+                                    data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                                    </script>
+                            </form> <!-- ================================================================== -->
+                        </div>
+                        <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                            <form>
+                                <div class="alert alert-primary" role="alert">
+                                    Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                                </div>
+                                <script src='https://checkout.epayco.co/checkout.js'
+                                    data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                                    data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                                    data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                                    data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                                    data-epayco-external='false'
+                                    data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                                    </script>
+                            </form> <!-- ================================================================== -->
+                        </div>
+                        <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                            <form>
+                                <div class="alert alert-primary" role="alert">
+                                    Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                                </div>
+                                <script src='https://checkout.epayco.co/checkout.js'
+                                    data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                                    data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                                    data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                                    data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                                    data-epayco-external='false'
+                                    data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                                    </script>
+                            </form> <!-- ================================================================== -->
+                        </div>
+                        <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                            <form>
+                                <div class="alert alert-primary" role="alert">
+                                    Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                                </div>
+                                <script src='https://checkout.epayco.co/checkout.js'
+                                    data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                                    data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                                    data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                                    data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                                    data-epayco-external='false'
+                                    data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                                    </script>
+                            </form> <!-- ================================================================== -->
+                        </div>
+                        <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                            <form>
+                                <div class="alert alert-primary" role="alert">
+                                    Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                                </div>
+                                <script src='https://checkout.epayco.co/checkout.js'
+                                    data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                                    data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                                    data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                                    data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                                    data-epayco-external='false'
+                                    data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                                    </script>
+                            </form> <!-- ================================================================== -->
+                        </div>
+                        <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                            <form>
+                                <div class="alert alert-primary" role="alert">
+                                    Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                                </div>
+                                <script src='https://checkout.epayco.co/checkout.js'
+                                    data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                                    data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                                    data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                                    data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                                    data-epayco-external='false'
+                                    data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                                    </script>
+                            </form> <!-- ================================================================== -->
+                        </div>
+                        <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                            <form>
+                                <div class="alert alert-primary" role="alert">
+                                    Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                                </div>
+                                <script src='https://checkout.epayco.co/checkout.js'
+                                    data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                                    data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                                    data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                                    data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                                    data-epayco-external='false'
+                                    data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                                    </script>
+                            </form> <!-- ================================================================== -->
+                        </div>
+                        <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                            <form>
+                                <div class="alert alert-primary" role="alert">
+                                    Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                                </div>
+                                <script src='https://checkout.epayco.co/checkout.js'
+                                    data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                                    data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                                    data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                                    data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                                    data-epayco-external='false'
+                                    data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                                    </script>
+                            </form> <!-- ================================================================== -->
+                        </div>
+                        <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                            <form>
+                                <div class="alert alert-primary" role="alert">
+                                    Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                                </div>
+                                <script src='https://checkout.epayco.co/checkout.js'
+                                    data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                                    data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                                    data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                                    data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                                    data-epayco-external='false'
+                                    data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                                    </script>
+                            </form> <!-- ================================================================== -->
+                        </div>
+                        <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                            <form>
+                                <div class="alert alert-primary" role="alert">
+                                    Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                                </div>
+                                <script src='https://checkout.epayco.co/checkout.js'
+                                    data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                                    data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                                    data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                                    data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                                    data-epayco-external='false'
+                                    data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                                    </script>
+                            </form> <!-- ================================================================== -->
+                        </div>
+                        <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
+                            <form>
+                                <div class="alert alert-primary" role="alert">
+                                    Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
+                                </div>
+                                <script src='https://checkout.epayco.co/checkout.js'
+                                    data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
+                                    data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
+                                    data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
+                                    data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
+                                    data-epayco-external='false'
+                                    data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
+                                    data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
+                                    </script>
+                            </form> <!-- ================================================================== -->
+                        </div>
+            
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="uploadfileLink" role="tabpanel" aria-labelledby="uploadfileLink-tab">
+                <div class="row justify-content-center" style="margin: 15px;">
+                    <div class="card text-center">
+                        <div class="card-header">
+                          Subir Recibo de Pago
+                        </div>
+                        <div class="card-body">
+                        <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
+                            <div class="input-group mb-3 justify-content-center">
+                                <input type="text" placeholder="Numero de Documento" class="form-control"
+                                    id="inputFileNumDocumento" required>
+                            </div>
+                        </div>
+                        <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
+                            <div class="input-group mb-3 ">
+                                <div class="custom-file justify-content-center" lang="es">
+                                    <div class="invoiceBox ">
+                                        <label for="imageFileArchivo">
+                                            <div class="boxFile uploadRecibo" data-text="Seleccionar archivo">
+                                                Seleccionar archivo
+                                            </div>
+                                        </label>
+                                        <input id="imageFileArchivo" multiple="" name="invoice[]" size="6000"
+                                            type="file"
+                                            accept="application/pdf,image/x-png,image/gif,image/jpeg,image/jpg,image/tiff">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6"
-                        style="margin-top: 5px; margin-bottom: 5px;">
-                        <div class="input-group mb-3" style="margin-bottom: 10px;">
-                            <div class="custom-file justify-content-center">
-                                <div class="invoiceBox">
-                                    <label for="imageRespaldoCedula">
-                                        <div class="boxFile RCedula" data-text="Seleccionar archivo"
-                                            style="width: 350px;">
-                                            Seleccionar la imagen del respaldo de la Cédula
-                                        </div>
-                                    </label>
-                                    <input id="imageRespaldoCedula" multiple="" name="invoice[]" size="6000" type="file"
-                                        accept="application/pdf,image/x-png,image/gif,image/jpeg,image/jpg,image/tiff">
-                                </div>
-                            </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-primary" id="btnFileSave">Guardar Cambios</button>
                         </div>
-                    </div>
-
+                        </div>
+                      </div>
                 </div>
-                <!--selfie y foto del recibo donde vive-->
-                <div class="row">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6 "
-                        style="margin-top: 5px; margin-bottom: 5px;">
-                        <div class="input-group mb-3 " style="margin-bottom: 10px;">
-                            <div class="custom-file justify-content-center" lang="es">
-                                <div class="invoiceBox ">
-                                    <label for="imageSelfiDocumento">
-                                        <div class="boxFile selfie" data-text="Seleccionar archivo"
-                                            style="width: 350px;">
-                                            Seleccionar la imagen de selfie con su Documento
-                                        </div>
-                                    </label>
-                                    <input id="imageSelfiDocumento" multiple="" name="invoice[]" size="6000" type="file"
-                                        accept="application/pdf,image/x-png,image/gif,image/jpeg,image/jpg,image/tiff">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6"
-                        style="margin-top: 5px; margin-bottom: 5px;">
-                        <div class="input-group mb-3" style="margin-bottom: 10px;">
-                            <div class="custom-file justify-content-center">
-                                <div class="invoiceBox ">
-                                    <label for="imageRecibo">
-                                        <div class="boxFile recibo" data-text="Seleccionar archivo"
-                                            style="width: 350px;">
-                                            Seleccionar la imagen del recibo donde vive
-                                        </div>
-                                    </label>
-                                    <input id="imageRecibo" multiple="" name="invoice[]" size="6000" type="file"
-                                        accept="image/jpeg,image/jpg">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Entidad financiera-->
-                <div class="row">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3 justify-content-center">
-                            <label for="" class=""><strong>Entidad financiera donde desea recibir sus pagos:</strong>
-                            </label>
-
-                        </div>
-                    </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <input type="text" placeholder="Nombre de la entidad" class="form-control"
-                                id="inputNomEntidad" required>
-
-                        </div>
-                    </div>
-                </div>
-                <!--Tipo y numero de cuenta-->
-                <div class="row">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupTCuenta">Tipo Cuenta</label>
-                            </div>
-                            <select class="custom-select" id="inputGroupTCuenta" required>
-                                <option value="">Escoger...</option>
-                                <option value="Ahorros">Ahorros</option>
-                                <option value="Corriente">Corriente</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <input type="text" placeholder="Numero de Cuenta" class="form-control" id="inputNumCuenta"
-                                required>
-
-                        </div>
-                    </div>
-                </div>
-                <!--Plazo y plan adquirido-->
-                <div class="row">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupPlazo">Plazo</label>
-                            </div>
-                            <select class="custom-select" id="inputGroupPlazo" required>
-                                <option value="">Escoger...</option>
-                                <option value="Corto Plazo">Corto Plazo</option>
-                                <option value="Mediano Plazo">Mediano Plazo</option>
-                                <option value="Largo Plazo">Largo Plazo</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupPlan">Plan</label>
-                            </div>
-                            <select class="custom-select" id="inputGroupPlan" required>
-                                <option selected>Escoger...</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <!--Aqui se genera el banner y el boton de pago-->
-                <div id="btnPago">
-                </div>
-                <!--Checkbox-->
-                <div class="row">
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-4">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheckTYC" required>
-                            <label class="custom-control-label" for="customCheckTYC">Confirmo que acepto los Términos y
-                                Condiciones del contrato
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-4">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheckAuthData" required>
-                            <label class="custom-control-label" for="customCheckAuthData">Autorizo el uso y tratamiento
-                                de mis datos personales
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-4">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheckPP" required>
-                            <label class="custom-control-label" for="customCheckPP">Confirmo que acepto la política de
-                                privacidad
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <!--Boton-->
-                <div class="row justify-content-center">
-                    <button class="btn btn-primary btn-lg" id="btnSubmit" type="submit">Enviar</button>
-                </div>
-
-
-                <button class="btn btn-primary btn-lg" id="btnPrueba" type="button"
-                    style="display: none;">Prueba</button>
-                <input type="text" id="inputExistData" style="display: none;" disabled>
-                <div class="row justify-content-center">
-
-                </div>
-            </form>
-
-            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
-                <form>
-                    <div class="alert alert-primary" role="alert">
-                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
-                    </div>
-                    <script src='https://checkout.epayco.co/checkout.js'
-                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
-                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
-                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
-                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
-                        data-epayco-external='false'
-                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
-                        </script>
-                </form> <!-- ================================================================== -->
             </div>
-            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
-                <form>
-                    <div class="alert alert-primary" role="alert">
-                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
-                    </div>
-                    <script src='https://checkout.epayco.co/checkout.js'
-                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
-                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
-                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
-                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
-                        data-epayco-external='false'
-                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
-                        </script>
-                </form> <!-- ================================================================== -->
-            </div>
-            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
-                <form>
-                    <div class="alert alert-primary" role="alert">
-                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
-                    </div>
-                    <script src='https://checkout.epayco.co/checkout.js'
-                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
-                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
-                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
-                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
-                        data-epayco-external='false'
-                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
-                        </script>
-                </form> <!-- ================================================================== -->
-            </div>
-            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
-                <form>
-                    <div class="alert alert-primary" role="alert">
-                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
-                    </div>
-                    <script src='https://checkout.epayco.co/checkout.js'
-                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
-                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
-                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
-                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
-                        data-epayco-external='false'
-                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
-                        </script>
-                </form> <!-- ================================================================== -->
-            </div>
-            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
-                <form>
-                    <div class="alert alert-primary" role="alert">
-                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
-                    </div>
-                    <script src='https://checkout.epayco.co/checkout.js'
-                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
-                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
-                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
-                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
-                        data-epayco-external='false'
-                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
-                        </script>
-                </form> <!-- ================================================================== -->
-            </div>
-            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
-                <form>
-                    <div class="alert alert-primary" role="alert">
-                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
-                    </div>
-                    <script src='https://checkout.epayco.co/checkout.js'
-                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
-                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
-                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
-                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
-                        data-epayco-external='false'
-                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
-                        </script>
-                </form> <!-- ================================================================== -->
-            </div>
-            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
-                <form>
-                    <div class="alert alert-primary" role="alert">
-                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
-                    </div>
-                    <script src='https://checkout.epayco.co/checkout.js'
-                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
-                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
-                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
-                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
-                        data-epayco-external='false'
-                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
-                        </script>
-                </form> <!-- ================================================================== -->
-            </div>
-            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
-                <form>
-                    <div class="alert alert-primary" role="alert">
-                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
-                    </div>
-                    <script src='https://checkout.epayco.co/checkout.js'
-                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
-                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
-                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
-                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
-                        data-epayco-external='false'
-                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
-                        </script>
-                </form> <!-- ================================================================== -->
-            </div>
-            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
-                <form>
-                    <div class="alert alert-primary" role="alert">
-                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
-                    </div>
-                    <script src='https://checkout.epayco.co/checkout.js'
-                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
-                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
-                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
-                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
-                        data-epayco-external='false'
-                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
-                        </script>
-                </form> <!-- ================================================================== -->
-            </div>
-            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
-                <form>
-                    <div class="alert alert-primary" role="alert">
-                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
-                    </div>
-                    <script src='https://checkout.epayco.co/checkout.js'
-                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
-                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
-                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
-                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
-                        data-epayco-external='false'
-                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
-                        </script>
-                </form> <!-- ================================================================== -->
-            </div>
-            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
-                <form>
-                    <div class="alert alert-primary" role="alert">
-                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
-                    </div>
-                    <script src='https://checkout.epayco.co/checkout.js'
-                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
-                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
-                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
-                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
-                        data-epayco-external='false'
-                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
-                        </script>
-                </form> <!-- ================================================================== -->
-            </div>
-            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
-                <form>
-                    <div class="alert alert-primary" role="alert">
-                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
-                    </div>
-                    <script src='https://checkout.epayco.co/checkout.js'
-                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
-                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
-                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
-                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
-                        data-epayco-external='false'
-                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
-                        </script>
-                </form> <!-- ================================================================== -->
-            </div>
-            <div class="row justify-content-center btnPago" style=" display: none; margin-top: 30px; ">
-                <form>
-                    <div class="alert alert-primary" role="alert">
-                        Si deseas realizar tu pago a través de ePayco, presiona el siguiente botón.
-                    </div>
-                    <script src='https://checkout.epayco.co/checkout.js'
-                        data-epayco-key='7489c917b92e42864673157635bd7673' class='epayco-button'
-                        data-epayco-amount='10000' data-epayco-tax='0' data-epayco-tax-base='5000'
-                        data-epayco-name='Plan semilla 1M' data-epayco-description='Plan semilla 1M'
-                        data-epayco-currency='cop' data-epayco-country='CO' data-epayco-test='true'
-                        data-epayco-external='false'
-                        data-epayco-response='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-confirmation='http://127.0.0.1:5500/financemarketscapital/index.html'
-                        data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn1.png'>
-                        </script>
-                </form> <!-- ================================================================== -->
-            </div>
-
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
         </div>
     </div>
+    
 </body>
 
 <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
@@ -818,10 +869,12 @@
     const registerFrom = document.getElementById('registerForm');
     const existData = document.getElementById('inputExistData');
     const btnUserCheck = document.getElementById('btnUserCheck');
-    const btnPatrocinadorCheck = document.getElementById('btnPatrocinadorCheck');
+    const selectRepresentante = document.getElementById('selectRepresentante');
     const btnVerifyEmail = document.getElementById('btnVerifyEmail');
+    const btnFileSave = document.getElementById('btnFileSave');
     const selectPlazo = document.getElementById('inputGroupPlazo');
     const selectPlan = document.getElementById('inputGroupPlan');
+    const inputFileNumDocumento = document.getElementById('inputFileNumDocumento');
     const divBtnPago = document.getElementById('btnPago');
     const btnSubmit = document.getElementById('btnSubmit2');
     const divErrors = document.getElementById('errors');
@@ -850,14 +903,26 @@
     let dat;
     let numDoc = false;
     const getUsers = () => db.collection('Users').get();
+    const getUserRepre = (callback) => db.collection("Users").where("rol", "==", "representante").onSnapshot(callback);;
     const planes = (callback) => db.collection('Planes').doc('5popKkRNj8G6bnFLxF7m').collection(plazo).orderBy(filtro, "asc").onSnapshot(callback);
     const updatePagoPlan = (id, updatePago) => db.collection('PlanesUsuarios').doc(id).update(updatePago);
+    const updateUser = (id, updateUser) => db.collection('PlanesUsuarios').doc(id).update(updateUser);
     const numRandom = () => Math.floor(Math.random() * (1000000 - 100000)) + 100000;
 
     $(document).ready(function () {
         registerFrom['inputVerifyEmail'].disabled = true;
         btnVerifyEmail.disabled = true;
         divErrors.style.display = "none";
+
+        //mostrar Representantes
+        getUserRepre((querySnapshot) => {
+            selectRepresentante.innerHTML = '<option value="">Representante</option>'
+            querySnapshot.forEach(repre => {
+                rep = repre.data();
+                selectRepresentante.innerHTML += '<option value="' + rep['usuario'] + '">' + rep['nombre'] + ' ' + rep['apellido'] + '</option>'
+            });
+        });
+
         //btnPagoForm.style.display = "none";
         //llave publica del comercio
         //Referencia de payco que viene por url
@@ -869,22 +934,22 @@
                 if (response.data.x_cod_response == 1) {
                     //Codigo personalizado
                     alert('Transaccion Aprobada');
-                    location.href ="https://financemarketscapital.com/register/";
+                    location.href = "https://financemarketscapital.com/register/";
                     //console.log('transacción aceptada');
 
                 } //Transaccion Rechazada
                 if (response.data.x_cod_response == 2) {
                     ///console.log('transacción rechazada');
-                    location.href ="https://financemarketscapital.com/register/";
+                    location.href = "https://financemarketscapital.com/register/";
                 }
                 //Transaccion Pendiente
                 if (response.data.x_cod_response == 3) {
-                    location.href ="https://financemarketscapital.com/register/";
+                    location.href = "https://financemarketscapital.com/register/";
                     //console.log('transacción pendiente');
                 }
                 //Transaccion Fallida
                 if (response.data.x_cod_response == 4) {
-                    location.href ="https://financemarketscapital.com/register/";
+                    location.href = "https://financemarketscapital.com/register/";
                     //console.log('transacción fallida');
                 }
                 //$('#fecha').html(response.data.x_transaction_date);
@@ -896,7 +961,7 @@
                 //$('#autorizacion').text(response.data.x_approval_code);
                 //$('#total').text(response.data.x_amount + ' ' + response.data.x_currency_code);
                 //console.log(response.data);
-                db.collection("PlanesUsuarios").where('cedula', "==", sessionStorage.getItem('NumDoc'))
+                db.collection("PlanesUsuarios").where('numerodocumento', "==", sessionStorage.getItem('NumDoc'))
                     .get()
                     .then(function (querySnapshot) {
                         querySnapshot.forEach(function (doc) {
@@ -907,6 +972,19 @@
                                 referencia: response.data.x_id_invoice,
                                 estadoPago: response.data.x_response
 
+                            });
+                        });
+                    })
+                    .catch(function (error) {
+                        console.log("Error getting documents: ", error);
+                    });
+                db.collection("Users").where('numerodocumento', "==", sessionStorage.getItem('NumDoc'))
+                    .get()
+                    .then(function (querySnapshot) {
+                        querySnapshot.forEach(function (doc) {
+                            datos = doc.data();
+                            updateUser(doc.id, {
+                                rol: 'inversionista'
                             });
                         });
                     })
@@ -938,12 +1016,12 @@
         existData.value == '' ? exist = false : exist = true;
     }
     // guardar usuarios
-    function saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod) {
-        db.collection('Users').doc().set({ usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod });
+    function saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol) {
+        db.collection('Users').doc().set({ usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol });
     }
     // guardar informacion del pago
-    function savePagoUser(cedula, termino, plan, estado, referencia, fechaPago, recibo, estadoPago) {
-        db.collection('PlanesUsuarios').doc().set({ cedula, termino, plan, referencia, fechaPago, recibo, estadoPago });
+    function savePagoUser(numerodocumento, termino, plan, estado, referencia, fechaPago, recibo, estadoPago) {
+        db.collection('PlanesUsuarios').doc().set({ numerodocumento, termino, plan, referencia, fechaPago, recibo, estadoPago });
     }
     // esperar a que exista la confirmacion de si existe el usuario
     function waitUser() {
@@ -1110,6 +1188,23 @@
         return datetime;
     }
     //Botenes con estilo para subir archivos
+    document.querySelector('#imageFileArchivo').addEventListener('change', function (e) {
+        var boxFile = document.querySelector('.uploadRecibo');
+        boxFile.classList.remove('attached');
+        boxFile.innerHTML = boxFile.getAttribute("data-text");
+        if (this.value != '') {
+            var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+            if (allowedExtensions.exec(this.value)) {
+                boxFile.innerHTML = e.target.files[0].name;
+                boxFile.classList.add('attached');
+            } else {
+                this.value = '';
+                alert('El archivo que intentas subir a Cédula no está permitido.\nLos archivos permitidos son .jpg, .jpeg, .png');
+                boxFile.classList.remove('attached');
+            }
+        }
+    });
+
     document.querySelector('#imageCedula').addEventListener('change', function (e) {
         var boxFile = document.querySelector('.cedula');
         boxFile.classList.remove('attached');
@@ -1182,23 +1277,6 @@
         await dataExist("usuario", registerFrom['inputUser'].value);
         setTimeout(waitUser, 2000);
     });
-    //confrimar si el patrocinador existe
-    btnPatrocinadorCheck.addEventListener('click', async (e) => {
-        if (registerFrom['inputPatrocinador'].value == '') {
-
-            await dataExist("usuario", 'principal');
-            setTimeout(waitSponsor, 2000);
-            existData.value = '';
-            exist = '';
-            datos = '';
-        } else {
-            await dataExist("usuario", registerFrom['inputPatrocinador'].value);
-            setTimeout(waitSponsor, 2000);
-            existData.value = '';
-            exist = '';
-            datos = '';
-        }
-    });
     //verificar el email
     btnVerifyEmail.addEventListener('click', (e) => {
         if (numVerify == registerFrom['inputVerifyEmail'].value) {
@@ -1211,6 +1289,36 @@
             verifyToken = false;
         }
     });
+
+    btnFileSave.addEventListener('click', (e) => {
+        let existNum = false;
+        if (inputFileNumDocumento.value == '') {
+            alert('Debe ingresar un numero de documento');
+        } else {
+            db.collection("Users").where('numerodocumento', "==", inputFileNumDocumento.value)
+                .get()
+                .then(function (querySnapshot) {
+                    querySnapshot.forEach(function (doc) {
+                        existNum = true;
+                    });
+                })
+                .catch(function (error) {
+                    console.log("Error getting documents: ", error);
+                });
+            setTimeout(function () {
+                if (!existNum) {
+                    alert('El numero de documento no se encuentra registrado');
+                } else {
+                    loadImage('imagenes/', 'recibo' + inputFileNumDocumento.value, 'imageFileArchivo');
+                    alert('El archivo se ha subido');
+                    location.reload();
+                }
+            }, 2000);
+
+        }
+
+    });
+
     //seleccionar el plan de acuerdo al plazo que hay
     selectPlazo.addEventListener('change', async (e) => {
         plazo = registerFrom['inputGroupPlazo'].value;
@@ -1256,11 +1364,11 @@
             selectCiudad.innerHTML += '<option value="Providencia y Santa Catalina Islas">Providencia y Santa Catalina Islas</option>';
             selectCiudad.innerHTML += '<option value="San Andrés">San Andrés</option>';
 
-        } else if (state == 'Bogotá D.C.'){
+        } else if (state == 'Bogotá D.C.') {
             selectCiudad.innerHTML = '<option selected>Ciudad</option>';
             selectCiudad.innerHTML += '<option value="Bogotá">Bogotá</option>';
         }
-        
+
         else {
 
             $.ajax({
@@ -1268,7 +1376,7 @@
                 type: "GET",
                 data: {
                     "$limit": 5000,
-                    "$$app_token": "GMXI98X0wZcYynTBC1aLXdoPO"
+                    "$$app_token": "Ge4372mzgJVldbIJAD3fkdjnr"
                 }
             }).done(function (data) {
                 selectCiudad.innerHTML = '<option selected>Ciudad</option>';
@@ -1299,7 +1407,7 @@
                 waitUser();
                 waitSponsor();
                 let usuario = registerFrom['inputUser'].value;
-                let patrocinador = registerFrom['inputPatrocinador'].value;
+                let patrocinador = registerFrom['selectRepresentante'].value;
                 let nombre = registerFrom['inputName'].value;
                 let apellido = registerFrom['inputLastName'].value;
                 let tipodocumento = registerFrom['inputGroupTDocumento'].value;
@@ -1321,13 +1429,14 @@
                 let estado = true;
                 let fechaRegistro = getDate();
                 let fechaMod = getDate();
+                let rol = 'usuario';
                 sessionStorage.setItem("NumDoc", numerodocumento);
                 loadImage('imagenes/', 'cedula' + numerodocumento, 'imageCedula');
                 loadImage('imagenes/', 'Respaldocedula' + numerodocumento, 'imageRespaldoCedula');
                 loadImage('imagenes/', 'selfi' + numerodocumento, 'imageSelfiDocumento');
                 loadImage('imagenes/', 'recibo' + numerodocumento, 'imageRecibo');
-                saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod);
-                savePagoUser(numerodocumento, plazo, dat['nombre'], "pendiente", "Pendiente", "Pendiente", "Pendiente","Pendiente");
+                saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol);
+                savePagoUser(numerodocumento, plazo, dat['nombre'], "pendiente", "Pendiente", "Pendiente", "Pendiente", "Pendiente");
                 alert('Se ha registrado correctamente');
                 registerFrom.reset();
                 registerFrom.style.display = "none";

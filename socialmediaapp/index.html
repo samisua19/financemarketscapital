@@ -25,6 +25,8 @@
             </th>
             <th class="th-sm"># Documento
             </th>
+            <th class="th-sm">Patrocinador
+            </th>
             <th class="th-sm">Novedad de pago
             </th>
             <th class="th-sm">Fecha Pago
@@ -42,6 +44,8 @@
             <th>Apellido
             </th>
             <th># Documento
+            </th>
+            <th>Patrocinador
             </th>
             <th>Novedad de pago
             </th>
@@ -122,7 +126,7 @@
                 console.log("Error getting documents: ", error);
             });
             setTimeout(function(){
-              consultContainer.innerHTML += '<tr> <td>'+ data['nombre'] +'</td><td>'+ data['apellido'] +'</td><td>'+ data['numerodocumento'] +'</td><td>'+ datos['estadoPago'] +'</td><td>'+ datos['fechaPago'] +'</td><td>'+ datos['recibo'] +'</td> </tr>';
+              consultContainer.innerHTML += '<tr> <td>'+ data['nombre'] +'</td><td>'+ data['apellido'] +'</td><td>'+ data['numerodocumento'] +'</td><td>'+ data['patrocinador'] +'</td><td>'+ datos['estadoPago'] +'</td><td>'+ datos['fechaPago'] +'</td><td>'+ datos['recibo'] +'</td> </tr>';
             },1000);
         }
       });
