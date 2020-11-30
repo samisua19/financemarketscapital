@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+ 
+  
+</body>
+ <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-database.js"></script>
+<script>
+      var firebaseConfig = {
+    apiKey: "AIzaSyCPvLMdAYWqdYLAZK28AbBa56mIAo1JkxU",
+    authDomain: "appfinancemarketscapital.firebaseapp.com",
+    databaseURL: "https://appfinancemarketscapital.firebaseio.com",
+    projectId: "appfinancemarketscapital",
+    storageBucket: "gs://appfinancemarketscapital.appspot.com",
+    messagingSenderId: "327823603780",
+    appId: "1:327823603780:web:506199709abac99322a411",
+    measurementId: "G-3V5TM2M89C"
+  };
+
+  // Initialize Firebase
+ 
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+  //const db =  firebase.database();
+
+var starCountRef = firebase.database().ref('/DepartamentosyCiudades/').orderByChild('MUNICIPIO');
+starCountRef.on('value', function(snapshot) {
+    snapshot.forEach(doc=>{
+      ciudades = doc.val();
+        console.log(ciudades['MUNICIPIO']);
+    })
+});
+
+  //const dbStorage = firebase.storage().ref();
+</script>
+</html>
