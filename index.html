@@ -101,23 +101,19 @@
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" id="uploadfileLink-tab" data-toggle="tab" href="#uploadfileLink" role="tab"
-                    aria-controls="uploadfileLink" aria-selected="false">Subir Archivo</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                    aria-controls="contact" aria-selected="false">Contactanos</a>
+                    aria-controls="uploadfileLink" aria-selected="false">Registrar Pago</a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="formRegister" role="tabpanel" aria-labelledby="formRegister-tab">
                 <div class="container">
                     <div class="row justify-content-center ">
-                        <div class="row">
-                            <div class="col">
-                                <h3>Formulario de Registro</h3>
-                            </div>
-                        </div>
                         <form id="registerForm" class="col-md-12">
+                            <div class="row">
+                                <div class="col" style="text-align: center;">
+                                    <h3>Formulario de Registro</h3>
+                                </div>
+                            </div>
                             <!--Banner de errores-->
                             <div class="row">
                                 <div class="col col-md-12 col-12 col-sm-12">
@@ -132,7 +128,7 @@
                             <!--Usuario y patrocinador-->
                             <div class="row ">
                                 <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                                    <div class="input-group mb-3">
+                                    <div class="input-group mb-3" style="margin-top: 10px;">
                                         <input type="text" class="form-control user " placeholder="Usuario"
                                             aria-label="User" aria-describedby="btnUserCheck" id="inputUser" required>
                                         <div class="input-group-append">
@@ -145,7 +141,11 @@
                                         <div class="user" style="height: 10px;"></div>
                                     </div>
                                 </div>
-                                <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6"
+                                    style="margin-top: -13px;">
+
+                                    <small class="form-text text-muted">Si no tiene un representante comercial asignado
+                                        haga clic aquí.</small>
                                     <div class="input-group mb-3">
                                         <select class="custom-select" id="selectRepresentante" required>
                                             <option value="">Representante</option>
@@ -197,8 +197,8 @@
                                 </div>
                                 <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                                     <div class="input-group mb-3">
-                                        <input type="text" placeholder="Numero de Documento" class="form-control"
-                                            id="inputNumDocumento" required>
+                                        <input type="text" placeholder="Numero de Documento sin puntos"
+                                            class="form-control" id="inputNumDocumento" required>
                                     </div>
                                 </div>
                             </div>
@@ -316,7 +316,9 @@
                                         <input type="password" class="form-control" placeholder="Escriba una Contraseña fuerte
                                     " id="inputPassword" minlength="8" required>
                                     </div>
-                                    <small class="form-text text-muted">Su contraseña debe ser de 8 caracteres o más,
+                                    <small class="form-text text-muted"
+                                        style="margin-top: -15px; margin-bottom: 10px;">Su contraseña debe ser de 8
+                                        caracteres o más,
                                         contener
                                         mayúsculas y números.</small>
                                 </div>
@@ -336,7 +338,8 @@
                                             <option value="Amazonas">Amazonas</option>
                                             <option value="Antioquia">Antioquía</option>
                                             <option value="Arauca">Arauca</option>
-                                            <option value="Archipiélago de San Andrés, Providencia y Santa Catalina">Archipiélago de San Andrés, Providencia y Santa Catalina</option>
+                                            <option value="Archipiélago de San Andrés, Providencia y Santa Catalina">
+                                                Archipiélago de San Andrés, Providencia y Santa Catalina</option>
                                             <option value="Atlántico">Atlántico</option>
                                             <option value="Bogotá D.C.">Bogotá D.C.</option>
                                             <option value="Bolívar">Bolívar</option>
@@ -400,7 +403,8 @@
                                         <div class="custom-file justify-content-center">
                                             <div class="invoiceBox">
                                                 <label for="imageCedula">
-                                                    <div class="boxFile cedula" data-text="Seleccionar archivo"
+                                                    <div class="boxFile cedula"
+                                                        data-text="Seleccionar la imagen de la Cédula."
                                                         style="width: 350px;">
                                                         Seleccionar la imagen de la Cédula.
                                                     </div>
@@ -418,7 +422,8 @@
                                         <div class="custom-file justify-content-center">
                                             <div class="invoiceBox">
                                                 <label for="imageRespaldoCedula">
-                                                    <div class="boxFile RCedula" data-text="Seleccionar archivo"
+                                                    <div class="boxFile RCedula"
+                                                        data-text="Seleccionar la imagen del respaldo de la Cédula"
                                                         style="width: 350px;">
                                                         Seleccionar la imagen del respaldo de la Cédula
                                                     </div>
@@ -440,7 +445,8 @@
                                         <div class="custom-file justify-content-center" lang="es">
                                             <div class="invoiceBox ">
                                                 <label for="imageSelfiDocumento">
-                                                    <div class="boxFile selfie" data-text="Seleccionar archivo"
+                                                    <div class="boxFile selfie"
+                                                        data-text="Seleccionar la imagen de selfie con su Documento"
                                                         style="width: 350px;">
                                                         Seleccionar la imagen de selfie con su Documento
                                                     </div>
@@ -818,36 +824,40 @@
                             Subir Recibo de Pago
                         </div>
                         <div class="card-body">
-                            <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
-                                <div class="input-group mb-3 justify-content-center">
-                                    <input type="text" placeholder="Numero de Documento" class="form-control"
-                                        id="inputFileNumDocumento" required>
-                                </div>
+                            <div class="container">
+                                <p>Escriba el número de su documento <br> de identidad con el que se registró en el<br>
+                                    formulario y a continuación suba el comprobante.</p>
                             </div>
-                            <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
-                                <div class="input-group mb-3 ">
-                                    <div class="custom-file justify-content-center" lang="es">
-                                        <div class="invoiceBox ">
-                                            <label for="imageFileArchivo">
-                                                <div class="boxFile uploadRecibo" data-text="Seleccionar archivo">
-                                                    Seleccionar archivo
-                                                </div>
-                                            </label>
-                                            <input id="imageFileArchivo" multiple="" name="invoice[]" size="6000"
-                                                type="file"
-                                                accept="application/pdf,image/x-png,image/gif,image/jpeg,image/jpg,image/tiff">
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
+                                    <div class="input-group mb-3 justify-content-center">
+                                        <input type="text" placeholder="Numero de Documento" class="form-control"
+                                            id="inputFileNumDocumento" required > 
+                                    </div>
+                                </div>
+                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
+                                    <div class="input-group mb-3 ">
+                                        <div class="custom-file justify-content-center" lang="es">
+                                            <div class="invoiceBox ">
+                                                <label for="imageFileArchivo">
+                                                    <div class="boxFile uploadRecibo" data-text="Seleccionar archivo" >
+                                                        Seleccionar archivo
+                                                    </div>
+                                                </label>
+                                                <input id="imageFileArchivo" multiple="" name="invoice[]" size="6000"
+                                                    type="file"
+                                                    accept="application/pdf,image/x-png,image/gif,image/jpeg,image/jpg,image/tiff" required>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" id="btnFileSave">Guardar Cambios</button>
-                            </div>
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary" id="btnFileSave">Enviar
+                                        Comprobante</button>
+                                </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
         </div>
     </div>
 
@@ -899,7 +909,7 @@
     const selectPlan = document.getElementById('inputGroupPlan');
     const inputFileNumDocumento = document.getElementById('inputFileNumDocumento');
     const divBtnPago = document.getElementById('btnPago');
-    const btnSubmit = document.getElementById('btnSubmit2');
+    //const btnSubmit = document.getElementById('btnSubmit2');
     const divErrors = document.getElementById('errors');
     const divError = document.getElementById('error');
     const selectDepartamento = document.getElementById('inputState');
@@ -1039,8 +1049,8 @@
         existData.value == '' ? exist = false : exist = true;
     }
     // guardar usuarios
-    function saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol) {
-        db.collection('Users').doc().set({ usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol });
+    function saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol,reciboPago) {
+        db.collection('Users').doc().set({ usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol, reciboPago});
     }
     // guardar informacion del pago
     function savePagoUser(numerodocumento, termino, plan, estado, referencia, fechaPago, recibo, estadoPago) {
@@ -1199,6 +1209,7 @@
                 boxFile.classList.add('attached');
             } else {
                 this.value = '';
+                boxFile.innerHTML = 'Seleccionar la imagen de la Cédula';
                 alert('El archivo que intentas subir a Cédula no está permitido.\nLos archivos permitidos son .jpg, .jpeg, .png');
                 boxFile.classList.remove('attached');
             }
@@ -1216,6 +1227,7 @@
                 boxFile.classList.add('attached');
             } else {
                 this.value = '';
+                boxFile.innerHTML = 'Seleccionar la imagen de la Cédula';
                 alert('El archivo que intentas subir a Cédula no está permitido.\nLos archivos permitidos son .jpg, .jpeg, .png');
                 boxFile.classList.remove('attached');
             }
@@ -1233,6 +1245,7 @@
                 boxFile.classList.add('attached');
             } else {
                 this.value = '';
+                boxFile.innerHTML = 'Seleccionar la imagen del respaldo de la Cédula';
                 alert('El archivo que intentas subir a Respaldo de Cédula no está permitido.\nLos archivos permitidos son .jpg, .jpeg, .png');
                 boxFile.classList.remove('attached');
             }
@@ -1250,6 +1263,7 @@
                 boxFile.classList.add('attached');
             } else {
                 this.value = '';
+                boxFile.innerHTML = 'Seleccionar la imagen de selfie con su Documento';
                 alert('El archivo que intentas subir a Selfie con Documento no está permitido.\nLos archivos permitidos son .jpg, .jpeg, .png');
                 boxFile.classList.remove('attached');
             }
@@ -1267,6 +1281,7 @@
                 boxFile.classList.add('attached');
             } else {
                 this.value = '';
+                boxFile.innerHTML = 'Seleccionar la imagen del recibo donde vive';
                 alert('El archivo que intentas subir a Recibo no está permitido.\nLos archivos permitidos son .jpg, .jpeg, .png');
                 boxFile.classList.remove('attached');
             }
@@ -1292,14 +1307,22 @@
 
     btnFileSave.addEventListener('click', (e) => {
         let existNum = false;
+        let existRec = false;
+        let idUser;
         if (inputFileNumDocumento.value == '') {
             alert('Debe ingresar un numero de documento');
+        }else if(document.querySelector('#imageFileArchivo').value == '' ){
+            alert('Debe seleccionar un archivo');
         } else {
             db.collection("Users").where('numerodocumento', "==", inputFileNumDocumento.value)
                 .get()
                 .then(function (querySnapshot) {
                     querySnapshot.forEach(function (doc) {
+                        idUser = doc.id;
                         existNum = true;
+                        if(doc.data()['reciboPago']){
+                            existRec = true;
+                        }
                     });
                 })
                 .catch(function (error) {
@@ -1308,10 +1331,15 @@
             setTimeout(function () {
                 if (!existNum) {
                     alert('El numero de documento no se encuentra registrado');
+                }else if(existRec){
+                    alert('Ya se registro un recibo con ese número de documento');
                 } else {
+                    updateUser(idUser, {
+                            reciboPago: true
+                            });
                     loadImage('imagenes/', 'recibo' + inputFileNumDocumento.value, 'imageFileArchivo');
                     alert('El archivo se ha subido');
-                    location.reload();
+                    //location.reload();
                 }
             }, 2000);
 
@@ -1370,7 +1398,7 @@
                         selectCiudad.innerHTML += '<option value="' + ciudades['MUNICIPIO'] + '">' + ciudades['MUNICIPIO'] + '</option>';
                     }
                 });
-        })
+            })
         }
     });
 
@@ -1416,12 +1444,13 @@
                 let fechaRegistro = getDate();
                 let fechaMod = getDate();
                 let rol = 'usuario';
+                let reciboPago = false;
                 sessionStorage.setItem("NumDoc", numerodocumento);
                 loadImage('imagenes/', 'cedula' + numerodocumento, 'imageCedula');
                 loadImage('imagenes/', 'Respaldocedula' + numerodocumento, 'imageRespaldoCedula');
                 loadImage('imagenes/', 'selfi' + numerodocumento, 'imageSelfiDocumento');
                 loadImage('imagenes/', 'recibo' + numerodocumento, 'imageRecibo');
-                saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol);
+                saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol,reciboPago);
                 savePagoUser(numerodocumento, plazo, dat['nombre'], "pendiente", "Pendiente", "Pendiente", "Pendiente", "Pendiente");
                 alert('Se ha registrado correctamente');
                 registerFrom.reset();
@@ -1455,6 +1484,7 @@
 
                 numVerify = numRandom();
                 let data = {
+
                     from_name: registerFrom['inputName'].value + ' ' + registerFrom['inputLastName'].value,
                     from_email: registerFrom['inputEmail'].value,
                     message: numVerify,
