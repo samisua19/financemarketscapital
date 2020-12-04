@@ -115,7 +115,7 @@
         let data = doc.data();
         let datos;
         if(data['estado']){
-          db.collection("PlanesUsuarios").where('cedula', "==", data['numerodocumento'])
+          db.collection("PlanesUsuarios").where('numerodocumento', "==", data['numerodocumento'])
             .get()
             .then(function (querySnapshot) {
                 querySnapshot.forEach(function (dat) {
