@@ -82,7 +82,7 @@
     <div class="container">
         <div class="row col-md-12">
             <div class="col" style="text-align: center; margin: 10px;">
-                <h1>Bienvenido a Finance Markets Capital</h1>
+                <h1 class="titlePage">Bienvenido a Finance Markets Capital</h1>
             </div>
         </div>
         <div class="row col-md-12">
@@ -111,7 +111,7 @@
                         <form id="registerForm" class="col-md-12">
                             <div class="row">
                                 <div class="col" style="text-align: center;">
-                                    <h3>Formulario de Registro</h3>
+                                    <h3 class="titleForm">Formulario de Registro</h3>
                                 </div>
                             </div>
                             <!--Banner de errores-->
@@ -206,7 +206,7 @@
                             <div class="row ">
                                 <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                                     <div class="input-group mb-3">
-                                        <label><strong>Fecha de Nacimiento:</strong> </label>
+                                        <label class="labels"><strong>Fecha de Nacimiento:</strong> </label>
                                         <div class="col-lg-2" style="margin-bottom: 10px;" style="margin-bottom: 10px;">
                                             <select class="custom-select" id="inputDay" required>
                                                 <option value="">Dia</option>
@@ -481,7 +481,7 @@
                             <div class="row">
                                 <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                                     <div class="input-group mb-3 justify-content-center">
-                                        <label for="" class=""><strong>Entidad financiera donde desea recibir sus
+                                        <label for="" class="labels"><strong>Entidad financiera donde desea recibir sus
                                                 pagos:</strong>
                                         </label>
 
@@ -979,22 +979,22 @@
                 if (response.data.x_cod_response == 1) {
                     //Codigo personalizado
                     alert('Transaccion Aprobada');
-                    location.href = "https://financemarketscapital.com/register/";
+                    location.href = "https://financemarketscapital.com";
                     //console.log('transacción aceptada');
 
                 } //Transaccion Rechazada
                 if (response.data.x_cod_response == 2) {
                     ///console.log('transacción rechazada');
-                    location.href = "https://financemarketscapital.com/register/";
+                    location.href = "https://financemarketscapital.com";
                 }
                 //Transaccion Pendiente
                 if (response.data.x_cod_response == 3) {
-                    location.href = "https://financemarketscapital.com/register/";
+                    location.href = "https://financemarketscapital.com";
                     //console.log('transacción pendiente');
                 }
                 //Transaccion Fallida
                 if (response.data.x_cod_response == 4) {
-                    location.href = "https://financemarketscapital.com/register/";
+                    location.href = "https://financemarketscapital.com";
                     //console.log('transacción fallida');
                 }
                 //$('#fecha').html(response.data.x_transaction_date);
@@ -1351,7 +1351,7 @@
                     });
                     loadImage('imagenes/', 'recibo' + inputFileNumDocumento.value, 'imageFileArchivo');
                     alert('El archivo se ha subido');
-                    //location.reload();
+                    location.href = "https://financemarketscapital.com";
                 }
             }, 2000);
 
