@@ -828,32 +828,44 @@
                                 <p>Escriba el número de su documento <br> de identidad con el que se registró en el<br>
                                     formulario y a continuación suba el comprobante.</p>
                             </div>
-                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
-                                    <div class="input-group mb-3 justify-content-center">
-                                        <input type="text" placeholder="Numero de Documento" class="form-control"
-                                            id="inputFileNumDocumento" required > 
-                                    </div>
+                            <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
+                                <div class="input-group mb-3 justify-content-center">
+                                    <input type="text" placeholder="Numero de Documento" class="form-control"
+                                        id="inputFileNumDocumento" required>
                                 </div>
-                                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
-                                    <div class="input-group mb-3 ">
-                                        <div class="custom-file justify-content-center" lang="es">
-                                            <div class="invoiceBox ">
-                                                <label for="imageFileArchivo">
-                                                    <div class="boxFile uploadRecibo" data-text="Seleccionar archivo" >
-                                                        Seleccionar archivo
-                                                    </div>
-                                                </label>
-                                                <input id="imageFileArchivo" multiple="" name="invoice[]" size="6000"
-                                                    type="file"
-                                                    accept="application/pdf,image/x-png,image/gif,image/jpeg,image/jpg,image/tiff" required>
-                                            </div>
+                            </div>
+                            <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
+                                <div class="input-group mb-3 ">
+                                    <div class="custom-file justify-content-center" lang="es">
+                                        <div class="invoiceBox ">
+                                            <label for="imageFileArchivo">
+                                                <div class="boxFile uploadRecibo" data-text="Seleccionar archivo">
+                                                    Seleccionar archivo
+                                                </div>
+                                            </label>
+                                            <input id="imageFileArchivo" multiple="" name="invoice[]" size="6000"
+                                                type="file"
+                                                accept="application/pdf,image/x-png,image/gif,image/jpeg,image/jpg,image/tiff"
+                                                required>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <button type="submit" class="btn btn-primary" id="btnFileSave">Enviar
-                                        Comprobante</button>
+                            </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary" id="btnFileSave">Enviar
+                                    Comprobante</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container" style="margin: 15px;">
+                        <div class="row justify-content-center">
+                            <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                                <div class="alert alert-primary" role="alert" style="text-align: center;">
+                                    <a href="mailto:contacto@financemarketscapital.com" class="alert-link">Sí tiene
+                                        cualquier dificultad ó pregunta escriba al correo:
+                                        contacto@financemarketscapital.com</a>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1049,8 +1061,8 @@
         existData.value == '' ? exist = false : exist = true;
     }
     // guardar usuarios
-    function saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol,reciboPago) {
-        db.collection('Users').doc().set({ usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol, reciboPago});
+    function saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol, reciboPago) {
+        db.collection('Users').doc().set({ usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol, reciboPago });
     }
     // guardar informacion del pago
     function savePagoUser(numerodocumento, termino, plan, estado, referencia, fechaPago, recibo, estadoPago) {
@@ -1311,7 +1323,7 @@
         let idUser;
         if (inputFileNumDocumento.value == '') {
             alert('Debe ingresar un numero de documento');
-        }else if(document.querySelector('#imageFileArchivo').value == '' ){
+        } else if (document.querySelector('#imageFileArchivo').value == '') {
             alert('Debe seleccionar un archivo');
         } else {
             db.collection("Users").where('numerodocumento', "==", inputFileNumDocumento.value)
@@ -1320,7 +1332,7 @@
                     querySnapshot.forEach(function (doc) {
                         idUser = doc.id;
                         existNum = true;
-                        if(doc.data()['reciboPago']){
+                        if (doc.data()['reciboPago']) {
                             existRec = true;
                         }
                     });
@@ -1331,12 +1343,12 @@
             setTimeout(function () {
                 if (!existNum) {
                     alert('El numero de documento no se encuentra registrado');
-                }else if(existRec){
+                } else if (existRec) {
                     alert('Ya se registro un recibo con ese número de documento');
                 } else {
                     updateUser(idUser, {
-                            reciboPago: true
-                            });
+                        reciboPago: true
+                    });
                     loadImage('imagenes/', 'recibo' + inputFileNumDocumento.value, 'imageFileArchivo');
                     alert('El archivo se ha subido');
                     //location.reload();
@@ -1374,7 +1386,9 @@
                     divBtnPago.innerHTML += '<div class="row justify-content-center"><div class="col">' +
                         '<div class="alert alert-success" role="alert" >' +
                         '<h4 class="alert-heading">Plan a ' + plazo + '</h4>' +
-                        '<p>Estas a punto de adquirir un ' + dat['nombre'] + ' a ' + plazo + ', el porcentaje de ganacia es ' + dat['porcentaje'] + '% al mes y una permanencia de ' + dat['retiro'] + '. Una vez envíe su documentación realizaremos un diagnóstico financiero y de riesgo y  en un plazo de 72 horas hábiles se le enviará un correo electrónico con las indicaciones para continuar con el proceso.</p></div></div></div>'
+                        '<p>De acuerdo con el resultado generado en el diagnóstico financiero y de riesgos, su portafolio de inversión será ' + dat['nombre'] + ' a ' + plazo + ', con un porcentaje nominal mensual de  ' + dat['porcentaje'] + '%, nuestro pacto de permanencia convenido es de 60 días para portafolios de corto y mediano plazo y de 90 días para portafolios de largo plazo. En un plazo de 72 horas hábiles estaremos informando por cualquier medio de comunicación el estado de su afiliación, con las indicaciones para continuar con su proceso de incorporación. Muchas gracias y Bienvenido a la Sociedad Administradora de Fondos de Inversión Colectiva abierto con pacto de Permanencia "Finance Markets Capital S.A"</p>'
+                        +
+                        '</div></div></div>'
                     ' <hr>';
                 });
             })
@@ -1450,7 +1464,7 @@
                 loadImage('imagenes/', 'Respaldocedula' + numerodocumento, 'imageRespaldoCedula');
                 loadImage('imagenes/', 'selfi' + numerodocumento, 'imageSelfiDocumento');
                 loadImage('imagenes/', 'recibo' + numerodocumento, 'imageRecibo');
-                saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol,reciboPago);
+                saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol, reciboPago);
                 savePagoUser(numerodocumento, plazo, dat['nombre'], "pendiente", "Pendiente", "Pendiente", "Pendiente", "Pendiente");
                 alert('Se ha registrado correctamente');
                 registerFrom.reset();
