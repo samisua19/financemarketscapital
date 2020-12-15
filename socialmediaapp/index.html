@@ -33,6 +33,8 @@
             </th>
             <th class="th-sm"># Recibo
             </th>
+            <th class="th-sm">Ver Usuario
+            </th>
           </tr>
         </thead>
         <tbody id="myTable">
@@ -52,6 +54,8 @@
             <th>Fecha Pago
             </th>
             <th># Recibo
+            </th>
+            <th>Ver Usuario
             </th>
           </tr>
         </tfoot>
@@ -176,38 +180,38 @@
               <div class="row justify-content-center" style="margin-top: 20px;">
                 <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="flexRadioRol" id="flexRadioRol1">
+                    <label class="form-check-label" for="flexRadioRol1">
                       Usuario
                     </label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="flexRadioRol" id="flexRadioRol2">
+                    <label class="form-check-label" for="flexRadioRol2">
                       Inversionista
                     </label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="flexRadioRol" id="flexRadioRol3">
+                    <label class="form-check-label" for="flexRadioRol3">
                       Representante
                     </label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="flexRadioRol" id="flexRadioRol4">
+                    <label class="form-check-label" for="flexRadioRol4">
                       Financiero
                     </label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="flexRadioRol" id="flexRadioRol5">
+                    <label class="form-check-label" for="flexRadioRol5">
                       Juridico
                     </label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="flexRadioRol" id="flexRadioRol6">
+                    <label class="form-check-label" for="flexRadioRol6">
                       Comercial
                     </label>
                   </div>
@@ -216,14 +220,14 @@
               <div class="row justify-content-center" style="margin-top: 20px;">
                 <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="flexRadioStatus" id="flexRadioStatus1">
+                    <label class="form-check-label" for="flexRadioStatus1">
                       Activado
                     </label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="flexRadioStatus" id="flexRadioStatus2">
+                    <label class="form-check-label" for="flexRadioStatus2">
                       Desactivado
                     </label>
                   </div>
@@ -272,8 +276,8 @@
   const dbStorage = firebase.storage().ref();
 
   $(document).ready(function () {
-    //tableData.DataTable();
-    setTimeout(function () { getUsers(); }, 3000)
+    //tableData.DataTable()
+    getUsers();
     $('#tablePlanes').DataTable();
 
     //
@@ -283,6 +287,8 @@
   const tableData = document.getElementById('tableUsers');
   const btnPrueba = document.getElementById('btnPrueba');
   const onGetUsers = (callback) => db.collection("Users").orderBy("fechaRegistro", "desc").onSnapshot(callback);
+  const getUser = (id) => db.collection("Users").doc(id).get();
+  const formUser = document.getElementById('formUser');
 
   function getUsers() {
     onGetUsers((querySnapshot) => {
@@ -302,8 +308,26 @@
               console.log("Error getting documents: ", error);
             });
           setTimeout(function () {
-            consultContainer.innerHTML += '<tr> <td>' + data['nombre'] + '</td><td>' + data['apellido'] + '</td><td>' + data['numerodocumento'] + '</td><td>' + data['patrocinador'] + '</td><td>' + datos['estadoPago'] + '</td><td>' + datos['fechaPago'] + '</td><td>' + datos['recibo'] + '</td> </tr>';
+            consultContainer.innerHTML += '<tr> <td>' + data['nombre'] + '</td><td>' + data['apellido'] + '</td><td>' + data['numerodocumento'] + '</td><td>' + data['patrocinador'] + '</td><td>' + datos['estadoPago'] + '</td><td>' + datos['fechaPago'] + '</td><td>' + datos['recibo'] + '</td> <td><button class ="btn btn-primary btn-sm btnSearchUser" data-id = "' + doc.id + '">Ver Usuario</button></td> </tr>';
+            const btnSearchUser = document.querySelectorAll('.btnSearchUser');
+            btnSearchUser.forEach(btn => {
+              btn.addEventListener('click', async (e) => {
+                const doc = await getUser(e.target.dataset.id);
+                let user = doc.data();
+                formUser['inputName'].value = user['nombre'];
+                $('#spanTipoDoc').text(user['tipodocumento']);
+                formUser['inputTipoDoc'].value = user['numerodocumento'];
+                formUser['inputRepresentante'].value = user['patrocinador'];
+                formUser['inputEmail'].value = user['correo'];
+                formUser['inputDateRegister'].value = user['fechaRegistro'];
+                formUser['inputNumber'].value = user['numero'];
+                rolUser(user['rol']);
+                statusUser(user['estado']);
+                console.log(doc.data());
+              });
+            });
           }, 1000);
+
         }
       });
       setTimeout(function () {
@@ -311,6 +335,38 @@
       }, 1500);
     });
   }
+
+  function rolUser(rol) {
+    if (rol == 'usuario') {
+      $('#flexRadioRol1').prop("checked", true);
+    }
+    if (rol == 'inversionista') {
+      $('#flexRadioRol2').prop("checked", true);
+    }
+    if (rol == 'representante') {
+      $('#flexRadioRol3').prop("checked", true);
+    }
+    if (rol == 'financiero') {
+      $('#flexRadioRol4').prop("checked", true);
+    }
+    if (rol == 'juridico') {
+      $('#flexRadioRol5').prop("checked", true);
+    }
+    if (rol == 'comercial') {
+      $('#flexRadioRol6').prop("checked", true);
+    }
+  }
+
+  function statusUser(status) {
+    if (status == true) {
+      $('#flexRadioStatus1').prop("checked", true);
+    }
+    if (status == false) {
+      $('#flexRadioStatus2').prop("checked", true);
+    }
+  }
+
+
 
 
 
