@@ -61,11 +61,15 @@
         </tfoot>
       </table>
     </div>
-    <div class="container" style="margin-top: 20px; margin-bottom: 40px; display: none;" id="containerUserForm">
-      <div class="row col-md-12 justify-content-center">
+    <div class="" style="margin-top: 20px; margin-bottom: 40px; display: none;  " id="containerUserForm">
+      <div class="row col-md-12  justify-content-center">
         <div class="card text-center">
           <div class="card-header">
-            <h4>Perfil de Usuario</h4>
+            <h4 style="
+            font-size: 20px;
+            margin-bottom: 0px;
+            margin-top: 0px;
+        ">Perfil de Usuario</h4>
           </div>
           <div class="card-body">
             <form class="col-md-12" id="formUser">
@@ -149,14 +153,14 @@
                   </tfoot>
                 </table>
               </div>
-              <div class="row justify-content-center" style="margin-top: 20px;">
+              <div class="row justify-content-center" style="margin-top: 30px; margin-left: -35px;">
                 <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
                   <div class="btn-group me-2 " role="group" aria-label="Second group">
-                    <button type="button" class="btn btn-secondary" id="btnDocument">Documento</button>
-                    <button type="button" class="btn btn-secondary" id="btnRespaldo">Respaldo</button>
-                    <button type="button" class="btn btn-secondary" id="btnSelfie">Selfie</button>
-                    <button type="button" class="btn btn-secondary" id="btnRecibo">Recibo Casa</button>
-                    <button type="button" class="btn btn-secondary" id="btnReciboPago">Recibo Pago</button>
+                    <button type="button" class="btn btn-secondary btn-sm" id="btnDocument">Documento</button>
+                    <button type="button" class="btn btn-secondary btn-sm" id="btnRespaldo">Respaldo</button>
+                    <button type="button" class="btn btn-secondary btn-sm" id="btnSelfie">Selfie</button>
+                    <button type="button" class="btn btn-secondary btn-sm" id="btnRecibo">Recibo Domicilio</button>
+                    <button type="button" class="btn btn-secondary btn-sm" id="btnReciboPago">Recibo Pago</button>
                   </div>
                 </div>
               </div>
@@ -205,13 +209,13 @@
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="flexRadioStatus" id="flexRadioStatus1">
                     <label class="form-check-label" for="flexRadioStatus1">
-                      Activado
+                      Activo
                     </label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="flexRadioStatus" id="flexRadioStatus2">
                     <label class="form-check-label" for="flexRadioStatus2">
-                      Desactivado
+                      Inactivo
                     </label>
                   </div>
                 </div>
@@ -285,7 +289,7 @@
   const btnRecibo = document.getElementById('btnRecibo');
   const btnReciboPago = document.getElementById('btnReciboPago');
 
-  let fechaPag;
+  let referencia;
 
   function getUsers() {
     onGetUsers((querySnapshot) => {
@@ -305,7 +309,7 @@
               console.log("Error getting documents: ", error);
             });
           setTimeout(function () {
-            tableUsers.innerHTML += '<tr> <td>' + data['nombre'] + '</td><td>' + data['apellido'] + '</td><td>' + data['numerodocumento'] + '</td><td>' + data['patrocinador'] + '</td><td>' + datos['estadoPago'] + '</td><td>' + datos['fechaPago'] + '</td><td>' + datos['recibo'] + '</td> <td><button class ="btn btn-primary btn-sm btnSearchUser" data-id = "' + doc.id + '">Ver Usuario</button></td> </tr>';
+            tableUsers.innerHTML += '<tr> <td>' + data['nombre'] + '</td><td>' + data['apellido'] + '</td><td>' + data['numerodocumento'] + '</td><td>' + data['patrocinador'] + '</td><td>' + datos['estadoPago'] + '</td><td>' + datos['fechaPago'] + '</td><td>' + datos['recibo'] + '</td> <td><button class ="btn btn-primary  btnSearchUser" data-id = "' + doc.id + '">Ver Usuario</button></td> </tr>';
             const btnSearchUser = document.querySelectorAll('.btnSearchUser');
             btnSearchUser.forEach(btn => {
               btn.addEventListener('click', async (e) => {
@@ -319,6 +323,7 @@
                   .then(function (querySnapshot) {
                     querySnapshot.forEach(function (dat) {
                       planes = dat.data();
+                      planes['referencia'] == 'Pendiente' ? btnReciboPago.disabled = true : btnReciboPago.disabled = false;
                     });
                   })
                   .catch(function (error) {
@@ -327,11 +332,8 @@
                 setTimeout(function () {
                   tablePlanes.innerHTML = '';
                   tablePlanes.innerHTML += '<td>' + planes['termino'] + '</td><td>' + planes['plan'] + '</td><td>' + planes['fechaPago'] + '</td>';
-                  fechaPag =  planes['fechaPago'];
+                  referencia = planes['referencia'];
                 }, 1000);
-                setTimeout(function () {
-                  $('#tablePlan').DataTable();
-                }, 1500);
 
               });
             });
@@ -340,7 +342,11 @@
         }
       });
       setTimeout(function () {
-        $('#tableUsers').DataTable();
+        $('#tableUsers').DataTable({
+          "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+          }
+        });
       }, 1500);
     });
   }
@@ -352,20 +358,20 @@
     tablePlanes.innerHTML = '';
   });
 
-  btnDocument.addEventListener('click', (e) =>{
-    getUrlImage('cedula'+formUser['inputTipoDoc'].value);
+  btnDocument.addEventListener('click', (e) => {
+    getUrlImage('cedula' + formUser['inputTipoDoc'].value);
   });
-  btnRespaldo.addEventListener('click', (e) =>{
-    getUrlImage('Respaldocedula'+formUser['inputTipoDoc'].value);
+  btnRespaldo.addEventListener('click', (e) => {
+    getUrlImage('Respaldocedula' + formUser['inputTipoDoc'].value);
   });
-  btnSelfie.addEventListener('click', (e) =>{
-    getUrlImage('selfi'+formUser['inputTipoDoc'].value);
+  btnSelfie.addEventListener('click', (e) => {
+    getUrlImage('selfi' + formUser['inputTipoDoc'].value);
   });
-  btnRecibo.addEventListener('click', (e) =>{
-    getUrlImage('recibo'+formUser['inputTipoDoc'].value);
+  btnRecibo.addEventListener('click', (e) => {
+    getUrlImage('recibo' + formUser['inputTipoDoc'].value);
   });
-  btnReciboPago.addEventListener('click', (e) =>{
-    getUrlImage('reciboPago'+formUser['inputTipoDoc'].value+fechaPag);
+  btnReciboPago.addEventListener('click', (e) => {
+    getUrlImage('reciboPago' + formUser['inputTipoDoc'].value + referencia);
   });
 
 
@@ -401,7 +407,7 @@
   }
 
   function showUser(user) {
-    formUser['inputName'].value = user['nombre'];
+    formUser['inputName'].value = user['nombre']+' '+ user['apellido'];
     $('#spanTipoDoc').text(user['tipodocumento']);
     formUser['inputTipoDoc'].value = user['numerodocumento'];
     formUser['inputRepresentante'].value = user['patrocinador'];
@@ -414,17 +420,17 @@
 
   function getUrlImage(nameImage) {
     let token;
-      $.ajax({
-        url: "https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/imagenes%2F" + nameImage,
-        type: "GET"
-      }).done(function (data) {
-        token = data.downloadTokens;
-      });
-      urli = "https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/imagenes%2F" + nameImage + "?alt=media&token=" + token;
-      //console.log(urli);
-      window.open(urli, "Diseño Web")
-    }
-  
+    $.ajax({
+      url: "https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/imagenes%2F" + nameImage,
+      type: "GET"
+    }).done(function (data) {
+      token = data.downloadTokens;
+    });
+    urli = "https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/imagenes%2F" + nameImage + "?alt=media&token=" + token;
+    //console.log(urli);
+    window.open(urli, "Diseño Web")
+  }
+
 
 </script>
 
