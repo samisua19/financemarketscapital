@@ -174,7 +174,7 @@
                                 <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" for="inputGroupTDocumento">Tipo
+                                            <label class="input-group-text labels" for="inputGroupTDocumento">Tipo
                                                 Documento</label>
                                         </div>
                                         <select class="custom-select" id="inputGroupTDocumento" required>
@@ -206,7 +206,7 @@
                             <div class="row ">
                                 <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                                     <div class="input-group mb-3">
-                                        <label class="labels"><strong>Fecha de Nacimiento:</strong> </label>
+                                        <label class=""><strong>Fecha de Nacimiento:</strong> </label>
                                         <div class="col-lg-2" style="margin-bottom: 10px;" style="margin-bottom: 10px;">
                                             <select class="custom-select" id="inputDay" required>
                                                 <option value="">Dia</option>
@@ -317,7 +317,7 @@
                                     " id="inputPassword" minlength="8" required>
                                     </div>
                                     <small class="form-text text-muted"
-                                        style="margin-top: -15px; margin-bottom: 10px;">Su contraseña debe ser de 8
+                                        style="margin-top: -10px; margin-bottom: 10px;">Su contraseña debe ser de 8
                                         caracteres o más,
                                         contener
                                         mayúsculas y números.</small>
@@ -402,7 +402,7 @@
                                     <div class="input-group mb-3">
                                         <div class="custom-file justify-content-center">
                                             <div class="invoiceBox">
-                                                <label for="imageCedula">
+                                                <label for="imageCedula" class="labels">
                                                     <div class="boxFile cedula"
                                                         data-text="Seleccionar la imagen de la Cédula."
                                                         style="width: 350px;">
@@ -421,7 +421,7 @@
                                     <div class="input-group mb-3" style="margin-bottom: 10px;">
                                         <div class="custom-file justify-content-center">
                                             <div class="invoiceBox">
-                                                <label for="imageRespaldoCedula">
+                                                <label for="imageRespaldoCedula" class="labels">
                                                     <div class="boxFile RCedula"
                                                         data-text="Seleccionar la imagen del respaldo de la Cédula"
                                                         style="width: 350px;">
@@ -444,7 +444,7 @@
                                     <div class="input-group mb-3 " style="margin-bottom: 10px;">
                                         <div class="custom-file justify-content-center" lang="es">
                                             <div class="invoiceBox ">
-                                                <label for="imageSelfiDocumento">
+                                                <label for="imageSelfiDocumento" class="labels">
                                                     <div class="boxFile selfie"
                                                         data-text="Seleccionar la imagen de selfie con su Documento"
                                                         style="width: 350px;">
@@ -464,7 +464,7 @@
                                     <div class="input-group mb-3" style="margin-bottom: 10px;">
                                         <div class="custom-file justify-content-center">
                                             <div class="invoiceBox ">
-                                                <label for="imageRecibo">
+                                                <label for="imageRecibo" class="labels">
                                                     <div class="boxFile recibo" data-text="Seleccionar archivo"
                                                         style="width: 350px;">
                                                         Seleccionar la imagen del recibo donde vive
@@ -481,7 +481,7 @@
                             <div class="row">
                                 <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                                     <div class="input-group mb-3 justify-content-center">
-                                        <label for="" class="labels"><strong>Entidad financiera donde desea recibir sus
+                                        <label for="" class=""><strong>Entidad financiera donde desea recibir sus
                                                 pagos:</strong>
                                         </label>
 
@@ -535,7 +535,7 @@
                                 <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" for="inputGroupPlan">Plan</label>
+                                            <label class="input-group-text labels" for="inputGroupPlan">Plan</label>
                                         </div>
                                         <select class="custom-select" id="inputGroupPlan" required>
                                             <option selected>Escoger...</option>
@@ -830,8 +830,14 @@
                             </div>
                             <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
                                 <div class="input-group mb-3 justify-content-center">
-                                    <input type="text" placeholder="Numero de Documento" class="form-control"
+                                    <input type="text" placeholder="Número de identificación" class="form-control"
                                         id="inputFileNumDocumento" required>
+                                </div>
+                            </div>
+                            <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
+                                <div class="input-group mb-3 justify-content-center">
+                                    <input type="text" placeholder="Número Referencia de Pago" class="form-control"
+                                        id="inputFileNumRefPago" required>
                                 </div>
                             </div>
                             <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
@@ -861,9 +867,9 @@
                         <div class="row justify-content-center">
                             <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                                 <div class="alert alert-primary" role="alert" style="text-align: center;">
-                                    <a href="mailto:contacto@financemarketscapital.com" class="alert-link">Sí tiene
+                                    <a href="mailto:contacto@correo.financemarketscapital.com" class="alert-link">Sí tiene
                                         cualquier dificultad ó pregunta escriba al correo:
-                                        contacto@financemarketscapital.com</a>
+                                        contacto@correo.financemarketscapital.com</a>
                                 </div>
                             </div>
                         </div>
@@ -920,6 +926,7 @@
     const selectPlazo = document.getElementById('inputGroupPlazo');
     const selectPlan = document.getElementById('inputGroupPlan');
     const inputFileNumDocumento = document.getElementById('inputFileNumDocumento');
+    const inputFileNumRefPago = document.getElementById('inputFileNumRefPago');
     const divBtnPago = document.getElementById('btnPago');
     //const btnSubmit = document.getElementById('btnSubmit2');
     const divErrors = document.getElementById('errors');
@@ -1209,6 +1216,13 @@
             + currentdate.getSeconds();
         return datetime;
     }
+    function getDateRecibo() {
+        var currentdate = new Date();
+        var datetime = currentdate.getDate() + "-"
+            + (currentdate.getMonth() + 1) + "-"
+            + currentdate.getFullYear()
+        return datetime;
+    }
     //Botenes con estilo para subir archivos
     document.querySelector('#imageFileArchivo').addEventListener('change', function (e) {
         var boxFile = document.querySelector('.uploadRecibo');
@@ -1321,8 +1335,8 @@
         let existNum = false;
         let existRec = false;
         let idUser;
-        if (inputFileNumDocumento.value == '') {
-            alert('Debe ingresar un numero de documento');
+        if (inputFileNumDocumento.value == ''|| inputFileNumRefPago.value == '') {
+            alert('Debe completar los campos');
         } else if (document.querySelector('#imageFileArchivo').value == '') {
             alert('Debe seleccionar un archivo');
         } else {
@@ -1343,13 +1357,25 @@
             setTimeout(function () {
                 if (!existNum) {
                     alert('El numero de documento no se encuentra registrado');
-                } else if (existRec) {
-                    alert('Ya se registro un recibo con ese número de documento');
                 } else {
                     updateUser(idUser, {
                         reciboPago: true
                     });
-                    loadImage('imagenes/', 'recibo' + inputFileNumDocumento.value, 'imageFileArchivo');
+                    db.collection("PlanesUsuarios").where('numerodocumento', "==",  inputFileNumDocumento.value)
+                    .get()
+                    .then(function (querySnapshot) {
+                        querySnapshot.forEach(function (doc) {
+                            datos = doc.data();
+                            updatePagoPlan(doc.id, {
+                                fechaPago: getDate(),
+                                referencia: inputFileNumRefPago.value,
+                            });
+                        });
+                    })
+                    .catch(function (error) {
+                        console.log("Error getting documents: ", error);
+                    });
+                    loadImage('imagenes/', 'reciboPago' + inputFileNumDocumento.value + inputFileNumRefPago.value, 'imageFileArchivo');
                     alert('El archivo se ha subido');
                     location.href = "https://financemarketscapital.com";
                 }
