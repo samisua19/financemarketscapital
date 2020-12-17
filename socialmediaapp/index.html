@@ -137,6 +137,8 @@
                       </th>
                       <th class="th-sm">Fecha compra
                       </th>
+                      <th class="th-sm">Ver Recibo
+                      </th>
                     </tr>
                   </thead>
                   <tbody id="tablePlanes">
@@ -147,6 +149,8 @@
                     <th>Plan
                     </th>
                     <th>Fecha compra
+                    </th>
+                    <th>Ver Recibo
                     </th>
                   </tr>
                   <tfoot>
@@ -160,7 +164,6 @@
                     <button type="button" class="btn btn-secondary btn-sm" id="btnRespaldo">Respaldo</button>
                     <button type="button" class="btn btn-secondary btn-sm" id="btnSelfie">Selfie</button>
                     <button type="button" class="btn btn-secondary btn-sm" id="btnRecibo">Recibo Domicilio</button>
-                    <button type="button" class="btn btn-secondary btn-sm" id="btnReciboPago">Recibo Pago</button>
                   </div>
                 </div>
               </div>
@@ -225,6 +228,7 @@
           <div class="card-footer text-muted">
             <div class="row justify-content-center">
               <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
+                <button type="button" class="btn btn-warning" id="btnGuardar">Guardar</button>
                 <button type="button" class="btn btn-warning" id="btnCerrar">Cerrar</button>
               </div>
             </div>
@@ -268,10 +272,15 @@
   const dbStorage = firebase.storage().ref();
 
   $(document).ready(function () {
-    //tableData.DataTable()
     getUsers();
-
-    //
+    setTimeout(function () {
+        //$('#tableUsers').destroy();
+        $('#tableUsers').DataTable({
+          "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+          }
+        });
+      }, 2000);
   });
 
   const tableUsers = document.getElementById('myTable');
@@ -280,21 +289,31 @@
   const btnPrueba = document.getElementById('btnPrueba');
   const containerUserForm = document.getElementById('containerUserForm');
   const onGetUsers = (callback) => db.collection("Users").orderBy("fechaRegistro", "desc").onSnapshot(callback);
+  const updateUser = (id, updateUser) => db.collection('Users').doc(id).update(updateUser);
   const getUser = (id) => db.collection("Users").doc(id).get();
   const formUser = document.getElementById('formUser');
   const btnCerrar = document.getElementById('btnCerrar');
+  const btGuardar = document.getElementById('btGuardar');
   const btnDocument = document.getElementById('btnDocument');
   const btnRespaldo = document.getElementById('btnRespaldo');
   const btnSelfie = document.getElementById('btnSelfie');
   const btnRecibo = document.getElementById('btnRecibo');
-  const btnReciboPago = document.getElementById('btnReciboPago');
-
+  const flexRadioRol1 = document.getElementById('flexRadioRol1');
+  const flexRadioRol2 = document.getElementById('flexRadioRol2');
+  const flexRadioRol3 = document.getElementById('flexRadioRol3');
+  const flexRadioRol4 = document.getElementById('flexRadioRol4');
+  const flexRadioRol5 = document.getElementById('flexRadioRol5');
+  const flexRadioRol6 = document.getElementById('flexRadioRol6');
+  const flexRadioStatus1 = document.getElementById('flexRadioStatus1');
+  const flexRadioStatus2 = document.getElementById('flexRadioStatus2');
   let referencia;
+  let idUser;
 
   function getUsers() {
     onGetUsers((querySnapshot) => {
       tableUsers.innerHTML = '';
       querySnapshot.forEach(doc => {
+        
         let data = doc.data();
         let datos;
         if (data['estado']) {
@@ -317,13 +336,14 @@
                 const doc = await getUser(e.target.dataset.id);
                 let user = doc.data();
                 let planes;
+                idUser = doc.id;
                 showUser(user);
                 db.collection("PlanesUsuarios").where('numerodocumento', "==", user['numerodocumento'])
                   .get()
                   .then(function (querySnapshot) {
                     querySnapshot.forEach(function (dat) {
                       planes = dat.data();
-                      planes['referencia'] == 'Pendiente' ? btnReciboPago.disabled = true : btnReciboPago.disabled = false;
+                      //planes['referencia'] == 'Pendiente' ? btnReciboPago.disabled = true : btnReciboPago.disabled = false;
                     });
                   })
                   .catch(function (error) {
@@ -331,25 +351,28 @@
                   });
                 setTimeout(function () {
                   tablePlanes.innerHTML = '';
-                  tablePlanes.innerHTML += '<td>' + planes['termino'] + '</td><td>' + planes['plan'] + '</td><td>' + planes['fechaPago'] + '</td>';
+                  tablePlanes.innerHTML += '<tr><td>' + planes['termino'] + '</td><td>' + planes['plan'] + '</td><td>' + planes['fechaPago'] + '</td> <td><button class ="btn btn-secondary  btnSearchRecibo" data-image = "' + user['numerodocumento'] + planes['referencia'] + '">Ver Recibo</button></td></tr>';
+                  const btnSearchRecibo = document.querySelectorAll('.btnSearchRecibo');
+                  btnSearchRecibo.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                      console.log(e.target.dataset.nameImage);
+                      e.preventDefault();
+                      planes['referencia'] == 'Pendiente'? alert('No hay un recibo para este portafolio') : getUrlImage('reciboPago' + e.target.dataset.image);
+                    });
+                  });
                   referencia = planes['referencia'];
                 }, 1000);
 
               });
             });
-          }, 500);
-
+          }, 1000);
+          
         }
       });
-      setTimeout(function () {
-        $('#tableUsers').DataTable({
-          "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-          }
-        });
-      }, 1500);
+      
     });
   }
+
 
 
   btnCerrar.addEventListener('click', function () {
@@ -361,20 +384,63 @@
   btnDocument.addEventListener('click', (e) => {
     getUrlImage('cedula' + formUser['inputTipoDoc'].value);
   });
+
   btnRespaldo.addEventListener('click', (e) => {
     getUrlImage('Respaldocedula' + formUser['inputTipoDoc'].value);
   });
+
   btnSelfie.addEventListener('click', (e) => {
     getUrlImage('selfi' + formUser['inputTipoDoc'].value);
   });
+
   btnRecibo.addEventListener('click', (e) => {
     getUrlImage('recibo' + formUser['inputTipoDoc'].value);
   });
-  btnReciboPago.addEventListener('click', (e) => {
-    getUrlImage('reciboPago' + formUser['inputTipoDoc'].value + referencia);
+  
+  flexRadioRol1.addEventListener('change', (e)=>{
+    updateRol('usuario');
+  });
+  
+  flexRadioRol2.addEventListener('change', (e)=>{
+    updateRol('inversionista');
+  });
+
+  flexRadioRol3.addEventListener('change', (e)=>{
+    updateRol('representante');
+  });
+
+  flexRadioRol4.addEventListener('change', (e)=>{
+    updateRol('financiero');
+  });
+
+  flexRadioRol5.addEventListener('change', (e)=>{
+    updateRol('juridico');
+  });
+
+  flexRadioRol6.addEventListener('change', (e)=>{
+    updateRol('comercial');
+  });
+
+  flexRadioStatus1.addEventListener('change', (e)=>{
+    updateStatus(true);
+  });
+
+  flexRadioStatus2.addEventListener('change', (e)=>{
+    updateStatus(false);
   });
 
 
+
+  function updateRol(rol){
+    updateUser(idUser,{
+      rol: rol
+    });
+  }
+  function updateStatus(status){
+    updateUser(idUser,{
+      estado: status
+    });
+  }
 
   function rolUser(rol) {
     if (rol == 'usuario') {
@@ -407,7 +473,7 @@
   }
 
   function showUser(user) {
-    formUser['inputName'].value = user['nombre']+' '+ user['apellido'];
+    formUser['inputName'].value = user['nombre'] + ' ' + user['apellido'];
     $('#spanTipoDoc').text(user['tipodocumento']);
     formUser['inputTipoDoc'].value = user['numerodocumento'];
     formUser['inputRepresentante'].value = user['patrocinador'];
@@ -427,7 +493,6 @@
       token = data.downloadTokens;
     });
     urli = "https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/imagenes%2F" + nameImage + "?alt=media&token=" + token;
-    //console.log(urli);
     window.open(urli, "Diseño Web")
   }
 
