@@ -228,7 +228,6 @@
           <div class="card-footer text-muted">
             <div class="row justify-content-center">
               <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
-                <button type="button" class="btn btn-warning" id="btnGuardar">Guardar</button>
                 <button type="button" class="btn btn-warning" id="btnCerrar">Cerrar</button>
               </div>
             </div>
@@ -274,13 +273,13 @@
   $(document).ready(function () {
     getUsers();
     setTimeout(function () {
-        //$('#tableUsers').destroy();
-        $('#tableUsers').DataTable({
-          "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-          }
-        });
-      }, 2000);
+      //$('#tableUsers').destroy();
+      $('#tableUsers').DataTable({
+        "language": {
+          "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        }
+      });
+    }, 2000);
   });
 
   const tableUsers = document.getElementById('myTable');
@@ -313,7 +312,7 @@
     onGetUsers((querySnapshot) => {
       tableUsers.innerHTML = '';
       querySnapshot.forEach(doc => {
-        
+
         let data = doc.data();
         let datos;
         if (data['estado']) {
@@ -355,9 +354,8 @@
                   const btnSearchRecibo = document.querySelectorAll('.btnSearchRecibo');
                   btnSearchRecibo.forEach(btn => {
                     btn.addEventListener('click', (e) => {
-                      console.log(e.target.dataset.nameImage);
                       e.preventDefault();
-                      planes['referencia'] == 'Pendiente'? alert('No hay un recibo para este portafolio') : getUrlImage('reciboPago' + e.target.dataset.image);
+                      getUrlImage('reciboPago' + e.target.dataset.image);
                     });
                   });
                   referencia = planes['referencia'];
@@ -366,10 +364,10 @@
               });
             });
           }, 1000);
-          
+
         }
       });
-      
+
     });
   }
 
@@ -396,48 +394,48 @@
   btnRecibo.addEventListener('click', (e) => {
     getUrlImage('recibo' + formUser['inputTipoDoc'].value);
   });
-  
-  flexRadioRol1.addEventListener('change', (e)=>{
+
+  flexRadioRol1.addEventListener('change', (e) => {
     updateRol('usuario');
   });
-  
-  flexRadioRol2.addEventListener('change', (e)=>{
+
+  flexRadioRol2.addEventListener('change', (e) => {
     updateRol('inversionista');
   });
 
-  flexRadioRol3.addEventListener('change', (e)=>{
+  flexRadioRol3.addEventListener('change', (e) => {
     updateRol('representante');
   });
 
-  flexRadioRol4.addEventListener('change', (e)=>{
+  flexRadioRol4.addEventListener('change', (e) => {
     updateRol('financiero');
   });
 
-  flexRadioRol5.addEventListener('change', (e)=>{
+  flexRadioRol5.addEventListener('change', (e) => {
     updateRol('juridico');
   });
 
-  flexRadioRol6.addEventListener('change', (e)=>{
+  flexRadioRol6.addEventListener('change', (e) => {
     updateRol('comercial');
   });
 
-  flexRadioStatus1.addEventListener('change', (e)=>{
+  flexRadioStatus1.addEventListener('change', (e) => {
     updateStatus(true);
   });
 
-  flexRadioStatus2.addEventListener('change', (e)=>{
+  flexRadioStatus2.addEventListener('change', (e) => {
     updateStatus(false);
   });
 
 
 
-  function updateRol(rol){
-    updateUser(idUser,{
+  function updateRol(rol) {
+    updateUser(idUser, {
       rol: rol
     });
   }
-  function updateStatus(status){
-    updateUser(idUser,{
+  function updateStatus(status) {
+    updateUser(idUser, {
       estado: status
     });
   }
@@ -485,15 +483,19 @@
   }
 
   function getUrlImage(nameImage) {
-    let token;
+    let token = "";
     $.ajax({
       url: "https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/imagenes%2F" + nameImage,
-      type: "GET"
-    }).done(function (data) {
-      token = data.downloadTokens;
+      type: "GET",
+      success: function(data){
+        token = data.downloadTokens;
+        urli = "https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/imagenes%2F" + nameImage + "?alt=media&token=" + token;
+        window.open(urli, "Diseño Web");
+      },
+      error: function (){
+        alert('No hay un recibo para este portafolio');
+      }
     });
-    urli = "https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/imagenes%2F" + nameImage + "?alt=media&token=" + token;
-    window.open(urli, "Diseño Web")
   }
 
 
