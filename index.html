@@ -1243,13 +1243,7 @@
             + currentdate.getSeconds();
         return datetime;
     }
-    function getDateRecibo() {
-        var currentdate = new Date();
-        var datetime = currentdate.getDate() + "-"
-            + (currentdate.getMonth() + 1) + "-"
-            + currentdate.getFullYear()
-        return datetime;
-    }
+    
     //Botenes con estilo para subir archivos
     document.querySelector('#imageFileArchivo').addEventListener('change', function (e) {
         var boxFile = document.querySelector('.uploadRecibo');
