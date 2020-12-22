@@ -91,7 +91,8 @@
                     Contamos con la autorización de la principales autoridades reguladoras en Colombia. <br>
                     Valoramos y respetamos su privacidad. <br>
                     Sus fondos están seguros en bancos que cuentan con una gran reputación. <br>
-                    <strong>Por favor llene todos los campos que aparecen a continuación:</strong> </p>
+                    <strong>Por favor llene todos los campos que aparecen a continuación:</strong>
+                </p>
             </div>
         </div>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -128,7 +129,7 @@
                             <!--Usuario y patrocinador-->
                             <div class="row ">
                                 <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                                    <div class="input-group mb-3" style="margin-top: 10px;">
+                                    <div class="input-group mb-3">
                                         <input type="text" class="form-control user " placeholder="Usuario"
                                             aria-label="User" aria-describedby="btnUserCheck" id="inputUser" required>
                                         <div class="input-group-append">
@@ -142,14 +143,17 @@
                                     </div>
                                 </div>
                                 <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6"
-                                    style="margin-top: -13px;">
-
-                                    <small class="form-text text-muted">Si no tiene un representante comercial asignado
-                                        haga clic aquí.</small>
+                                    >
                                     <div class="input-group mb-3">
-                                        <select class="custom-select" id="selectRepresentante" required>
-                                            <option value="">Representante</option>
-                                        </select>
+                                        <input type="text" class="form-control sponsor"
+                                            placeholder="Usuario quién te referenció" aria-label="Patrocinador"
+                                            aria-describedby="btnPatrocinadorCheck" id="inputPatrocinador" required>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                id="btnPatrocinadorCheck"
+                                                style=" border-bottom-right-radius: 10px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
+                                        </div>
+                                        <div class="sponsor" style="height: 10px;"></div>
                                     </div>
                                 </div>
                             </div>
@@ -317,7 +321,8 @@
                                     " id="inputPassword" minlength="8" required>
                                     </div>
                                     <small class="form-text text-muted"
-                                        style="margin-top: -10px; margin-bottom: 10px;">Su contraseña debe ser de 8
+                                        style="margin-top: -10px; margin-bottom: 10px;">Su
+                                        contraseña debe ser de 8
                                         caracteres o más,
                                         contener
                                         mayúsculas y números.</small>
@@ -867,7 +872,8 @@
                         <div class="row justify-content-center">
                             <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                                 <div class="alert alert-primary" role="alert" style="text-align: center;">
-                                    <a href="mailto:contacto@correo.financemarketscapital.com" class="alert-link">Sí tiene
+                                    <a href="mailto:contacto@correo.financemarketscapital.com" class="alert-link">Sí
+                                        tiene
                                         cualquier dificultad ó pregunta escriba al correo:
                                         contacto@correo.financemarketscapital.com</a>
                                 </div>
@@ -935,8 +941,8 @@
     const selectCiudad = document.getElementById('inputCity');
     const divCheckUser = document.getElementsByClassName("user")[1];
     const inputUser = document.getElementsByClassName("user")[0];
-    //const divChecksponsor = document.getElementsByClassName("sponsor")[1];
-    //const inputsponsor = document.getElementsByClassName("sponsor")[0];
+    const divChecksponsor = document.getElementsByClassName("sponsor")[1];
+    const inputsponsor = document.getElementsByClassName("sponsor")[0];
 
     let key = ''; //llave con la que se busca el registro
     let data = ''; // dato con la que se busca el registro
@@ -947,7 +953,7 @@
     let plan;
     let filtro; // Filtro del plan
     let existUser = false;
-    //let existSponsor = false;
+    let existSponsor = false;
     let correoVerificado = false;
     let verifyToken = false;
     let errs = []; // array de errores
@@ -967,13 +973,13 @@
         divErrors.style.display = "none";
 
         //mostrar Representantes
-        getUserRepre((querySnapshot) => {
-            selectRepresentante.innerHTML = '<option value="">Representante</option>'
-            querySnapshot.forEach(repre => {
-                rep = repre.data();
-                selectRepresentante.innerHTML += '<option value="' + rep['usuario'] + '">' + rep['nombre'] + ' ' + rep['apellido'] + '</option>'
-            });
-        });
+        //getUserRepre((querySnapshot) => {
+        //    selectRepresentante.innerHTML = '<option value="">Representante</option>'
+        //    querySnapshot.forEach(repre => {
+        //        rep = repre.data();
+        //        selectRepresentante.innerHTML += '<option value="' + rep['usuario'] + '">' + rep['nombre'] + ' ' + rep['apellido'] + '</option>'
+        //    });
+        //});
 
         //btnPagoForm.style.display = "none";
         //llave publica del comercio
@@ -1097,6 +1103,27 @@
         exist = '';
         datos = '';
     }
+    function waitSponsor() {
+        existSponsor = exist;
+        if (existSponsor) {
+            inputsponsor.className = '';
+            divChecksponsor.className = '';
+            divChecksponsor.innerHTML = '';
+            inputsponsor.className += 'form-control is-valid sponsor';
+            divChecksponsor.className += 'sponsor valid-feedback';
+            divChecksponsor.innerHTML += '<p>' + datos['nombre'] + ' ' + datos['apellido'] + '</p>';
+        } else {	 
+            inputsponsor.className = '';
+            divChecksponsor.className = '';	
+            divChecksponsor.innerHTML = '';
+            inputsponsor.className += 'form-control is-invalid sponsor';
+            divChecksponsor.className += 'sponsor invalid-feedback';
+            divChecksponsor.innerHTML += '<p>El patrocinador no existe</p>';
+        }	    
+        existData.value = '';
+        exist = '';
+        datos = '';
+    }
 
     function exitsNumDoc() {
         db.collection("Users").where("numerodocumento", "==", registerFrom['inputNumDocumento'].value)
@@ -1133,9 +1160,9 @@
     function verifyErrors() {
         let registrar;
         errs = [];
-        //if (!existSponsor) {
-        //    errs.push('No se ha verificado el Patrocinador');
-        //}
+        if (!existSponsor) {
+           errs.push('No se ha verificado el Patrocinador');
+        }
         if (!existUser) {
             errs.push('No se ha verificado el Usuario');
         }
@@ -1318,6 +1345,14 @@
         await dataExist("usuario", registerFrom['inputUser'].value);
         setTimeout(waitUser, 2000);
     });
+
+    btnPatrocinadorCheck.addEventListener('click', async (e) => {
+        await dataExist("usuario", registerFrom['inputPatrocinador'].value);
+        setTimeout(waitSponsor, 2000);
+        existData.value = '';
+        exist = '';	 
+        datos = '';	
+    });	
     //verificar el email
     btnVerifyEmail.addEventListener('click', (e) => {
         if (numVerify == registerFrom['inputVerifyEmail'].value) {
@@ -1335,7 +1370,7 @@
         let existNum = false;
         let existRec = false;
         let idUser;
-        if (inputFileNumDocumento.value == ''|| inputFileNumRefPago.value == '') {
+        if (inputFileNumDocumento.value == '' || inputFileNumRefPago.value == '') {
             alert('Debe completar los campos');
         } else if (document.querySelector('#imageFileArchivo').value == '') {
             alert('Debe seleccionar un archivo');
@@ -1361,20 +1396,20 @@
                     updateUser(idUser, {
                         reciboPago: true
                     });
-                    db.collection("PlanesUsuarios").where('numerodocumento', "==",  inputFileNumDocumento.value)
-                    .get()
-                    .then(function (querySnapshot) {
-                        querySnapshot.forEach(function (doc) {
-                            datos = doc.data();
-                            updatePagoPlan(doc.id, {
-                                fechaPago: getDate(),
-                                referencia: inputFileNumRefPago.value,
+                    db.collection("PlanesUsuarios").where('numerodocumento', "==", inputFileNumDocumento.value)
+                        .get()
+                        .then(function (querySnapshot) {
+                            querySnapshot.forEach(function (doc) {
+                                datos = doc.data();
+                                updatePagoPlan(doc.id, {
+                                    fechaPago: getDate(),
+                                    referencia: inputFileNumRefPago.value,
+                                });
                             });
+                        })
+                        .catch(function (error) {
+                            console.log("Error getting documents: ", error);
                         });
-                    })
-                    .catch(function (error) {
-                        console.log("Error getting documents: ", error);
-                    });
                     loadImage('imagenes/', 'reciboPago' + inputFileNumDocumento.value + inputFileNumRefPago.value, 'imageFileArchivo');
                     alert('El archivo se ha subido');
                     location.href = "https://financemarketscapital.com";
