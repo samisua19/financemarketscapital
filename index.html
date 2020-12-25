@@ -128,8 +128,8 @@
                             </div>
                             <!--Usuario y patrocinador-->
                             <div class="row ">
-                                <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
-                                    <div class="input-group mb-3">
+                                <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-4">
+                                    <div class="input-group mb-3" >
                                         <input type="text" class="form-control user " placeholder="Usuario"
                                             aria-label="User" aria-describedby="btnUserCheck" id="inputUser" required>
                                         <div class="input-group-append">
@@ -142,18 +142,25 @@
                                         <div class="user" style="height: 10px;"></div>
                                     </div>
                                 </div>
-                                <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6"
-                                    >
+                                <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-4"> 
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control sponsor"
-                                            placeholder="Usuario quién te referenció" aria-label="Patrocinador"
-                                            aria-describedby="btnPatrocinadorCheck" id="inputPatrocinador" required>
+                                        <input type="text" class="form-control sponsor" aria-describedby="btnPatrocinadorCheck" id="inputPatrocinador" required>
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary" type="button"
                                                 id="btnPatrocinadorCheck"
                                                 style=" border-bottom-right-radius: 10px; border-top-right-radius: 3px ; border: 1px solid #EED2CD;">Verificar</button>
                                         </div>
                                         <div class="sponsor" style="height: 10px;"></div>
+                                    </div>
+                                </div>
+                                <div class="col  col-md-12 col-12 col-sm-12 col-lg-12 col-xl-4"
+                                    style="margin-top: -13px;">
+                                    <small class="form-text text-muted">Si no tiene un representante comercial asignado
+                                        haga clic aquí.</small>
+                                    <div class="input-group mb-3">
+                                        <select class="custom-select" id="selectRepresentante" required>
+                                            <option value="">Representante</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -322,7 +329,8 @@
                                     </div>
                                     <small class="form-text text-muted"
                                         style="margin-top: -10px; margin-bottom: 10px;">Su
-                                        contraseña debe ser de 8
+                                        contraseña debe
+                                        ser de 8
                                         caracteres o más,
                                         contener
                                         mayúsculas y números.</small>
@@ -941,8 +949,8 @@
     const selectCiudad = document.getElementById('inputCity');
     const divCheckUser = document.getElementsByClassName("user")[1];
     const inputUser = document.getElementsByClassName("user")[0];
-    const divChecksponsor = document.getElementsByClassName("sponsor")[1];
-    const inputsponsor = document.getElementsByClassName("sponsor")[0];
+    const divChecksponsor = document.getElementsByClassName("sponsor")[1]; // id Referido 
+    const inputsponsor = document.getElementsByClassName("sponsor")[0]; // id referido input
 
     let key = ''; //llave con la que se busca el registro
     let data = ''; // dato con la que se busca el registro
@@ -960,6 +968,8 @@
     let registrar = false;
     let dat;
     let numDoc = false;
+    let idReferidoDirecto = '';
+    let idReferidoIndirecto = '';
     const getUsers = () => db.collection('Users').get();
     const getUserRepre = (callback) => db.collection("Users").where("rol", "==", "representante").onSnapshot(callback);;
     const planes = (callback) => db.collection('Planes').doc('5popKkRNj8G6bnFLxF7m').collection(plazo).orderBy(filtro, "asc").onSnapshot(callback);
@@ -973,13 +983,13 @@
         divErrors.style.display = "none";
 
         //mostrar Representantes
-        //getUserRepre((querySnapshot) => {
-        //    selectRepresentante.innerHTML = '<option value="">Representante</option>'
-        //    querySnapshot.forEach(repre => {
-        //        rep = repre.data();
-        //        selectRepresentante.innerHTML += '<option value="' + rep['usuario'] + '">' + rep['nombre'] + ' ' + rep['apellido'] + '</option>'
-        //    });
-        //});
+        getUserRepre((querySnapshot) => {
+            selectRepresentante.innerHTML = '<option value="">Representante</option>'
+            querySnapshot.forEach(repre => {
+                rep = repre.data();
+                selectRepresentante.innerHTML += '<option value="' + rep['usuario'] + '">' + rep['nombre'] + ' ' + rep['apellido'] + '</option>'
+            });
+        });
 
         //btnPagoForm.style.display = "none";
         //llave publica del comercio
@@ -1074,8 +1084,8 @@
         existData.value == '' ? exist = false : exist = true;
     }
     // guardar usuarios
-    function saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol, reciboPago) {
-        db.collection('Users').doc().set({ usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol, reciboPago });
+    function saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol, reciboPago, idReferidoDirecto, idReferidoIndirecto) {
+        db.collection('Users').doc().set({ usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol, reciboPago, idReferidoDirecto, idReferidoIndirecto });
     }
     // guardar informacion del pago
     function savePagoUser(numerodocumento, termino, plan, estado, referencia, fechaPago, recibo, estadoPago) {
@@ -1103,6 +1113,7 @@
         exist = '';
         datos = '';
     }
+
     function waitSponsor() {
         existSponsor = exist;
         if (existSponsor) {
@@ -1112,6 +1123,8 @@
             inputsponsor.className += 'form-control is-valid sponsor';
             divChecksponsor.className += 'sponsor valid-feedback';
             divChecksponsor.innerHTML += '<p>' + datos['nombre'] + ' ' + datos['apellido'] + '</p>';
+            idReferidoDirecto = datos['idreferido'];
+            idReferidoIndirecto = datos['idreferidodirecto']
         } else {	 
             inputsponsor.className = '';
             divChecksponsor.className = '';	
@@ -1243,7 +1256,13 @@
             + currentdate.getSeconds();
         return datetime;
     }
-    
+    function getDateRecibo() {
+        var currentdate = new Date();
+        var datetime = currentdate.getDate() + "-"
+            + (currentdate.getMonth() + 1) + "-"
+            + currentdate.getFullYear()
+        return datetime;
+    }
     //Botenes con estilo para subir archivos
     document.querySelector('#imageFileArchivo').addEventListener('change', function (e) {
         var boxFile = document.querySelector('.uploadRecibo');
@@ -1339,14 +1358,6 @@
         await dataExist("usuario", registerFrom['inputUser'].value);
         setTimeout(waitUser, 2000);
     });
-
-    btnPatrocinadorCheck.addEventListener('click', async (e) => {
-        await dataExist("usuario", registerFrom['inputPatrocinador'].value);
-        setTimeout(waitSponsor, 2000);
-        existData.value = '';
-        exist = '';	 
-        datos = '';	
-    });	
     //verificar el email
     btnVerifyEmail.addEventListener('click', (e) => {
         if (numVerify == registerFrom['inputVerifyEmail'].value) {
@@ -1358,6 +1369,14 @@
             alert('los numeros no coinciden');
             verifyToken = false;
         }
+    });
+
+    btnPatrocinadorCheck.addEventListener('click', async (e) => {
+        await dataExist("idreferido", registerFrom['inputPatrocinador'].value);
+        setTimeout(waitSponsor, 2000);
+        existData.value = '';
+        exist = '';	 
+        datos = '';	
     });
 
     btnFileSave.addEventListener('click', (e) => {
@@ -1519,7 +1538,7 @@
                 loadImage('imagenes/', 'Respaldocedula' + numerodocumento, 'imageRespaldoCedula');
                 loadImage('imagenes/', 'selfi' + numerodocumento, 'imageSelfiDocumento');
                 loadImage('imagenes/', 'recibo' + numerodocumento, 'imageRecibo');
-                saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol, reciboPago);
+                saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol, reciboPago, idReferidoDirecto, idReferidoIndirecto);
                 savePagoUser(numerodocumento, plazo, dat['nombre'], "pendiente", "Pendiente", "Pendiente", "Pendiente", "Pendiente");
                 alert('Se ha registrado correctamente');
                 registerFrom.reset();
