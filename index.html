@@ -1098,8 +1098,8 @@
         db.collection('Users').doc().set({ usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol, reciboPago, idReferidoDirecto, idReferidoIndirecto, idref });
     }
     // guardar informacion del pago
-    function savePagoUser(numerodocumento, termino, plan, estado, referencia, fechaPago, recibo, estadoPago, estado, valorPlan) {
-        db.collection('PlanesUsuarios').doc().set({ numerodocumento, termino, plan, referencia, fechaPago, recibo, estadoPago, estado, valorPlan });
+    function savePagoUser(numerodocumento, termino, plan, estado, referencia, fechaPago, recibo, estadoPago, estado, valorPlan, numContrato) {
+        db.collection('PlanesUsuarios').doc().set({ numerodocumento, termino, plan, referencia, fechaPago, recibo, estadoPago, estado, valorPlan, numContrato });
     }
     // esperar a que exista la confirmacion de si existe el usuario
     function waitUser() {
@@ -1581,7 +1581,7 @@
                 loadImage('imagenes/', 'selfi' + numerodocumento, 'imageSelfiDocumento');
                 loadImage('imagenes/', 'recibo' + numerodocumento, 'imageRecibo');
                 saveDateUser(usuario, patrocinador, nombre, apellido, tipodocumento, numerodocumento, fecha_nac, genero, correo, password, pais, departamento, ciudad, direccion, numero, entidadFinanciera, tipocuenta, numCuenta, estado, fechaRegistro, fechaMod, rol, reciboPago, idReferidoDirecto, idReferidoIndirecto, idref);
-                savePagoUser(numerodocumento, plazo, dat['nombre'], "pendiente", "Pendiente", "Pendiente", "Pendiente", "Pendiente", false, valorPlan );
+                savePagoUser(numerodocumento, plazo, dat['nombre'], "pendiente", "Pendiente", "Pendiente", "Pendiente", "Pendiente", false, valorPlan, "Pendiente");
                 alert('Se ha registrado correctamente');
                 registerFrom.reset();
                 registerFrom.style.display = "none";
