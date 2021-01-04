@@ -133,6 +133,24 @@
               <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon3"
+                    style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">Usuario</span>
+                  <input type="text" class="form-control" id="inputUsuario" aria-describedby="basic-addon3" value=""
+                    disabled>
+                </div>
+              </div>
+              <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon3"
+                    style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">ID Referido</span>
+                  <input type="text" class="form-control" id="inputIdReferido" aria-describedby="basic-addon3" value=""
+                    disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row " style="text-align: center;">
+              <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon3"
                     style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">Representante</span>
                   <input type="text" class="form-control" id="inputRepresentante" aria-describedby="basic-addon3"
                     value="" disabled>
@@ -141,8 +159,8 @@
               <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-6">
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon3"
-                    style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">ID Referido</span>
-                  <input type="text" class="form-control" id="inputIdReferido" aria-describedby="basic-addon3" value=""
+                    style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">Referido por</span>
+                  <input type="text" class="form-control" id="inputRefPor" aria-describedby="basic-addon3" value=""
                     disabled>
                 </div>
               </div>
@@ -185,28 +203,35 @@
             </div>
             <div class="table-responsive">
               <div class="row">
-                <div class="col">
-                  <h3>Portafolios Adquiridos</h3>
+                <div class="col col-md-12 col-12 col-sm-12 col-lg-12 col-xl-12">
+                  <h3 class="titleTable">Portafolios Adquiridos</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-md-8 col-12 col-sm-12 col-lg-6 col-xl-6">
+                  <h3 class="titleTable">Sumatoria Portafolios Adquiridos:</h3>
+                </div>
+                <div class="col col-md-4 col-12 col-sm-12 col-lg-6 col-xl-6" id="spaPorAd">
                 </div>
               </div>
               <table id="tablePlan" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                 <thead>
                   <tr>
-                    <th class="th-sm">Plazo
+                    <th>Plazo
                     </th>
-                    <th class="th-sm">Plan
+                    <th>Plan
                     </th>
-                    <th class="th-sm">Fecha compra
+                    <th>Fecha compra
                     </th>
-                    <th class="th-sm">Valor
+                    <th>Valor
                     </th>
-                    <th class="th-sm">Numero de Contrato
+                    <th>Número <br> de <br> Contrato
                     </th>
-                    <th class="th-sm">Comprobante de Depósito
+                    <th>Comprobante <br> de <br> Depósito
                     </th>
-                    <th class="th-sm">Ver Comprobante
+                    <th>Ver <br> Comprobante
                     </th>
-                    <th class="th-sm">Estado (Activo/Inactivo)
+                    <th>Estado <br> (Activo/Inactivo)
                     </th>
                   </tr>
                 </thead>
@@ -221,14 +246,13 @@
                   </th>
                   <th>Valor
                   </th>
+                  <th>Número <br> de <br> Contrato
                   </th>
-                  <th>Numero de Contrato
+                  <th>Comprobante <br> de <br> Depósito
                   </th>
-                  <th>Comprobante de Depósito
+                  <th>Ver <br> Comprobante
                   </th>
-                  <th>Ver Comprobante
-                  </th>
-                  <th>Estado (Activo/Inactivo)
+                  <th>Estado <br> (Activo/Inactivo)
                   </th>
                 </tr>
                 <tfoot>
@@ -237,7 +261,7 @@
             </div>
             <div class="row justify-content-center">
               <div class="col col-md-6 col-6 col-sm-6 col-lg-6 col-xl-3">
-                <button type="button" class="btn " id="btnDocument">
+                <button type="button" class="btn btnArchivos " id="btnDocument">
                   <img
                     src="https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/icons%2FIcono1.png?alt=media&token=1b575199-cae2-48fd-8cf3-587a34569916"
                     style="height: 100px; width: 100px; margin: auto;"><br>
@@ -245,7 +269,7 @@
                 </button>
               </div>
               <div class="col col-md-6 col-6 col-sm-6 col-lg-6 col-xl-3">
-                <button type="button" class="btn" id="btnRespaldo">
+                <button type="button" class="btn btnArchivos" id="btnRespaldo">
                   <img
                     src="https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/icons%2FIcono2.png?alt=media&token=31f386c4-8f82-4a4c-9a1d-1f54f89b50bc"
                     style="height: 100px; width: 100px; margin: auto;"><br>
@@ -253,7 +277,7 @@
                 </button>
               </div>
               <div class="col col-md-6 col-6 col-sm-6 col-lg-6 col-xl-3">
-                <button type="button" class="btn" id="btnSelfie">
+                <button type="button" class="btn btnArchivos" id="btnSelfie">
                   <img
                     src="https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/icons%2FIcono3.png?alt=media&token=3203c757-c5d9-4d6e-8b98-f5dd84841b3c"
                     style="height: 100px; width: 100px; margin: auto;"><br>
@@ -261,7 +285,7 @@
                 </button>
               </div>
               <div class="col col-md-6 col-6 col-sm-6 col-lg-6 col-xl-3">
-                <button type="button" class="btn" id="btnRecibo">
+                <button type="button" class="btn btnArchivos" id="btnRecibo">
                   <img
                     src="https://firebasestorage.googleapis.com/v0/b/appfinancemarketscapital.appspot.com/o/icons%2Ficono4.png?alt=media&token=c3448692-2121-45a2-9e92-637916af2bff"
                     style="height: 100px; width: 100px; margin: auto;"><br>
@@ -343,8 +367,10 @@
         <div class="col col-md-12 col-12 col-sm-12 col-lg-6 col-xl-6">
           <div class="table-responsive" style="margin-top: 30px;">
             <div class="row">
-              <div class="col">
-                <h3>Referidos Directos</h3>
+              <div class="col col-md-12 col-12 col-sm-12 col-lg-6 col-xl-6">
+                <h3 class="titleTable">Referidos Directos</h3>
+              </div>
+              <div class="col col-md-12 col-12 col-sm-12 col-lg-6 col-xl-6" id="spaDirectos">
               </div>
             </div>
             <table id="tableRefDirectos" class="table table-striped table-bordered table-sm" cellspacing="0"
@@ -373,8 +399,10 @@
         <div class="col col-md-12 col-12 col-sm-12 col-lg-6 col-xl-6">
           <div class="table-responsive" style="margin-top: 30px;">
             <div class="row">
-              <div class="col">
-                <h3>Referidos Indirectos</h3>
+              <div class="col col-md-12 col-12 col-sm-12 col-lg-6 col-xl-6">
+                <h3 class="titleTable">Referidos Indirectos</h3>
+              </div>
+              <div class="col col-md-12 col-12 col-sm-12 col-lg-6 col-xl-6" id="spaIndirectos">
               </div>
             </div>
             <table id="tableRefIndirectos" class="table table-striped table-bordered table-sm" cellspacing="0"
@@ -402,7 +430,7 @@
         </div>
       </div>
     </div>
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
@@ -461,6 +489,8 @@
   const onGetUsers = (callback) => db.collection("Users").orderBy("fechaRegistro", "desc").onSnapshot(callback);
   const updateUser = (id, updateUser) => db.collection('Users').doc(id).update(updateUser);
   const getUser = (id) => db.collection("Users").doc(id).get();
+  //funcion de obtener datos
+  const getDataByData = (document, type, data) => db.collection(document).where(type, "==", data).get();
   const formUser = document.getElementById('formUser');
   const formLogIn = document.getElementById('formLogIn');
   const btnCerrar = document.getElementById('btnCerrar');
@@ -486,84 +516,86 @@
   let docUserMod;
   let cambios = [];
   let representante;
-  let spa = 0;
+  let spa;
 
   function saveDateMod(responsable, usuarioMod, fechaMod, descripcion) {
     db.collection('Modificaciones').doc().set({ responsable, usuarioMod, fechaMod, descripcion });
   }
 
+  async function getPlanesUsers(numerodocumento) {
+    return await getDataByData("PlanesUsuarios", 'numerodocumento', numerodocumento);
+  }
+
+  function getFirstPosDocument(doc) {
+    let firstPos;
+    doc.forEach(doc => {
+      firstPos = doc.data();
+    });
+    return firstPos;
+  }
+
+  function drawPlanes(planes, numerodocumento) {
+    tablePlanes.innerHTML = '';
+    planes.forEach(plan => {
+      tablePlanes.innerHTML += '<tr><td  >' + plan.data()['termino'] + '</td><td >' + plan.data()['plan'] + '</td><td >' + plan.data()['fechaPago'] + '</td><td > ' + plan.data()['valorPlan'] + ' </td><td > ' + plan.data()['numContrato'] + ' </td><td >' + plan.data()['referencia'] + '</td> <td ><button class ="btn btn-secondary  btnSearchRecibo" data-image = "' + numerodocumento + plan.data()['referencia'] + '"> Ver</button></td><td ><input type="checkbox" class="form-check-input" ></td></tr>';
+    });
+  }
+
+  function drawUsers(data, datos, docid) {
+    let idRef;
+    let user;
+    let planes;
+    let repre;
+    let spaPorAd;
+    let spaDir;
+    let spaIndir;
+    tableUsers.innerHTML += '<tr> <td>' + data['nombre'] + '</td><td>' + data['apellido'] + '</td><td>' + data['numerodocumento'] + '</td><td>' + data['patrocinador'] + '</td><td>' + datos['estadoPago'] + '</td><td>' + datos['fechaPago'] + '</td><td>' + datos['recibo'] + '</td> <td><button class ="btn btn-primary  btnSearchUser" data-id = "' + docid + '">Ver Usuario</button></td> </tr>';
+    const btnSearchUser = document.querySelectorAll('.btnSearchUser');
+    btnSearchUser.forEach(async btn => {
+      btn.addEventListener('click', async (e) => {
+        containerUserForm.style.display = "block";
+        const doc = await getUser(e.target.dataset.id);
+        const divSpaPorAd = document.getElementById('spaPorAd');
+        const divSpaDirectos = document.getElementById('spaDirectos');
+        const divSpaIndirectos = document.getElementById('spaIndirectos');
+        user = doc.data();
+        idRef = user['idref'];
+        idUser = doc.id;
+        docUserMod = user['numerodocumento'];
+        planes = await getPlanesUsers(user['numerodocumento']);
+        drawPlanes(planes, user['numerodocumento']);
+        datos = await getDataByData("Users", 'usuario', user['patrocinador']);
+        repre = getFirstPosDocument(datos);
+        representante = repre['nombre'] + ' ' + repre['apellido'];
+        showUser(user);
+        spaPorAd = await getSPA(user['numerodocumento']);
+        spaDir = await getIdRef(idRef, 'idReferidoDirecto', 'tableRefDirect');
+        spaIndir = await getIdRef(idRef, 'idReferidoIndirecto', 'tableRefInirect');
+        divSpaPorAd.innerHTML = '<h3 class="titleTable">' + spaPorAd + '</h3>';
+        divSpaDirectos.innerHTML = '<h3 class="titleTable">' + spaDir + '</h3>';
+        divSpaIndirectos.innerHTML = '<h3 class="titleTable">' + spaIndir + '</h3>';
+        const btnSearchRecibo = document.querySelectorAll('.btnSearchRecibo');
+        btnSearchRecibo.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            getUrlImage('reciboPago' + e.target.dataset.image);
+          });
+        });
+      });
+    });
+  }
+
   function getUsers() {
     onGetUsers((querySnapshot) => {
       tableUsers.innerHTML = '';
-      querySnapshot.forEach(doc => {
+      querySnapshot.forEach(async doc => {
         let data = doc.data();
-        let datos;
-        let idRef;
+        let planesUser = await getPlanesUsers(data['numerodocumento']);
+        let datos = getFirstPosDocument(planesUser);
         if (data['estado']) {
-          db.collection("PlanesUsuarios").where('numerodocumento', "==", data['numerodocumento'])
-            .get()
-            .then(function (querySnapshot) {
-              querySnapshot.forEach(function (dat) {
-                datos = dat.data();
-              });
-            })
-            .catch(function (error) {
-              console.log("Error getting documents: ", error);
-            });
-          setTimeout(function () {
-            tableUsers.innerHTML += '<tr> <td>' + data['nombre'] + '</td><td>' + data['apellido'] + '</td><td>' + data['numerodocumento'] + '</td><td>' + data['patrocinador'] + '</td><td>' + datos['estadoPago'] + '</td><td>' + datos['fechaPago'] + '</td><td>' + datos['recibo'] + '</td> <td><button class ="btn btn-primary  btnSearchUser" data-id = "' + doc.id + '">Ver Usuario</button></td> </tr>';
-            const btnSearchUser = document.querySelectorAll('.btnSearchUser');
-            btnSearchUser.forEach(btn => {
-              btn.addEventListener('click', async (e) => {
-                containerUserForm.style.display = "block";
-                const doc = await getUser(e.target.dataset.id);
-                let user = doc.data();
-                idRef = user['idref'];
-                let planes;
-                idUser = doc.id;
-                docUserMod = user['numerodocumento'];
-                db.collection("PlanesUsuarios").where('numerodocumento', "==", user['numerodocumento'])
-                  .get()
-                  .then(function (querySnapshot) {
-                    tablePlanes.innerHTML = '';
-                    querySnapshot.forEach(function (dat) {
-                      planes = dat.data();
-                      tablePlanes.innerHTML += '<tr><td>' + planes['termino'] + '</td><td>' + planes['plan'] + '</td><td>' + planes['fechaPago'] + '</td><td> ' + planes['valorPlan'] + ' </td><td> ' + planes['numContrato'] + ' </td><td>' + planes['referencia'] + '</td> <td><button class ="btn btn-secondary  btnSearchRecibo" data-image = "' + user['numerodocumento'] + planes['referencia'] + '"> Ver</button></td><td><input type="checkbox" class="form-check-input" ></td></tr>';
-                    });
-                  })
-                  .catch(function (error) {
-                    console.log("Error getting documents: ", error);
-                  });
-                db.collection("Users").where('usuario', "==", user['patrocinador'])
-                  .get()
-                  .then(function (querySnapshot) {
-                    querySnapshot.forEach(function (dat) {
-                      representante = dat.data()['nombre'] + ' ' + dat.data()['apellido'];
-                    });
-                  })
-                  .catch(function (error) {
-                    console.log("Error getting documents: ", error);
-                  });
-                setTimeout(function () {
-                  showUser(user);
-                  const btnSearchRecibo = document.querySelectorAll('.btnSearchRecibo');
-                  btnSearchRecibo.forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                      e.preventDefault();
-                      getUrlImage('reciboPago' + e.target.dataset.image);
-                    });
-                  });
-                  referencia = planes['referencia'];
-                }, 1000);
-                getIdRef(idRef, 'idReferidoDirecto', 'tableRefDirect');
-                getIdRef(idRef, 'idReferidoIndirecto', 'tableRefInirect');
-              });
-            });
-          }, 1000);
-
+          setTimeout(drawUsers(data, datos, doc.id), 1000);
         }
       });
-
     });
   }
 
@@ -679,7 +711,9 @@
     formUser['inputDateRegister'].value = user['fechaRegistro'];
     formUser['inputNumber'].value = user['numero'];
     formUser['inputCiudad'].value = user['ciudad'];
-    formUser['inputIdReferido'].value = user['idReferidoDirecto'];
+    formUser['inputIdReferido'].value = user['idref'];
+    formUser['inputUsuario'].value = user['usuario'];
+    getUserxIdRef(user['idReferidoDirecto'])
     rolUser(user['rol']);
     statusUser(user['estado']);
     newRol = user['rol'];
@@ -704,41 +738,42 @@
     });
   }
 
-  function getIdRef(idRef, tipo, tabla) {
+  async function getUserxIdRef(idRef) {
+    const users = await getDataByData("Users", "idref", idRef);
+    users.forEach(user => {
+      formUser['inputRefPor'].value = user.data()['nombre'] + ' ' + user.data()['apellido'];
+    });
+  }
+
+  //Obtener los usuarios referidos del usuario con la variable spa
+  async function getIdRef(idRef, tipo, tabla) {
+    let spaGeneral = 0;
+    let spa;
+    let users = await getDataByData("Users", tipo, idRef);
     const tableRef = document.getElementById(tabla);
-    db.collection("Users").where(tipo, "==", idRef)
-      .get()
-      .then(function (querySnapshot) {
-        tableRef.innerHTML = '';
-        spa = 0;
-        querySnapshot.forEach(function (dat) {
-          referidos = dat.data();
-          setTimeout(function (){
-          getSPA(referidos['numerodocumento']);
-          console.log(spa);
-          },1000);
-          tableRef.innerHTML += '<tr><td>' + referidos['idref'] + '</td><td>'+ spa +'</td></tr>';
-        });
-      })
-      .catch(function (error) {
-        console.log("Error getting documents: ", error);
-      });
+    tableRef.innerHTML = '';
+    users.forEach(async doc => {
+      let referidos = doc.data();
+      spa = await getSPA(referidos['numerodocumento']);
+      spaGeneral += spa;
+      tableRef.innerHTML += '<tr><td>' + referidos['idref'] + '</td><td>' + spa + '</td></tr>';
+    });
+    console.log(spaGeneral);
+    return spaGeneral;
   }
 
-  function getSPA(numDoc) {
-    db.collection("PlanesUsuarios").where('numerodocumento', "==", numDoc)
-      .get()
-      .then(function (querySnapshot) {
-        querySnapshot.forEach(function (dat) {
-          datos = dat.data();
-          spa += datos['valorPlan'];
-        });
-      })
-      .catch(function (error) {
-        console.log("Error getting documents: ", error);
-      });
+  //Obtener variable SPA
+  async function getSPA(numDoc) {
+    let datos = await getPlanesUsers(numDoc);
+    let spa = 0;
+    datos.forEach(doc => {
+      spa += doc.data()['valorPlan'];
+    });
+    return spa;
   }
 
+
+  //Evento de formulario para guardar cambios de los usuarios
   formLogIn.addEventListener('submit', (e) => {
     e.preventDefault();
     let idUser = '';
@@ -765,6 +800,7 @@
 
   });
 
+  //Verificar si la respuesta de los cambios es true
   function statusQueryFun(statusQuery) {
     if (statusQuery) {
       location.reload(true);
@@ -773,6 +809,7 @@
     }
   }
 
+  //Autenticar usuario para guardar cambios
   function existUser(idResponsable, doc) {
     let statusQuery;
     let dateMod = getDate();
@@ -800,11 +837,13 @@
     return statusQuery;
   }
 
+  //Funcion de encriptar contraseñas
   function hashPassword() {
     let passwordHash = CryptoJS.SHA256(formLogIn['inputPassword'].value);
     return passwordHash.toString(CryptoJS.enc.Base64);
   }
 
+  //funcion de obtener la  fecha
   function getDate() {
     var currentdate = new Date();
     var datetime = currentdate.getDate() + "/"
